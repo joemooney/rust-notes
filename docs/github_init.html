@@ -168,13 +168,17 @@
 <p>After creating some content for the book and pushing the changes to GitHub,
 I then ran <code>mdbook build</code> which generated a <em>book</em> directory.</p>
 <ul>
-<li><code>mdbook build</code></li>
+<li><code>mdbook build --open</code></li>
+<li>Once you are happy with the changes you can publish.</li>
 <li><code>mv book docs</code></li>
 <li><code>git add docs</code> ⬅️ this must be the name. It is what GitHub Pages requires.</li>
 <li><code>git commit -m 'adding my book for the first time'</code></li>
 <li>On GitHub, under <em>Settings</em> for the repo, under <em>GitHub Pages</em> section, I selected <em>Source master branch/docs</em></li>
 <li><code>git push</code></li>
 <li>The link to your site will be shown as <a href="https://joemooney.github.io/rust-notes/">https://&lt;your_id&gt;.github.io/&lt;your_repo&gt;/</a></li>
+<li>After you make changes to the book you can sync the <em>book</em> and <em>docs</em> directories.</li>
+<li><code>rsync -avx --delete --info=progress2 ./book/ ./docs/</code></li>
+<li><code>git push</code></li>
 </ul>
 
                     </main>
