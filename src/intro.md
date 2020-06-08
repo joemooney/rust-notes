@@ -21,3 +21,8 @@ In order to create this book I have used the following tools:
     - Rust
     - TabNine
     - Vim
+- Firefox
+  - Extensions
+    - vimium ⬅️ *?* for help when in browser, navigate in browser like Vim
+- Linux
+  - terminator
