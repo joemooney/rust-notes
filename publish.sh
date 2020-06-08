@@ -1,6 +1,6 @@
 #!/bin/bash
 
-url=$(git config --get remote.origin.url | sed 's,git@github.com:,https://,;s,.git$,/,')
+url=$(git config --get remote.origin.url | sed 's,git@github.com:,,;s,/,.github.io/,;s,^,https://,;s,.git$,/,')
 
 mdbook build                         && \
 git status                           && \
