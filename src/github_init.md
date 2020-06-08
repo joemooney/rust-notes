@@ -12,3 +12,4 @@ Then I installed hub command to simplify working with github:
 - hub create > [!TIP]
     > This will create the repo on GitHub
 - git remote show origin
+- git push --set-upstream origin master
