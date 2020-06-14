@@ -21,6 +21,7 @@ publish() {
     git status                                            && \
     echo 'git commit -am'                                 && \
     echo -n "Comment: " && read comment                   && \
+    git add .                                             && \
     git commit -am "$comment"                             && \
     git push                                              && \
     echo "Published: $url"
