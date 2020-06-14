@@ -6,3 +6,4 @@
 - [Storing on GitHub](./github_init.md)
 - [Hello World](./hello_world.md)
 - [Glossary](./glossary.md)
+- [Readme](./README.md)

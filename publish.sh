@@ -63,6 +63,9 @@ eval set -- "$PARAMS"
 ####################################################################
 . ./git_functions.sh
 
+# Update README.md in book if necessary
+cmp -s README.md src/README.md || cp README.md src/README.md
+
 git_check_untracked
 git_no_updates && echo "[info] No changes to publish" && exit 1
 
