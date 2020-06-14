@@ -3,7 +3,7 @@
 This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.
 
-In order to create this book I have used the following tools:
+In order to create this book and play around with Rust, I have used the following tools:
 
 - rust
   - cargo
