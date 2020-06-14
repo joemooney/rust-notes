@@ -7,4 +7,3 @@
 - [Hello World](./hello_world.md)
 - [Glossary](./glossary.md)
 - [Readme](./README.md)
-

@@ -9,3 +9,5 @@ git_check_untracked() {
     echo "[error] You have untracked files, use --force" && exit 1 
 }
 
+
+
