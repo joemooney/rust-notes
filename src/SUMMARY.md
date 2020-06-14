@@ -1,4 +1,4 @@
-# Summary
+# Rust Notes Summary
 
 - [Introduction](./intro.md)
 - [Creating a Book](./create_book.md)
