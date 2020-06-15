@@ -10,5 +10,7 @@ git_check_untracked() {
     echo "[error] You have untracked files, use --force" && exit 1 
 }
 
+ts() { date +"%Y-%m-%d %H:%M:%S"; }
+
 
 

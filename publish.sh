@@ -15,8 +15,19 @@ url=$(git config --get remote.origin.url | sed 's,git@github.com:,,;s,/,.github.
 ####################################################################
 # Functions
 ####################################################################
+postprocess() { 
+    for i in book/*.html
+    do
+        perl -p -i -e "
+            s,{timestamp},$(ts),g;
+            s,{/small},</sub>,g;
+            s,{small},<sub>,g;
+        " $i
+    done
+}
 publish() { 
     mdbook build                                          && \
+    postprocess                                           && \
     rsync -avx --delete --info=progress2 ./book/ ./docs/  &&\
     git status                                            && \
     echo 'git commit -am'                                 && \
