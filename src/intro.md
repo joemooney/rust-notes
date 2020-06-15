@@ -1,4 +1,5 @@
 # Introduction
+
 {small}{gray}*Last Updated: {timestamp}*{/gray}{/small}
 
 This book contains notes from learning Rust.

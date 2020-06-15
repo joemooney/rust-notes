@@ -9,7 +9,7 @@
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="">
+        <meta name="description" content="Notes on learning Rust programming language.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">4.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="hello_world.html"><strong aria-hidden="true">5.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">7.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">8.</strong> Readme</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates.html"><strong aria-hidden="true">4.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">4.1.</strong> anymap</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">5.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">6.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">6.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">6.2.</strong> Rust Cookbook</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">8.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">9.</strong> Readme</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">10.</strong> References</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -150,7 +150,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><sub><span='color:gray'><em>Last Updated: 2020-06-14 18:18:55</em></span></sub></p>
+<p><sub><span='color:gray'><em>Last Updated: 2020-06-14 20:55:15</em></span></sub></p>
 <p>This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.</p>
 <p>In order to create this book and play around with Rust, I have used the following tools:</p>
@@ -212,6 +212,56 @@ It will also contain notes on how I wrote this book.</p>
 <ul>
 <li>To upgrade all your your existing crates you have installed run <code>cargo install-update -a</code></li>
 </ul>
+<p>Say you have an existing directory, an empty git repo.
+To turn this into a Rust project you run <code>cargo init . --bin</code>
+If you then execute <code>cargo run</code> it will compile and run it, printing out <strong>Hello World!</strong>*</p>
+<h1><a class="header" href="#crates" id="crates">Crates</a></h1>
+<p>Crates are libraries or binaries that are typically stored in <a href="http://crates.io">crates.io</a></p>
+<p>Here are some crates that are awesome:</p>
+<ul>
+<li><a href="https://crates.io/crates/anymap">anymap</a></li>
+<li><a href="crates/anymap.html">anymap</a></li>
+</ul>
+<h1><a class="header" href="#anymap-crate" id="anymap-crate">AnyMap Crate</a></h1>
+<p><a href="https://zsiciarz.github.io/24daysofrust/book/vol1/day9.html">credits</a>
+<a href="https://crates.io/crates/anymap">anymap</a></p>
+<p>Map a key to a value where the key is a type and the value is an instance of that type.</p>
+<ul>
+<li>Store configuration data</li>
+<li>Singleton</li>
+</ul>
+<p>Create lots of simple types, for example</p>
+<pre><pre class="playpen"><code class="language-rust editable">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>extern crate anymap;
+
+use std::net::Ipv4Addr;
+use anymap::AnyMap;
+
+#[derive(Debug)]
+enum HostAddress {
+    DomainName(String),
+    Ip(Ipv4Addr),
+}
+
+#[derive(Debug)]
+struct Port(u32);
+
+#[derive(Debug)]
+struct ConnectionLimit(u32);
+
+let mut config = AnyMap::new();
+config.insert(HostAddress::DomainName(&quot;siciarz.net&quot;.to_string()));
+config.insert(Port(666));
+config.insert(ConnectionLimit(32));
+println!(&quot;{:?}&quot;, config.get::&lt;HostAddress&gt;());
+println!(&quot;{:?}&quot;, config.get::&lt;Port&gt;());
+assert!(config.get::&lt;String&gt;().is_none());
+assert!(config.get::&lt;u32&gt;().is_none());
+<span class="boring">}
+</span></code></pre></pre>
+<p>Here we have types e.g. <strong>Port</strong> instead of having a port being a member of some struct we can have an AnyMap and have Port as one of the keys.</p>
 <h1><a class="header" href="#storing-on-github" id="storing-on-github">Storing on github</a></h1>
 <p>Create a repo locally:</p>
 <ul>
@@ -245,6 +295,8 @@ I then ran <code>mdbook build</code> which generated a <em>book</em> directory.<
 <li><code>rsync -avx --delete --info=progress2 ./book/ ./docs/</code></li>
 <li><code>git push</code></li>
 </ul>
+<h1><a class="header" href="#sample-code" id="sample-code">Sample Code</a></h1>
+<p>Here we go through code samples from various sources on the web.</p>
 <h1><a class="header" href="#hello-world" id="hello-world">Hello World</a></h1>
 <pre><pre class="playpen"><code class="language-rust editable">fn main() {
     print!(&quot;Hello World!&quot;);
@@ -253,6 +305,34 @@ I then ran <code>mdbook build</code> which generated a <em>book</em> directory.<
 <pre><pre class="playpen"><code class="language-rust editable">fn main() {
     let number = 5;
     print!(&quot;{}&quot;, number);
+}
+</code></pre></pre>
+<pre><pre class="playpen"><code class="language-rust editable">//TODO: how dow import in an mdbook block of code? use itertools::Itertools;
+fn main() {
+    let numbers = vec![1,2,3,4,5,6,7,8,9];
+    // To use itertools
+    // numbers.foreach(|i| print!(&quot;{}&quot;, i));
+    for i in numbers {
+        print!(&quot;{}&quot;, i);
+    }
+}
+</code></pre></pre>
+<h1><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka"><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></a></h1>
+<h2><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers">Random Numbers</a></a></h2>
+<pre><pre class="playpen"><code class="language-rust editable">use rand::Rng;
+
+fn main() {
+    let mut rng = rand::thread_rng();
+
+    let n1: u8 = rng.gen();
+    let n2: u16 = rng.gen();
+    println!(&quot;Random u8: {}&quot;, n1);
+    println!(&quot;Random u16: {}&quot;, n2);
+    println!(&quot;Random u32: {}&quot;, rng.gen::&lt;u32&gt;());
+    println!(&quot;Random i32: {}&quot;, rng.gen::&lt;i32&gt;());
+    println!(&quot;Random float: {}&quot;, rng.gen::&lt;f64&gt;());
+    println!(&quot;Integer: {}&quot;, rng.gen_range(0, 10));
+    println!(&quot;Float: {}&quot;, rng.gen_range(0.0, 10.0));
 }
 </code></pre></pre>
 <h1><a class="header" href="#glossary" id="glossary">Glossary</a></h1>
@@ -280,7 +360,9 @@ I then ran <code>mdbook build</code> which generated a <em>book</em> directory.<
 </tbody></table>
 <h1><a class="header" href="#troubleshooting" id="troubleshooting">Troubleshooting</a></h1>
 <h2><a class="header" href="#published-book-does-not-show-updates" id="published-book-does-not-show-updates">Published book does not show updates</a></h2>
-<p>Not sure how long it takes github.io to update...</p>
+<p>Not sure how long it takes a push to github.com to show up on github.io as pages...but it may take a couple of minutes.</p>
+<h2><a class="header" href="#pages-are-not-generated" id="pages-are-not-generated">Pages are not generated</a></h2>
+<p>Every page in the book needs to be in the SUMMARY.md in order to be built.</p>
 <h1><a class="header" href="#my-rust-notes" id="my-rust-notes">My Rust Notes</a></h1>
 <p>As part of writing my notes, I am storing them using gitbook-like clone <em>mdbook</em>. This repo serves the dual purpose of documenting my experience and documenting how I went about documenting.</p>
 <p>As a byproduct, this repo will have commands and instructions for creating a new empty book.</p>
@@ -296,6 +378,10 @@ I then ran <code>mdbook build</code> which generated a <em>book</em> directory.<
 <li>Rebuild/View loop: <code>mdbook watch --open</code></li>
 </ul>
 <p>Once you have opened the book the rest of the instructions for setting up a new book, editing, publishing etc. are within the book itself.</p>
+<h1><a class="header" href="#references" id="references">References</a></h1>
+<ul>
+<li><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></li>
+</ul>
 
                     </main>
 

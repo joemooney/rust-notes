@@ -7,7 +7,7 @@
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="">
+        <meta name="description" content="Notes on learning Rust programming language.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html" class="active"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">4.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="hello_world.html"><strong aria-hidden="true">5.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">6.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">7.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">8.</strong> Readme</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html" class="active"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates.html"><strong aria-hidden="true">4.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">4.1.</strong> anymap</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">5.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">6.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">6.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">6.2.</strong> Rust Cookbook</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">8.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">9.</strong> Readme</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">10.</strong> References</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -151,6 +151,9 @@
 <ul>
 <li>To upgrade all your your existing crates you have installed run <code>cargo install-update -a</code></li>
 </ul>
+<p>Say you have an existing directory, an empty git repo.
+To turn this into a Rust project you run <code>cargo init . --bin</code>
+If you then execute <code>cargo run</code> it will compile and run it, printing out <strong>Hello World!</strong>*</p>
 
                     </main>
 
@@ -163,7 +166,7 @@
                         
 
                         
-                            <a rel="next" href="github_init.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="crates.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -181,7 +184,7 @@
                 
 
                 
-                    <a rel="next" href="github_init.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="crates.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
