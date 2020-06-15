@@ -20,18 +20,12 @@ postprocess() {
     do
         perl -p -i -e "
             s,{timestamp},$(ts),g;
-            s,{/small},</sub>,g;
-            s,{small},<sub>,g;
-            s,{red},<span='color:red'>,g;
-            s,{/red},</span>,g;
-            s,{blue},<span='color:blue'>,g;
-            s,{/blue},</span>,g;
-            s,{green},<span='color:green'>,g;
-            s,{/green},</span>,g;
-            s,{yellow},<span='color:yellow'>,g;
-            s,{/yellow},</span>,g;
-            s,{grey},<span='color:grey'>,g;
-            s,{/grey},</span>,g;
+            s,{/small},</sub>,g; s,{small},<sub>,g;
+            s,{red},<span='color:red'>,g; s,{/red},</span>,g;
+            s,{blue},<span='color:blue'>,g; s,{/blue},</span>,g;
+            s,{green},<span='color:green'>,g; s,{/green},</span>,g;
+            s,{yellow},<span='color:yellow'>,g; s,{/yellow},</span>,g;
+            s,{gray},<span='color:gray'>,g; s,{/gray},</span>,g;
         " $i
     done
 }
