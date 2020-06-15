@@ -150,7 +150,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><sub><span='color:gray'><em>Last Updated: 2020-06-14 20:56:35</em></span></sub></p>
+<p><sub><span='color:gray'><em>Last Updated: 2020-06-14 21:02:24</em></span></sub></p>
 <p>This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.</p>
 <p>In order to create this book and play around with Rust, I have used the following tools:</p>
@@ -319,7 +319,9 @@ fn main() {
 </code></pre></pre>
 <h1><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka"><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></a></h1>
 <h2><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers">Random Numbers</a></a></h2>
-<pre><pre class="playpen"><code class="language-rust editable">use rand::Rng;
+<pre><pre class="playpen"><code class="language-rust editable">extern crate rand;
+
+use rand::Rng;
 
 fn main() {
     let mut rng = rand::thread_rng();
@@ -375,7 +377,8 @@ fn main() {
 <li>GitHub source code for book: <a href="https://github.com/joemooney/rust-notes/">https://github.com/joemooney/rust-notes/</a></li>
 <li>View the published book:  <a href="https://joemooney.github.io/rust-notes/">https://joemooney.github.io/rust-notes/</a></li>
 <li>Build/View the book locally: <code>mdbook build --open</code></li>
-<li>Rebuild/View loop: <code>mdbook watch --open</code></li>
+<li>Rebuild/View loop: <code>mdbook watch --open</code>
+-- View the book locally: <a href="file:///home/jpm/rust/rust-notes/book/index.html">file:///home/jpm/rust/rust-notes/book/index.html</a></li>
 </ul>
 <p>Once you have opened the book the rest of the instructions for setting up a new book, editing, publishing etc. are within the book itself.</p>
 <h1><a class="header" href="#references" id="references">References</a></h1>

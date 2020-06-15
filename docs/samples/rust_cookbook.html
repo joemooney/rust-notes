@@ -149,7 +149,9 @@
                     <main>
                         <h1><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka"><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></a></h1>
 <h2><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers">Random Numbers</a></a></h2>
-<pre><pre class="playpen"><code class="language-rust editable">use rand::Rng;
+<pre><pre class="playpen"><code class="language-rust editable">extern crate rand;
+
+use rand::Rng;
 
 fn main() {
     let mut rng = rand::thread_rng();

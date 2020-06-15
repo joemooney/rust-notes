@@ -14,5 +14,6 @@ As a byproduct, this repo will have commands and instructions for creating a new
 - View the published book:  [https://joemooney.github.io/rust-notes/](https://joemooney.github.io/rust-notes/)
 - Build/View the book locally: ```mdbook build --open```
 - Rebuild/View loop: ```mdbook watch --open```
+-- View the book locally: [file:///home/jpm/rust/rust-notes/book/index.html](file:///home/jpm/rust/rust-notes/book/index.html)
 
 Once you have opened the book the rest of the instructions for setting up a new book, editing, publishing etc. are within the book itself.
