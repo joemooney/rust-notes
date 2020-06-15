@@ -7,6 +7,6 @@ src = "src"
 title = "Rust Notes"
 
 [dependencies]
-itertools = "~0"
-rand = "~0"
-anymap = "~0"
+itertools = "~0.0.4"
+rand = "0.6"
+anymap = "~0.12.1"
