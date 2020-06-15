@@ -148,6 +148,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka"><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></a></h1>
+<p>The code is all taken from the Rust Cookbook, the links are back to the Rust Cookbook. The snippets here are just a condensed version without explanation. Read the Rust Cookbook to understand.</p>
 <h2><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers">Random Numbers</a></a></h2>
 <pre><pre class="playpen"><code class="language-rust editable">extern crate rand;
 
@@ -165,6 +166,61 @@ fn main() {
     println!(&quot;Random float: {}&quot;, rng.gen::&lt;f64&gt;());
     println!(&quot;Integer: {}&quot;, rng.gen_range(0, 10));
     println!(&quot;Float: {}&quot;, rng.gen_range(0.0, 10.0));
+}
+</code></pre></pre>
+<h2><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmssortinghtmlsortinga" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmssortinghtmlsortinga"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/sorting.html">Sorting</a></a></h2>
+<pre><pre class="playpen"><code class="language-rust editable">fn main() {
+    let mut vec = vec![1, 5, 10, 2, 15];
+
+    vec.sort();
+
+    assert_eq!(vec, vec![1, 2, 5, 10, 15]);
+}
+</code></pre></pre>
+<pre><pre class="playpen"><code class="language-rust editable">#[derive(Debug, Eq, Ord, PartialEq, PartialOrd)]
+struct Person {
+    name: String,
+    age: u32
+}
+
+impl Person {
+    pub fn new(name: String, age: u32) -&gt; Self {
+        Person {
+            name,
+            age
+        }
+    }
+}
+
+fn main() {
+    let mut people = vec![
+        Person::new(&quot;Zoe&quot;.to_string(), 25),
+        Person::new(&quot;Al&quot;.to_string(), 60),
+        Person::new(&quot;John&quot;.to_string(), 1),
+    ];
+
+    // Sort people by derived natural order (Name and age)
+    people.sort();
+
+    assert_eq!(
+        people,
+        vec![
+            Person::new(&quot;Al&quot;.to_string(), 60),
+            Person::new(&quot;John&quot;.to_string(), 1),
+            Person::new(&quot;Zoe&quot;.to_string(), 25),
+        ]);
+
+    // Sort people by age
+    people.sort_by(|a, b| b.age.cmp(&amp;a.age));
+
+    assert_eq!(
+        people,
+        vec![
+            Person::new(&quot;Al&quot;.to_string(), 60),
+            Person::new(&quot;Zoe&quot;.to_string(), 25),
+            Person::new(&quot;John&quot;.to_string(), 1),
+        ]);
+
 }
 </code></pre></pre>
 
