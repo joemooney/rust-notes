@@ -1,5 +1,5 @@
 # Introduction
-{small}{grey}*Last Updated: {timestamp}*{/grey}{/small}
+{small}{gray}*Last Updated: {timestamp}*{/gray}{/small}
 
 This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.
