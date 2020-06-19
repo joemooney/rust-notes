@@ -10,3 +10,11 @@ title = "Rust Notes"
 itertools = "~0.0.4"
 rand = "0.6"
 anymap = "~0.12.1"
+
+# Given preprocessor-foo: look for mdbook-foo executable
+# Override this with command="..."
+[preprocessor.plus]
+# Instead of mdbook-foo executable, run this command
+# command = "python3 /path/to/foo.py"
+# Only run the `foo` preprocessor for the HTML and EPUB renderer
+renderer = ["html", "epub"]

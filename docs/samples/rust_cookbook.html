@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../create_book.html"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="../cargo.html"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../crates.html"><strong aria-hidden="true">4.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../crates/anymap.html"><strong aria-hidden="true">4.1.</strong> anymap</a></li></ol></li><li class="chapter-item expanded "><a href="../github_init.html"><strong aria-hidden="true">5.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="../sample_code.html"><strong aria-hidden="true">6.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../samples/hello_world.html"><strong aria-hidden="true">6.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../samples/rust_cookbook.html" class="active"><strong aria-hidden="true">6.2.</strong> Rust Cookbook</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="../troubleshooting.html"><strong aria-hidden="true">8.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">9.</strong> Readme</a></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">10.</strong> References</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../create_book.html"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="../cargo.html"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../crates.html"><strong aria-hidden="true">4.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../crates/anymap.html"><strong aria-hidden="true">4.1.</strong> anymap</a></li><li class="chapter-item expanded "><a href="../crates/notify.html"><strong aria-hidden="true">4.2.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="../github_init.html"><strong aria-hidden="true">5.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="../sample_code.html"><strong aria-hidden="true">6.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../samples/hello_world.html"><strong aria-hidden="true">6.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../samples/rust_cookbook.html" class="active"><strong aria-hidden="true">6.2.</strong> Rust Cookbook</a></li></ol></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="../troubleshooting.html"><strong aria-hidden="true">8.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">9.</strong> Readme</a></li><li class="chapter-item expanded "><a href="../quiz.html"><strong aria-hidden="true">10.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">11.</strong> References</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -221,6 +221,41 @@ fn main() {
             Person::new(&quot;John&quot;.to_string(), 1),
         ]);
 
+}
+</code></pre></pre>
+<h2><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookcliargumentshtmlcommand-line-argument-parsinga" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookcliargumentshtmlcommand-line-argument-parsinga"><a href="https://rust-lang-nursery.github.io/rust-cookbook/cli/arguments.html">Command Line Argument Parsing</a></a></h2>
+<pre><pre class="playpen"><code class="language-rust editable">use clap::{Arg, App};
+
+fn main() {
+    let matches = App::new(&quot;My Test Program&quot;)
+        .version(&quot;0.1.0&quot;)
+        .author(&quot;Hackerman Jones &lt;hckrmnjones@hack.gov&gt;&quot;)
+        .about(&quot;Teaches argument parsing&quot;)
+        .arg(Arg::with_name(&quot;file&quot;)
+                 .short(&quot;f&quot;)
+                 .long(&quot;file&quot;)
+                 .takes_value(true)
+                 .help(&quot;A cool file&quot;))
+        .arg(Arg::with_name(&quot;num&quot;)
+                 .short(&quot;n&quot;)
+                 .long(&quot;number&quot;)
+                 .takes_value(true)
+                 .help(&quot;Five less than your favorite number&quot;))
+        .get_matches();
+
+    let myfile = matches.value_of(&quot;file&quot;).unwrap_or(&quot;input.txt&quot;);
+    println!(&quot;The file passed is: {}&quot;, myfile);
+
+    let num_str = matches.value_of(&quot;num&quot;);
+    match num_str {
+        None =&gt; println!(&quot;No idea what your favorite number is.&quot;),
+        Some(s) =&gt; {
+            match s.parse::&lt;i32&gt;() {
+                Ok(n) =&gt; println!(&quot;Your favorite number must be {}.&quot;, n + 5),
+                Err(_) =&gt; println!(&quot;That's not a number! {}&quot;, s),
+            }
+        }
+    }
 }
 </code></pre></pre>
 

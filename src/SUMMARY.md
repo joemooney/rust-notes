@@ -5,6 +5,7 @@
 - [Cargo](./cargo.md)
 - [Crates](./crates.md)
   - [anymap](./crates/anymap.md)
+  - [notify](./crates/notify.md)
 - [Storing on GitHub](./github_init.md)
 - [Sample Code](./sample_code.md)
   - [Hello World](./samples/hello_world.md)
@@ -12,4 +13,5 @@
 - [Glossary](./glossary.md)
 - [Troubleshooting](./troubleshooting.md)
 - [Readme](./README.md)
+- [Quiz](./quiz.md)
 - [References](./references.md)
