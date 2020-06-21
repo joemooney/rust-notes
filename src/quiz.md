@@ -4,19 +4,28 @@
 
 _________________________________________________________
 
-{question}What happens here upon {code}unwrap{/code}?
+?Q Can you implement a trait on a type you did not define
+
+?A {green}Yes! All hail Traits!{/green}
+?E
+
+_________________________________________________________
+
+?Q What happens here upon {code}unwrap{/code}?
 
 ```rust,editable
 let x:Option<u32> = None.unwrap();
 ```
 
-{answer}A: The program panics! You cannot unwrap() a None, use `unwrap_or(...)` instead{/question}
+?A {red}The program panics!{/red} You cannot unwrap() a None, use `unwrap_or(...)` instead
+?E
 
 _________________________________________________________
 
-{question}What is the difference between ```unwrap_or``` and ```unwrap_or_else```?
+?Q What is the difference between <code>unwrap_or</code> and `unwrap_or_else`?
 
-A: ```unwrap_or_else``` is lazy, ```unwrap_or``` is eager.
+?A `unwrap_or_else` is lazy, `unwrap_or` is eager.
+So unwrap_or_else is for pasing a closure and unwrap_or is for a exiting value.
 
 ```rust,editable
 assert_eq!(Some("car").unwrap_or("bike"), "car");
@@ -25,3 +34,5 @@ let k = 10;
 assert_eq!(Some(4).unwrap_or_else(|| 2 * k), 4);
 assert_eq!(None.unwrap_or_else(|| 2 * k), 20);
 ```
+
+?E

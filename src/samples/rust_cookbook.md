@@ -1,6 +1,6 @@
 # [Rust Cookbook](https://rust-lang-nursery.github.io/rust-cookbook/)
 
-The code is all taken from the Rust Cookbook, the links are back to the Rust Cookbook. The snippets here are just a condensed version without explanation. Read the Rust Cookbook to understand.
+The code is all taken from the [Rust Cookbook](https://rust-lang-nursery.github.io/rust-cookbook/), the links are back to the Rust Cookbook. The snippets here are just a condensed version without explanation. Read the Rust Cookbook to understand.
 
 ## [Random Numbers](https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers)
 

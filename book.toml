@@ -11,6 +11,10 @@ itertools = "~0.0.4"
 rand = "0.6"
 anymap = "~0.12.1"
 
+# Flowcharts diagrams etc.
+#[preprocessor.mermaid]
+#renderer = ["html", "epub"]
+
 # Given preprocessor-foo: look for mdbook-foo executable
 # Override this with command="..."
 [preprocessor.plus]
