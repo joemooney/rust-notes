@@ -1,5 +1,6 @@
 # Rust Notes Summary
 
+- [Readme](./README.md)
 - [Introduction](./intro.md)
 - [Creating a Book](./create_book.md)
 - [Cargo](./cargo.md)
@@ -16,6 +17,5 @@
 - [Language Features](./language_features.md)
 - [Glossary](./glossary.md)
 - [Troubleshooting](./troubleshooting.md)
-- [Readme](./README.md)
 - [Quiz](./quiz.md)
 - [References](./references.md)
