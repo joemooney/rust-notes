@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html" class="active"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates.html"><strong aria-hidden="true">4.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">4.1.</strong> anymap</a></li><li class="chapter-item expanded "><a href="crates/notify.html"><strong aria-hidden="true">4.2.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">5.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">6.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">6.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">6.2.</strong> Rust Cookbook</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">8.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">9.</strong> Readme</a></li><li class="chapter-item expanded "><a href="quiz.html"><strong aria-hidden="true">10.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">11.</strong> References</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html" class="active"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates.html"><strong aria-hidden="true">4.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">4.1.</strong> anymap</a></li><li class="chapter-item expanded "><a href="crates/notify.html"><strong aria-hidden="true">4.2.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">5.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">6.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">6.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">6.2.</strong> Rust Cookbook</a></li></ol></li><li class="chapter-item expanded "><a href="linux.html"><strong aria-hidden="true">7.</strong> Linux Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="non_rust.html"><strong aria-hidden="true">7.1.</strong> Non-Rust Utilities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="terminator.html"><strong aria-hidden="true">7.1.1.</strong> Terminator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_features.html"><strong aria-hidden="true">8.</strong> Language Features</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">9.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">10.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">11.</strong> Readme</a></li><li class="chapter-item expanded "><a href="quiz.html"><strong aria-hidden="true">12.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">13.</strong> References</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,12 +148,51 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#create-a-book" id="create-a-book">Create a Book</a></h1>
+<p>Create a markdown book with mdbook crate.
+This is the crate used to create the office Rust Programming Book.
+It is also the crate used to this book.
+If you want to get fancy you can add preprocessors so that you can have your own custom markdown (like I am doing).</p>
 <ul>
 <li>cargo install mdbook</li>
 <li>mkdir mybook</li>
 <li>cd mybook</li>
 <li>mdbook init</li>
 </ul>
+<p>For my preprocessor I googled and found <a href="https://github.com/badboy/mdbook-toc/blob/master/Cargo.toml">mdbook-toc</a>
+My preprocessor so far is just a simple global search an replace.
+Preprocessors are much more powerful than that, they have access to the entire parsed token tree. This allows you much finer grain control over the substitutions.</p>
+<p>To publish the book I use a simple shell script:</p>
+<pre><code class="language-bash">
+url=$(git config --get remote.origin.url | sed 's,git@github.com:,,;s,/,.github.io/,;s,^,https://,;s,.git$,/,')
+
+    lang=shell
+    mdbook build                                          &amp;&amp; \
+    postprocess                                           &amp;&amp; \
+    rsync -avx --delete --info=progress2 ./book/ ./docs/  &amp;&amp;\
+    git status                                            &amp;&amp; \
+    echo 'git commit -am'                                 &amp;&amp; \
+    echo -n &quot;Comment: &quot; &amp;&amp; read comment                   &amp;&amp; \
+    git add .                                             &amp;&amp; \
+    git commit -am &quot;$comment&quot;                             &amp;&amp; \
+    git push                                              &amp;&amp; \
+    echo &quot;Published: $url
+
+</code></pre>
+<p>There are some more guards such as checking for no git untracked files and no other git uncommitted updates.</p>
+<p>As I am editing the book, I have <code>mdbook watch --open</code> running which opens a browser and regenerates the book every time it changes.</p>
+<h2><a class="header" href="#preprocessors" id="preprocessors">Preprocessors</a></h2>
+<p>Upon <code>cargo install mdbook-mermaid</code> in <em>book.toml</em> add:</p>
+<pre><code class="language-toml">[preprocessor.mermaid]
+renderer = [&quot;html&quot;, &quot;epub&quot;]
+</code></pre>
+<p>Then we go:
+stateDiagram
+state &quot;Also Cool&quot; as s1
+s1: foo/bar
+[<em>] --&gt; Cool
+Cool --&gt; s1
+s1 --&gt; Coolest
+Coolest --&gt; [</em>]</p>
 
                     </main>
 

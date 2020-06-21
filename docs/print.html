@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates.html"><strong aria-hidden="true">4.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">4.1.</strong> anymap</a></li><li class="chapter-item expanded "><a href="crates/notify.html"><strong aria-hidden="true">4.2.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">5.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">6.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">6.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">6.2.</strong> Rust Cookbook</a></li></ol></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">8.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">9.</strong> Readme</a></li><li class="chapter-item expanded "><a href="quiz.html"><strong aria-hidden="true">10.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">11.</strong> References</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">2.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">3.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates.html"><strong aria-hidden="true">4.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">4.1.</strong> anymap</a></li><li class="chapter-item expanded "><a href="crates/notify.html"><strong aria-hidden="true">4.2.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">5.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">6.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">6.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">6.2.</strong> Rust Cookbook</a></li></ol></li><li class="chapter-item expanded "><a href="linux.html"><strong aria-hidden="true">7.</strong> Linux Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="non_rust.html"><strong aria-hidden="true">7.1.</strong> Non-Rust Utilities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="terminator.html"><strong aria-hidden="true">7.1.1.</strong> Terminator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_features.html"><strong aria-hidden="true">8.</strong> Language Features</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">9.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">10.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">11.</strong> Readme</a></li><li class="chapter-item expanded "><a href="quiz.html"><strong aria-hidden="true">12.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">13.</strong> References</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -150,7 +150,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><sub>&lt;span='color:gray'&gt;<em>Last Updated: 2020-06-19 00:20:06</em></span></sub></p>
+<p><sub>{grey}<em>Last Updated: 2020-06-20 18:21:00</em>{/grey}</sub></p>
 <p>This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.</p>
 <p>In order to create this book and play around with Rust, I have used the following tools:</p>
@@ -202,12 +202,51 @@ It will also contain notes on how I wrote this book.</p>
 </li>
 </ul>
 <h1><a class="header" href="#create-a-book" id="create-a-book">Create a Book</a></h1>
+<p>Create a markdown book with mdbook crate.
+This is the crate used to create the office Rust Programming Book.
+It is also the crate used to this book.
+If you want to get fancy you can add preprocessors so that you can have your own custom markdown (like I am doing).</p>
 <ul>
 <li>cargo install mdbook</li>
 <li>mkdir mybook</li>
 <li>cd mybook</li>
 <li>mdbook init</li>
 </ul>
+<p>For my preprocessor I googled and found <a href="https://github.com/badboy/mdbook-toc/blob/master/Cargo.toml">mdbook-toc</a>
+My preprocessor so far is just a simple global search an replace.
+Preprocessors are much more powerful than that, they have access to the entire parsed token tree. This allows you much finer grain control over the substitutions.</p>
+<p>To publish the book I use a simple shell script:</p>
+<pre><code class="language-bash">
+url=$(git config --get remote.origin.url | sed 's,git@github.com:,,;s,/,.github.io/,;s,^,https://,;s,.git$,/,')
+
+    lang=shell
+    mdbook build                                          &amp;&amp; \
+    postprocess                                           &amp;&amp; \
+    rsync -avx --delete --info=progress2 ./book/ ./docs/  &amp;&amp;\
+    git status                                            &amp;&amp; \
+    echo 'git commit -am'                                 &amp;&amp; \
+    echo -n &quot;Comment: &quot; &amp;&amp; read comment                   &amp;&amp; \
+    git add .                                             &amp;&amp; \
+    git commit -am &quot;$comment&quot;                             &amp;&amp; \
+    git push                                              &amp;&amp; \
+    echo &quot;Published: $url
+
+</code></pre>
+<p>There are some more guards such as checking for no git untracked files and no other git uncommitted updates.</p>
+<p>As I am editing the book, I have <code>mdbook watch --open</code> running which opens a browser and regenerates the book every time it changes.</p>
+<h2><a class="header" href="#preprocessors" id="preprocessors">Preprocessors</a></h2>
+<p>Upon <code>cargo install mdbook-mermaid</code> in <em>book.toml</em> add:</p>
+<pre><code class="language-toml">[preprocessor.mermaid]
+renderer = [&quot;html&quot;, &quot;epub&quot;]
+</code></pre>
+<p>Then we go:
+stateDiagram
+state &quot;Also Cool&quot; as s1
+s1: foo/bar
+[<em>] --&gt; Cool
+Cool --&gt; s1
+s1 --&gt; Coolest
+Coolest --&gt; [</em>]</p>
 <h1><a class="header" href="#cargo" id="cargo">Cargo</a></h1>
 <ul>
 <li>To upgrade all your your existing crates you have installed run <code>cargo install-update -a</code></li>
@@ -221,6 +260,14 @@ If you then execute <code>cargo run</code> it will compile and run it, printing 
 <ul>
 <li><a href="https://crates.io/crates/anymap">anymap</a></li>
 <li><a href="crates/anymap.html">anymap</a></li>
+</ul>
+<p>There are so many great crates and the running cargo install is a breeze (although it can take some time depending on the dependencies).</p>
+<ul>
+<li>cargo install <a href="https://github.com/badboy/mdbook-mermaid">mdbook-mermaid</a>
+<ul>
+<li>cool flowcharts and other graphs for your book</li>
+</ul>
+</li>
 </ul>
 <h1><a class="header" href="#anymap-crate" id="anymap-crate">AnyMap Crate</a></h1>
 <p><a href="https://zsiciarz.github.io/24daysofrust/book/vol1/day9.html">credits</a>
@@ -351,7 +398,7 @@ fn main() {
 }
 </code></pre></pre>
 <h1><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka"><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></a></h1>
-<p>The code is all taken from the Rust Cookbook, the links are back to the Rust Cookbook. The snippets here are just a condensed version without explanation. Read the Rust Cookbook to understand.</p>
+<p>The code is all taken from the <a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a>, the links are back to the Rust Cookbook. The snippets here are just a condensed version without explanation. Read the Rust Cookbook to understand.</p>
 <h2><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa" id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers">Random Numbers</a></a></h2>
 <pre><pre class="playpen"><code class="language-rust editable">extern crate rand;
 
@@ -461,6 +508,38 @@ fn main() {
     }
 }
 </code></pre></pre>
+<h1><a class="header" href="#linux-environment" id="linux-environment">Linux Environment</a></h1>
+<p>Tools and utilities for Linux.</p>
+<h1><a class="header" href="#non-rust-utilities" id="non-rust-utilities">Non-Rust Utilities</a></h1>
+<h1><a class="header" href="#terminator" id="terminator">Terminator</a></h1>
+<h1><a class="header" href="#language-features" id="language-features">Language Features</a></h1>
+<h2><a class="header" href="#traits" id="traits">Traits</a></h2>
+<p>A trait is a collection of methods defined for an unknown type: Self. They can access other methods declared in the same trait.
+<a href="https://doc.rust-lang.org/rust-by-example/trait.html#traits">RustByExample</a></p>
+<ul>
+<li>
+<p>The owner of a type can implement any traits on that type</p>
+</li>
+<li>
+<p>The owner of a trait can implement that trait on any type</p>
+</li>
+<li>
+<p>you can implement traits you defined on types you didn't define</p>
+</li>
+<li>
+<p>you can implement traits you didn't define on your types you defined</p>
+</li>
+<li>
+<p>But you cannot implement traits you didn’t define on types you didn’t define</p>
+</li>
+</ul>
+<h3><a class="header" href="#traits-versus-interfaces" id="traits-versus-interfaces">Traits versus Interfaces</a></h3>
+<p>Unlike interfaces in languages like Java, C# or Scala, new traits can be implemented for existing types whereas interfaces can only be implemented for your own classes.</p>
+<ul>
+<li>The owner of a class can implement any interfaces on that type</li>
+<li><span style='color:red'>The owner of an interface <em>cannot</em> implement that interface on a class they did not define</span>.</li>
+</ul>
+<p>A trait is not the same as a C# extension method.</p>
 <h1><a class="header" href="#glossary" id="glossary">Glossary</a></h1>
 <table><thead><tr><th>Term</th><th>Description</th></tr></thead><tbody>
 <tr><td><a href="https://doc.rust-lang.org/nomicon/index.html">Rustonomicom</a></td><td>A book about writing unsafe code and the inner guts of Rust.</td></tr>
@@ -510,17 +589,21 @@ fn main() {
 <h1><a class="header" href="#quiz" id="quiz">Quiz</a></h1>
 <h2><a class="header" href="#option" id="option">Option</a></h2>
 <hr />
-<details><summary>Q: What happens here upon <code>unwrap</code>?
+<details><summary>Q:  Can you implement a trait on a type you did not define
+</summary>A:  <span style='color:green'>Yes! All hail Traits!</span></details>
+<hr />
+<details><summary>Q:  What happens here upon <code>unwrap</code>?
 <pre><pre class="playpen"><code class="language-rust editable">
 <span class="boring">#![allow(unused_variables)]
 </span><span class="boring">fn main() {
 </span>let x:Option&lt;u32&gt; = None.unwrap();
 <span class="boring">}
 </span></code></pre></pre>
-</summary>A: The program panics! You cannot unwrap() a None, use `unwrap_or(...)` instead</details>
+</summary>A:    <span style='color:red'>The program panics!</span> You cannot unwrap() a None, use `unwrap_or(...)` instead</details>
 <hr />
-<details><summary>Q: What is the difference between ```unwrap_or``` and ```unwrap_or_else```?
-<p>A: <code>unwrap_or_else</code> is lazy, <code>unwrap_or</code> is eager.</p>
+<details><summary>Q:  What is the difference between <code>unwrap_or</code> and `unwrap_or_else`?
+</summary>A:  `unwrap_or_else` is lazy, `unwrap_or` is eager.
+So unwrap_or_else is for pasing a closure and unwrap_or is for a exiting value.
 <pre><pre class="playpen"><code class="language-rust editable">
 <span class="boring">#![allow(unused_variables)]
 </span><span class="boring">fn main() {
@@ -531,12 +614,22 @@ assert_eq!(Some(4).unwrap_or_else(|| 2 * k), 4);
 assert_eq!(None.unwrap_or_else(|| 2 * k), 20);
 <span class="boring">}
 </span></code></pre></pre>
+</details>
 <h1><a class="header" href="#references" id="references">References</a></h1>
 <ul>
 <li><a href="https://doc.rust-lang.org/book/title-page.html">Rust Book</a></li>
 <li><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></li>
 <li><a href="https://play.rust-lang.org">Rust Playground</a></li>
 <li><a href="https://www.tutorialspoint.com/rust/index.htm">Rust Tutorial</a></li>
+<li><a href="https://doc.rust-lang.org/rust-by-example">Rust By Example</a></li>
+</ul>
+<h2><a class="header" href="#excercises" id="excercises">Excercises</a></h2>
+<ul>
+<li><a href="https://projecteuler.net/">Project Euler</a>
+<ul>
+<li>No solutions, just do these exercises as practice.</li>
+</ul>
+</li>
 </ul>
 
                     </main>
