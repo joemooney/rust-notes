@@ -11,6 +11,10 @@ itertools = "~0.0.4"
 rand = "0.6"
 anymap = "~0.12.1"
 
+[output.html]
+theme = "my-theme"
+default-theme = "coal"
+
 # Flowcharts diagrams etc.
 #[preprocessor.mermaid]
 #renderer = ["html", "epub"]

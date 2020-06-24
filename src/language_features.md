@@ -2,7 +2,8 @@
 
 ## Traits
 
-A trait is a collection of methods defined for an unknown type: Self. They can access other methods declared in the same trait.
+A trait is a collection of methods defined for an unknown type: Self.
+They can access other methods declared in the same trait.
 [RustByExample](https://doc.rust-lang.org/rust-by-example/trait.html#traits)
 
 - The owner of a type can implement any traits on that type
@@ -14,9 +15,12 @@ A trait is a collection of methods defined for an unknown type: Self. They can a
 
 ### Traits versus Interfaces
 
-Unlike interfaces in languages like Java, C# or Scala, new traits can be implemented for existing types whereas interfaces can only be implemented for your own classes.
+Unlike interfaces in languages like Java, C# or Scala, new traits
+can be implemented for existing types whereas interfaces can only
+be implemented for your own classes.
 
 - The owner of a class can implement any interfaces on that type
-- {red}The owner of an interface *cannot* implement that interface on a class they did not define{/red}.
+- {red}The owner of an interface *cannot* implement that
+interface on a class they did not define{/red} - {green}in Rust you can{/green}.
 
 A trait is not the same as a C# extension method.

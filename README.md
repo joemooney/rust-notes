@@ -1,8 +1,11 @@
 # My Rust Notes
 
-As part of writing my notes, I am storing them using gitbook-like clone *mdbook*. This repo serves the dual purpose of documenting my experience and documenting how I went about documenting.
+As part of writing my notes, I am storing them using gitbook-like clone *mdbook*.
+This repo serves the dual purpose of documenting my experience
+and documenting how I went about documenting.
 
-As a byproduct, this repo will have commands and instructions for creating a new empty book.
+As a byproduct, this repo will have commands and instructions for
+creating a new empty book.
 
 ## Goals
 
@@ -16,4 +19,5 @@ As a byproduct, this repo will have commands and instructions for creating a new
 - Rebuild/View loop: ```mdbook watch --open```
 -- View the book locally: [file:///home/jpm/rust/rust-notes/book/index.html](file:///home/jpm/rust/rust-notes/book/index.html)
 
-Once you have opened the book the rest of the instructions for setting up a new book, editing, publishing etc. are within the book itself.
+Once you have opened the book the rest of the instructions for
+setting up a new book, editing, publishing etc. are within the book itself.

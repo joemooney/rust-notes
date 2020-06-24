@@ -2,5 +2,6 @@
   "default": true,
   "MD033": {
     "allowed_elements": [ "span", "em" ]
-  }
+  },
+  "MD013": false,
 }
