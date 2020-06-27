@@ -49,6 +49,7 @@ publish() {
     git commit -am "$comment"                             && \
     git push                                              && \
     echo "Published: $url"
+    echo "This takes a few minutes for GitHub to update"
 }
 
 ####################################################################
