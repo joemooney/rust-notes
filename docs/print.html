@@ -170,7 +170,7 @@ creating a new empty book.</p>
 <p>Once you have opened the book the rest of the instructions for
 setting up a new book, editing, publishing etc. are within the book itself.</p>
 <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><sub><span style='color:gray'><em>Last Updated: 2020-06-23 22:45:13</em></span></sub></p>
+<p><sub><span style='color:gray'><em>Last Updated: 2020-06-27 11:25:36</em></span></sub></p>
 <p>This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.</p>
 <p>In order to create this book and play around with Rust, I have used the following tools:</p>
@@ -788,7 +788,238 @@ fn main() {
 </code></pre></pre>
 </details>
 <h1><a class="header" href="#15-puzzle-game" id="15-puzzle-game">15 Puzzle Game</a></h1>
-<h1><a class="header" href="#15-puzzle-solver" id="15-puzzle-solver">15 puzzle solver</a></h1>
+<details><summary>Pseudo Code</summary>
+Define enums for Action, Direction, and Cell types
+Define a Board type
+Define an EMPTY constant
+Define a struct for the P15 game
+<pre><code>- Constructor
+- fn is_valid(mut board: Board) -&gt; bool {
+- find empty cell: return the location of the empty cell
+- get_moves return a hash map of direction: cell
+- play given a Direction
+- fn is_complete(&amp;self) -&gt; bool {
+</code></pre>
+<ul>
+<li>Implement Display trait for P15
+<ul>
+<li>write fmt function
+fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {</li>
+</ul>
+</li>
+</ul>
+<p>Implement user interface for function to ask user to
+Move a cell up/down/left/right Or Quit
+Use get_move to see what Cell can move in what direction
+Perform the move</p>
+</details><details><summary>Solution</summary>
+<pre><pre class="playpen"><code class="language-rust editable">extern crate rand;
+
+use std::collections::HashMap;
+use std::fmt;
+ 
+use rand::Rng;
+use rand::seq::SliceRandom;
+ 
+#[derive(Copy, Clone, PartialEq, Debug)]
+enum Cell {
+    Card(usize),
+    Empty,
+}
+ 
+#[derive(Eq, PartialEq, Hash, Debug)]
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right,
+}
+ 
+enum Action {
+    Move(Direction),
+    Quit,
+}
+ 
+type Board = [Cell; 16];
+const EMPTY: Board = [Cell::Empty; 16];
+ 
+struct P15 {
+    board: Board,
+}
+ 
+impl P15 {
+    fn new() -&gt; Self {
+        let mut board = EMPTY;
+        for (i, cell) in board.iter_mut().enumerate().skip(1) {
+            *cell = Cell::Card(i);
+        }
+ 
+        let mut rng = rand::thread_rng();
+ 
+        board.shuffle(&amp;mut rng);
+        if !Self::is_valid(board) {
+            // random swap
+            let i = rng.gen_range(0, 16);
+            let mut j = rng.gen_range(0, 16);
+            while j == i {
+                j = rng.gen_range(0, 16);
+            }
+            board.swap(i, j);
+        }
+ 
+        Self { board }
+    }
+ 
+    fn is_valid(mut board: Board) -&gt; bool {
+        // TODO: optimize
+        let mut permutations = 0;
+ 
+        let pos = board.iter().position(|&amp;cell| cell == Cell::Empty).unwrap();
+ 
+        if pos != 15 {
+            board.swap(pos, 15);
+            permutations += 1;
+        }
+ 
+        for i in 1..16 {
+            let pos = board
+                .iter()
+                .position(|&amp;cell| match cell {
+                    Cell::Card(value) if value == i =&gt; true,
+                    _ =&gt; false,
+                })
+                .unwrap();
+ 
+            if pos + 1 != i {
+                board.swap(pos, i - 1);
+                permutations += 1;
+            }
+        }
+ 
+        permutations % 2 == 0
+    }
+ 
+    fn get_empty_position(&amp;self) -&gt; usize {
+        self.board.iter().position(|&amp;c| c == Cell::Empty).unwrap()
+    }
+ 
+    fn get_moves(&amp;self) -&gt; HashMap&lt;Direction, Cell&gt; {
+        let mut moves = HashMap::new();
+        let i = self.get_empty_position();
+ 
+        if i &gt; 3 {
+            moves.insert(Direction::Up, self.board[i - 4]);
+        }
+        if i % 4 != 0 {
+            moves.insert(Direction::Left, self.board[i - 1]);
+        }
+        if i &lt; 12 {
+            moves.insert(Direction::Down, self.board[i + 4]);
+        }
+        if i % 4 != 3 {
+            moves.insert(Direction::Right, self.board[i + 1]);
+        }
+        moves
+    }
+ 
+    fn play(&amp;mut self, direction: &amp;Direction) {
+        let i = self.get_empty_position();
+        // This is safe because `ask_action` only returns legal moves
+        match *direction {
+            Direction::Up =&gt; self.board.swap(i, i - 4),
+            Direction::Left =&gt; self.board.swap(i, i - 1),
+            Direction::Right =&gt; self.board.swap(i, i + 1),
+            Direction::Down =&gt; self.board.swap(i, i + 4),
+        };
+    }
+ 
+    fn is_complete(&amp;self) -&gt; bool {
+        self.board.iter().enumerate().all(|(i, &amp;cell)| match cell {
+            Cell::Card(value) =&gt; value == i + 1,
+            Cell::Empty =&gt; i == 15,
+        })
+    }
+}
+ 
+impl fmt::Display for P15 {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        r#try!(write!(f, &quot;+----+----+----+----+\n&quot;));
+        for (i, &amp;cell) in self.board.iter().enumerate() {
+            match cell {
+                Cell::Card(value) =&gt; r#try!(write!(f, &quot;| {:2} &quot;, value)),
+                Cell::Empty =&gt; r#try!(write!(f, &quot;|    &quot;)),
+            }
+ 
+            if i % 4 == 3 {
+                r#try!(write!(f, &quot;|\n&quot;));
+                r#try!(write!(f, &quot;+----+----+----+----+\n&quot;));
+            }
+        }
+        Ok(())
+    }
+}
+ 
+fn main() {
+    let mut p15 = P15::new();
+ 
+    for turns in 1.. {
+        println!(&quot;{}&quot;, p15);
+        match ask_action(&amp;p15.get_moves()) {
+            Action::Move(direction) =&gt; {
+                p15.play(&amp;direction);
+            }
+            Action::Quit =&gt; {
+                println!(&quot;Bye !&quot;);
+                break;
+            }
+        }
+ 
+        if p15.is_complete() {
+            println!(&quot;Well done ! You won in {} turns&quot;, turns);
+            break;
+        }
+    }
+}
+ 
+fn ask_action(moves: &amp;HashMap&lt;Direction, Cell&gt;) -&gt; Action {
+    use std::io::{self, Write};
+    use Action::*;
+    use Direction::*;
+ 
+    println!(&quot;Possible moves:&quot;);
+ 
+    if let Some(&amp;Cell::Card(value)) = moves.get(&amp;Up) {
+        println!(&quot;\tU) {}&quot;, value);
+    }
+    if let Some(&amp;Cell::Card(value)) = moves.get(&amp;Left) {
+        println!(&quot;\tL) {}&quot;, value);
+    }
+    if let Some(&amp;Cell::Card(value)) = moves.get(&amp;Right) {
+        println!(&quot;\tR) {}&quot;, value);
+    }
+    if let Some(&amp;Cell::Card(value)) = moves.get(&amp;Down) {
+        println!(&quot;\tD) {}&quot;, value);
+    }
+    println!(&quot;\tQ) Quit&quot;);
+    print!(&quot;Choose your move : &quot;);
+    io::stdout().flush().unwrap();
+ 
+    let mut action = String::new();
+    io::stdin().read_line(&amp;mut action).expect(&quot;read error&quot;);
+    match action.to_uppercase().trim() {
+        &quot;U&quot; if moves.contains_key(&amp;Up) =&gt; Move(Up),
+        &quot;L&quot; if moves.contains_key(&amp;Left) =&gt; Move(Left),
+        &quot;R&quot; if moves.contains_key(&amp;Right) =&gt; Move(Right),
+        &quot;D&quot; if moves.contains_key(&amp;Down) =&gt; Move(Down),
+        &quot;Q&quot; =&gt; Quit,
+        _ =&gt; {
+            println!(&quot;Unknown action: {}&quot;, action);
+            ask_action(moves)
+        }
+    }
+}
+</code></pre></pre>
+</details><h1><a class="header" href="#15-puzzle-solver" id="15-puzzle-solver">15 puzzle solver</a></h1>
 <h1><a class="header" href="#linux-environment" id="linux-environment">Linux Environment</a></h1>
 <p>Tools and utilities for Linux.</p>
 <h1><a class="header" href="#non-rust-utilities" id="non-rust-utilities">Non-Rust Utilities</a></h1>
