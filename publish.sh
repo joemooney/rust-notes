@@ -11,6 +11,12 @@ opt_force=0
 ####################################################################
 url=$(git config --get remote.origin.url | sed 's,git@github.com:,,;s,/,.github.io/,;s,^,https://,;s,.git$,/,')
 
+# Local directory containing markdown for book - must match src in book.toml
+src=md
+
+# Note: .gitignore should have an entry for $src/README.md
+[ $(grep "$src/README.md" .gitignore 2>/dev/null | wc -l) -ne 1 ] && echo "$src/README.md" >> .gitignore
+
 
 ####################################################################
 # Functions
@@ -83,9 +89,9 @@ eval set -- "$PARAMS"
 . ./git_functions.sh
 
 # Update README.md in book if necessary
-# cmp -s README.md src/README.md || cp README.md src/README.md
-[[ README.md -nt src/README.md ]] && cp -vp README.md src/README.md
-[[ src/README.md -nt README.md ]] && cp -vp src/README.md README.md
+# cmp -s README.md $src/README.md || cp README.md $src/README.md
+[[ README.md -nt $src/README.md ]] && cp -vp README.md $src/README.md
+[[ $src/README.md -nt README.md ]] && cp -vp $src/README.md README.md
 
 git_check_untracked
 git_no_updates && echo "[info] No changes to publish" && exit 1
