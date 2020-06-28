@@ -4,7 +4,8 @@
 ####################################################################
 # Options
 ####################################################################
-opt_force=0
+opt_force=0    # -f, --force
+opt_noexec=0   # -n, --no-exec
 
 ####################################################################
 # Initialization
@@ -38,17 +39,26 @@ postprocess() {
         " $i
     done
 }
+
+changed() {
+  changes=$(git  diff  -U0 docs | egrep -v '^(\+\+\+|---) ' | egrep '^[+-]' | egrep -v 'Last Updated:' | wc -l)
+  [ $changes -eq 0 ] && echo "No Changes" && return 1
+  return 0
+}
+
 publish() { 
     mdbook build                                          && \
     postprocess                                           && \
     rsync -avx --delete --info=progress2 ./book/ ./docs/  &&\
+    [ $opt_noexec -eq 0 ]                                 &&\
+    changed                                               && \
     git status                                            && \
     echo 'git commit -am'                                 && \
     echo -n "Comment: " && read comment                   && \
     git add .                                             && \
     git commit -am "$comment"                             && \
     git push                                              && \
-    echo "Published: $url"
+    echo "Published: $url"                                && \
     echo "This takes a few minutes for GitHub to update"
 }
 
@@ -58,10 +68,8 @@ publish() {
 PARAMS=""
 while (( "$#" )); do
   case "$1" in
-    -f|--force)
-      opt_force=1
-      shift
-      ;;
+    -n|--no-exec) opt_noexec=1; shift ;;
+    -f|--force)   opt_force=1; shift; ;;
     -b|--my-flag-with-argument)
       if [ -n "$2" ] && [ ${2:0:1} != "-" ]; then
         MY_FLAG_ARG=$2
@@ -71,14 +79,12 @@ while (( "$#" )); do
         exit 1
       fi
       ;;
+
     -*|--*=) # unsupported flags
-      echo "Error: Unsupported flag $1" >&2
-      exit 1
-      ;;
+      echo "Error: Unsupported flag $1" >&2; exit 1;;
+
     *) # preserve positional arguments
-      PARAMS="$PARAMS $1"
-      shift
-      ;;
+      PARAMS="$PARAMS $1"; shift ;;
   esac
 done
 set positional arguments in their proper place

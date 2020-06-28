@@ -20,6 +20,7 @@
   - [Non-Rust Utilities](./non_rust.md)
     - [Terminator](./terminator.md)
 - [Language Features](./language_features.md)
+  - [Memory](./language_features/memory.md)
 - [Language Limitations](./language_limitations.md)
 - [Glossary](./glossary.md)
 - [Troubleshooting](./troubleshooting.md)
