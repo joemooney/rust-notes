@@ -1,3 +1,4 @@
+use std::fmt;
 /*
    https://www.youtube.com/watch?v=pgFWz0jgqMU&t=1026s
 
@@ -38,7 +39,18 @@ struct Foo {
     f: Box<dyn Fn(u32) -> bool>,
 }
 
-type FnType = dyn Fn(u32) -> bool;
+impl fmt::Display for Foo {
+    // This trait requires `fmt` with this exact signature.
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        // Write strictly the first element into the supplied output
+        // stream: `f`. Returns `fmt::Result` which indicates whether the
+        // operation succeeded or failed. Note that `write!` uses syntax which
+        // is very similar to `println!`.
+        write!(f, "foo.f(2) = {}", (self.f)(2))
+    }
+}
+
+// type FnType = dyn Fn(u32) -> bool;
 
 impl Foo {
     fn new1<F>(f: F) -> Self
@@ -47,12 +59,25 @@ impl Foo {
     {
         Self { f: Box::new(f) }
     }
-    fn new2(f: FnType) -> Self {
-        Self { f: Box::new(f) }
-    }
-    fn new3(f: Box<dyn Fn(u32) -> bool>) -> Self {
-        Self { f }
-    }
+    /*
+       You cannot do this because FnType is unsized since it is
+       a Trait Fn and that is unsized. But if you make it a
+       generic function then since generic types are sized by
+       default you can pass something of the type as an arg.
+    */
+    // fn new2(f: FnType) -> Self {
+    //     Self { f: Box::new(f) }
+    // }
+    /*
+       You cannot do this because FnType is a type alias and
+       the where clause required a Trait - it is a "trait bound".
+    */
+    // fn new2<F>(f: F) -> Self
+    // where
+    //     F: FnType + 'static,
+    // {
+    //     Self { f: Box::new(f) }
+    // }
 }
 
 impl<'a> Iter<'a> {
@@ -67,15 +92,12 @@ impl<'a> Iter<'a> {
             f: Box::new(f),
         } // NOTE: don't need vec: vec is name is the same
     }
-    fn new2(vec: &'a [u32], f: Foo) -> Self {
+    fn new2(vec: &'a [u32], f: Box<dyn Fn(u32) -> bool>) -> Self {
         Self {
             vec,
             index: 0,
             f: Box::new(f),
         } // NOTE: don't need vec: vec is name is the same
-    }
-    fn new3(vec: &'a [u32], f: Box<dyn Fn(u32) -> bool>) -> Self {
-        Self { vec, index: 0, f } // NOTE: don't need vec: vec is name is the same
     }
 }
 
@@ -109,11 +131,16 @@ fn main() {
     println!("Hello, world!");
     let vec = vec![0, 1, 2, 3, 4, 5, 6, 7, 8];
 
+    let foo = Foo::new1(|x| x * 2 == 4);
+    println!("foo:{}", foo);
+    let foo = Foo::new1(|x| x * 2 == 5);
+    println!("foo:{}", foo);
+
     // Syntax Note:
     // Box<condition> that would be a type, not an arg
     //  error: comparison operators cannot be chained
     // Box::new(condition) is an arg
-    let iter = Iter::new3(&vec, Box::new(|x| x % 3 == 0));
+    let iter = Iter::new2(&vec, Box::new(|x| x % 3 == 0));
     // let iter = Iter::new(&vec, Box::new(condition));
     println!("{:?}", vec);
     // println!("{:?}", iter.collect());
