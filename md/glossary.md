@@ -1,24 +1,9 @@
 # Glossary
 
-| Term                                                         | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Rustonomicom](https://doc.rust-lang.org/nomicon/index.html) | A book about writing unsafe code and the inner guts of Rust. |
-| Row2                                                         |                                                              |
-| Row3                                                         |                                                              |
-| Row4                                                         |                                                              |
-| Row5                                                         |                                                              |
-| Row6                                                         |                                                              |
-| Row7                                                         |                                                              |
-| Row8                                                         |                                                              |
-| Row9                                                         |                                                              |
-| Row10                                                        |                                                              |
-| Row11                                                        |                                                              |
-| Row12                                                        |                                                              |
-| Row13                                                        |                                                              |
-| Row14                                                        |                                                              |
-| Row15                                                        |                                                              |
-| Row16                                                        |                                                              |
-| Row17                                                        |                                                              |
-| Row18                                                        |                                                              |
-| Row19                                                        |                                                              |
-| Row20                                                        |                                                              |
+[Rustonomicom](https://doc.rust-lang.org/nomicon/index.html)
+    A book about writing unsafe code and the inner guts of Rust. |
+
+Functions which take an Iterator and return another Iterator are often called 'iterator adapters', as they're a form of the 'adapter pattern'.
+
+Iterator is a trait with method `next` which returns `Some(Item)` as it iterates thru Items and returns `None` when there are no more items.
+

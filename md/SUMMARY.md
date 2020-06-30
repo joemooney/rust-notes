@@ -21,6 +21,8 @@
     - [Terminator](./terminator.md)
 - [Language Features](./language_features.md)
   - [Memory](./language_features/memory.md)
+  - [Traits](./language_features/traits.md)
+    - [Iterator](./language_features/traits/memory.md)
 - [Language Limitations](./language_limitations.md)
 - [Glossary](./glossary.md)
 - [Troubleshooting](./troubleshooting.md)
