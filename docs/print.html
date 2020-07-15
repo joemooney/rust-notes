@@ -159,18 +159,21 @@ creating a new empty book.</p>
 <ul>
 <li>create a wrapper crate for mdbook to create new books.</li>
 </ul>
+<h2><a class="header" href="#build" id="build">Build</a></h2>
+<ul>
+<li>Build/View the book locally: <code>mdbook build --open</code></li>
+<li>Rebuild/View loop: <code>mdbook watch --open</code></li>
+</ul>
 <h2><a class="header" href="#installbootstrap" id="installbootstrap">Install/Bootstrap</a></h2>
 <ul>
-<li>GitHub source code for book: <a href="https://github.com/joemooney/rust-notes/">https://github.com/joemooney/rust-notes/</a></li>
 <li>View the published book:  <a href="https://joemooney.github.io/rust-notes/">https://joemooney.github.io/rust-notes/</a></li>
-<li>Build/View the book locally: <code>mdbook build --open</code></li>
-<li>Rebuild/View loop: <code>mdbook watch --open</code>
+<li>GitHub source code for book: <a href="https://github.com/joemooney/rust-notes/">https://github.com/joemooney/rust-notes/</a>
 -- View the book locally: <a href="file:///home/jpm/rust/rust-notes/book/index.html">file:///home/jpm/rust/rust-notes/book/index.html</a></li>
 </ul>
 <p>Once you have opened the book the rest of the instructions for
 setting up a new book, editing, publishing etc. are within the book itself.</p>
 <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><sub><span style='color:gray'><em>Last Updated: 2020-06-29 22:04:57</em></span></sub></p>
+<p><sub><span style='color:gray'><em>Last Updated: 2020-07-15 16:43:15</em></span></sub></p>
 <p>This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.</p>
 <p>In order to create this book and play around with Rust, I have used the following tools:</p>
@@ -924,7 +927,7 @@ impl P15 {
  
     fn play(&amp;mut self, direction: &amp;Direction) {
         let i = self.get_empty_position();
-        // This is safe because `ask_action` only returns legal moves
+        // This is safe because &lt;code&gt;ask_action&lt;/code&gt; only returns legal moves
         match *direction {
             Direction::Up =&gt; self.board.swap(i, i - 4),
             Direction::Left =&gt; self.board.swap(i, i - 1),
@@ -1074,7 +1077,7 @@ interface on a class they did not define</span> - <span style='color:green'>in R
 <li>Rust prefers code to be explicit if memory is heap or stack.</li>
 <li><code>dyn</code> indicates that memory is in the heap.</li>
 <li>For a generic function we need to ensure that the arguments are sized.</li>
-<li>Rust defaults all generic type parameters to be <code>Sized</code>. So <code>fn generic_fn&lt;T&gt;(x: T) -&gt; T { ... }</code> is the equivalent of <code>fn generic_fn&lt;T: Sized&gt;(x: T) -&gt; T { ... }</code>. But <span style='color:yellow'>you may not want that</span>. So <code>fn generic_fn&lt;T: ?Sized&gt;(x: &amp;T) -&gt; u32 { ... }</code> allows you to call generic_fn(&quot;abc&quot;) where <code>T == str</code> which is an unsized type <code>str</code> but the argument is <code>&amp;T</code> which is sized so all is good.</li>
+<li>Rust defaults all generic type parameters to be <code>Sized</code>. So <code>fn generic_fn<T>(x: T) -&gt; T { ... }</code> is the equivalent of <code>fn generic_fn&lt;T: Sized&gt;(x: T) -&gt; T { ... }</code>. But <span style='color:yellow'>you may not want that</span>. So <code>fn generic_fn&lt;T: ?Sized&gt;(x: &amp;T) -&gt; u32 { ... }</code> allows you to call generic_fn(&quot;abc&quot;) where <code>T == str</code> which is an unsized type <code>str</code> but the argument is <code>&amp;T</code> which is sized so all is good.</li>
 <li><code>trait</code> has an implicit <code>?Sized</code> bound on <code>Self</code>.</li>
 <li><code>trait</code>s can be implemented for sized <strong>and</strong> unsized types. For example, any trait which only contains methods which only take and return Self by reference can be implemented for unsized types.</li>
 <li>If you want to return <code>Self</code> by value or accept <code>Self</code> as an argument by value, you need to either bind the trait with <code>Sized</code> or bind the function with <code>Sized</code>: <code>trait A: Sized { ... }</code> or </li>
@@ -1149,10 +1152,15 @@ was supplied and if it had None you would need to check for it.</p>
 public static int Foo() =&gt; 10;
 </code></pre>
 <h1><a class="header" href="#glossary" id="glossary">Glossary</a></h1>
-<p><a href="https://doc.rust-lang.org/nomicon/index.html">Rustonomicom</a>
-A book about writing unsafe code and the inner guts of Rust. |</p>
+<h3><a class="header" href="#a-hrefhttpsdocrust-langorgnomiconindexhtmlrustonomicoma" id="a-hrefhttpsdocrust-langorgnomiconindexhtmlrustonomicoma"><a href="https://doc.rust-lang.org/nomicon/index.html">Rustonomicom</a></a></h3>
+<p>A book about writing unsafe code and the inner guts of Rust. |</p>
+<h3><a class="header" href="#iterator-adapters" id="iterator-adapters">iterator adapters</a></h3>
 <p>Functions which take an Iterator and return another Iterator are often called 'iterator adapters', as they're a form of the 'adapter pattern'.</p>
+<h3><a class="header" href="#iterator-1" id="iterator-1">iterator</a></h3>
 <p>Iterator is a trait with method <code>next</code> which returns <code>Some(Item)</code> as it iterates thru Items and returns <code>None</code> when there are no more items.</p>
+<h3><a class="header" href="#external-traitexternal-type" id="external-traitexternal-type">external trait/external type</a></h3>
+<p>A trait or type that is not defined in the current module. You cannot implement an external trait on an external type but you can implement an external trait on a type you defined and someone
+else can implement a trait defined in your module in one of their modules on their own type.</p>
 <h1><a class="header" href="#troubleshooting" id="troubleshooting">Troubleshooting</a></h1>
 <h2><a class="header" href="#published-book-does-not-show-updates" id="published-book-does-not-show-updates">Published book does not show updates</a></h2>
 <p>Not sure how long it takes a push to github.com to show up on github.io as pages...but it may take a couple of minutes.</p>
@@ -1160,11 +1168,14 @@ A book about writing unsafe code and the inner guts of Rust. |</p>
 <p>Every page in the book needs to be in the SUMMARY.md in order to be built.</p>
 <h2><a class="header" href="#cant-find-crate-for-somecrate" id="cant-find-crate-for-somecrate">Can't find crate for <code>somecrate</code></a></h2>
 <p>In Rust Playground <a href="https://play.rust-lang.org">https://play.rust-lang.org</a> only the current <a href="https://github.com/integer32llc/rust-playground/blob/master/compiler/base/Cargo.toml">top 100 crates</a> are available to be used, so you cannot arbitrarily add code and have it run inside your book on the web page.</p>
+<h2><a class="header" href="#code-block-will-not-run-in-browser" id="code-block-will-not-run-in-browser">Code block will not run in browser</a></h2>
+<p>For example, the <a href="samples/hello_world.html">Hello World</a> will not run when you click the play button.</p>
+<p>After a reboot, this problem magically went away. Maybe it is a browser cache issue.</p>
 <h1><a class="header" href="#quiz" id="quiz">Quiz</a></h1>
 <h2><a class="header" href="#option" id="option">Option</a></h2>
 <hr />
 <details><summary>Q:  Can you implement a trait on a type you did not define
-</summary>A:  <span style='color:green'>Yes! All hail Traits!</span></details>
+</summary>A:  <span style='color:green'>Yes!</span> But you cannot implement an external trait (one that you did not define) on an external type (one that you did not define).</details>
 <hr />
 <details><summary>Q:  What happens here upon <code>unwrap</code>?
 <pre><pre class="playpen"><code class="language-rust editable">
@@ -1173,10 +1184,10 @@ A book about writing unsafe code and the inner guts of Rust. |</p>
 </span>let x:Option&lt;u32&gt; = None.unwrap();
 <span class="boring">}
 </span></code></pre></pre>
-</summary>A:    <span style='color:red'>The program panics!</span> You cannot unwrap() a None, use `unwrap_or(...)` instead</details>
+</summary>A:    <span style='color:red'>The program panics!</span> You cannot unwrap() a None, use <code>unwrap_or(...)</code> instead</details>
 <hr />
-<details><summary>Q:  What is the difference between <code>unwrap_or</code> and `unwrap_or_else`?
-</summary>A:  `unwrap_or_else` is lazy, `unwrap_or` is eager.
+<details><summary>Q:  What is the difference between <code>unwrap_or</code> and <code>unwrap_or_else</code>?
+</summary>A:  <code>unwrap_or_else</code> is lazy, <code>unwrap_or</code> is eager.
 So unwrap_or_else is for pasing a closure and unwrap_or is for a exiting value.
 <pre><pre class="playpen"><code class="language-rust editable">
 <span class="boring">#![allow(unused_variables)]

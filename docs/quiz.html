@@ -151,7 +151,7 @@
 <h2><a class="header" href="#option" id="option">Option</a></h2>
 <hr />
 <details><summary>Q:  Can you implement a trait on a type you did not define
-</summary>A:  <span style='color:green'>Yes! All hail Traits!</span></details>
+</summary>A:  <span style='color:green'>Yes!</span> But you cannot implement an external trait (one that you did not define) on an external type (one that you did not define).</details>
 <hr />
 <details><summary>Q:  What happens here upon <code>unwrap</code>?
 <pre><pre class="playpen"><code class="language-rust editable">
@@ -160,10 +160,10 @@
 </span>let x:Option&lt;u32&gt; = None.unwrap();
 <span class="boring">}
 </span></code></pre></pre>
-</summary>A:    <span style='color:red'>The program panics!</span> You cannot unwrap() a None, use `unwrap_or(...)` instead</details>
+</summary>A:    <span style='color:red'>The program panics!</span> You cannot unwrap() a None, use <code>unwrap_or(...)</code> instead</details>
 <hr />
-<details><summary>Q:  What is the difference between <code>unwrap_or</code> and `unwrap_or_else`?
-</summary>A:  `unwrap_or_else` is lazy, `unwrap_or` is eager.
+<details><summary>Q:  What is the difference between <code>unwrap_or</code> and <code>unwrap_or_else</code>?
+</summary>A:  <code>unwrap_or_else</code> is lazy, <code>unwrap_or</code> is eager.
 So unwrap_or_else is for pasing a closure and unwrap_or is for a exiting value.
 <pre><pre class="playpen"><code class="language-rust editable">
 <span class="boring">#![allow(unused_variables)]

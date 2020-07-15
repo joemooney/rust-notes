@@ -6,7 +6,7 @@ _________________________________________________________
 
 ?Q Can you implement a trait on a type you did not define
 
-?A {green}Yes! All hail Traits!{/green}
+?A {green}Yes!{/green} But you cannot implement an external trait (one that you did not define) on an external type (one that you did not define).
 ?E
 
 _________________________________________________________

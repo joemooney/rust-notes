@@ -11,12 +11,15 @@ creating a new empty book.
 
 - create a wrapper crate for mdbook to create new books.
 
-## Install/Bootstrap
+## Build
 
-- GitHub source code for book: [https://github.com/joemooney/rust-notes/](https://github.com/joemooney/rust-notes/)
-- View the published book:  [https://joemooney.github.io/rust-notes/](https://joemooney.github.io/rust-notes/)
 - Build/View the book locally: ```mdbook build --open```
 - Rebuild/View loop: ```mdbook watch --open```
+
+## Install/Bootstrap
+
+- View the published book:  [https://joemooney.github.io/rust-notes/](https://joemooney.github.io/rust-notes/)
+- GitHub source code for book: [https://github.com/joemooney/rust-notes/](https://github.com/joemooney/rust-notes/)
 -- View the book locally: [file:///home/jpm/rust/rust-notes/book/index.html](file:///home/jpm/rust/rust-notes/book/index.html)
 
 Once you have opened the book the rest of the instructions for
