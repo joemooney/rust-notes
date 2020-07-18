@@ -24,6 +24,7 @@
   - [Traits](./language_features/traits.md)
     - [Iterator](./language_features/traits/memory.md)
 - [Language Limitations](./language_limitations.md)
+- [Best Practices](./best_practices.md)
 - [Glossary](./glossary.md)
 - [Troubleshooting](./troubleshooting.md)
 - [Quiz](./quiz.md)

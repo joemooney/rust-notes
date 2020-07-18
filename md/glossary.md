@@ -16,3 +16,16 @@ Iterator is a trait with method `next` which returns `Some(Item)` as it iterates
 A trait or type that is not defined in the current module. You cannot implement an external trait on an external type but you can implement an external trait on a type you defined and someone
 else can implement a trait defined in your module in one of their modules on their own type.
 
+## cargo
+
+Rust's package manager and build system.
+
+## rustup
+
+The command to upgrade your Rust compiler: `rustup update`
+
+## rustc
+
+The rust compiler, `rustc --version`
+
+

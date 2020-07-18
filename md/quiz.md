@@ -11,6 +11,28 @@ _________________________________________________________
 
 _________________________________________________________
 
+[on](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=e9cc8920b712c93f0c09c1fe56f831b8)
+
+
+[two](https://gist.github.com/e9cc8920b712c93f0c09c1fe56f831b8)
+
+[three](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=%23!%5Ballow(unused)%5D%0Afn%20main()%20%7B%0Ause%20std%3A%3Aio%3A%3A%7Bself%2C%20Write%7D%3B%0A%0Aprint!(%22this%20%22)%3B%0Aprint!(%22will%20%22)%3B%0Aprint!(%22be%20%22)%3B%0Aprint!(%22on%20%22)%3B%0Aprint!(%22the%20%22)%3B%0Aprint!(%22same%20%22)%3B%0Aprint!(%22line%20%22)%3B%0A%0Aio%3A%3Astdout().flush().unwrap()%3B%0A%0Aprint!(%22this%20string%20has%20a%20newline%2C%20why%20not%20choose%20println!%20instead%3F%5Cn%22)%3B%0A%0Aio%3A%3Astdout().flush().unwrap()%3B%0A%7D)
+
+?Q How to read a line from stdin?
+
+?A
+```rust,editable
+use std::io;
+use std::io::Write;
+let mut s = String::new();
+print!("Please enter something: ");
+io::stdin().read_line(&mut s).expect("Failed to read line from stdin");
+println!("You entered: {}", s);
+```
+
+?E
+_________________________________________________________
+
 ?Q What happens here upon {code}unwrap{/code}?
 
 ```rust,editable
