@@ -154,15 +154,49 @@
 <p>Functions which take an Iterator and return another Iterator are often called 'iterator adapters', as they're a form of the 'adapter pattern'.</p>
 <h3><a class="header" href="#iterator" id="iterator">iterator</a></h3>
 <p>Iterator is a trait with method <code>next</code> which returns <code>Some(Item)</code> as it iterates thru Items and returns <code>None</code> when there are no more items.</p>
+<h3><a class="header" href="#method" id="method">method</a></h3>
+<p>Methods are functions attached to objects which have access to the data of the object and its other methods via the <code>self</code> keyword and defined in an <code>impl</code> block.</p>
+<p>A method may either be a <code>static</code> or and <code>instance</code> method.</p>
+<h3><a class="header" href="#static-method" id="static-method">static method</a></h3>
+<p>A static method does not have <code>self</code> as the first parameter.</p>
+<h3><a class="header" href="#instance-method" id="instance-method">instance method</a></h3>
+<p>An instance method has <code>self</code> as the first parameter.</p>
 <h3><a class="header" href="#external-traitexternal-type" id="external-traitexternal-type">external trait/external type</a></h3>
 <p>A trait or type that is not defined in the current module. You cannot implement an external trait on an external type but you can implement an external trait on a type you defined and someone
 else can implement a trait defined in your module in one of their modules on their own type.</p>
 <h2><a class="header" href="#cargo" id="cargo">cargo</a></h2>
-<p>Rust's package manager and build system.</p>
+<p>Rust's package manager and build system. <code>cargo --version</code> <code>cargo build</code> <code>cargo run</code> <code>cargo install</code> <code>cargo check</code> <code>cargo new {name}</code></p>
 <h2><a class="header" href="#rustup" id="rustup">rustup</a></h2>
 <p>The command to upgrade your Rust compiler: <code>rustup update</code></p>
 <h2><a class="header" href="#rustc" id="rustc">rustc</a></h2>
 <p>The rust compiler, <code>rustc --version</code></p>
+<h2><a class="header" href="#fully-qualified-method-calls" id="fully-qualified-method-calls">Fully Qualified Method Calls</a></h2>
+<pre><code>trait Foo {
+    fn hi(&amp;self);
+}
+trait Bar {
+    fn hi(&amp;self);
+}
+impl Foo for String {
+    fn hi(&amp;self) {
+        println!(&quot;Calling Foo::hi for String&quot;);
+    };
+}
+impl Bar for String {
+    fn hi(&amp;self) {
+        println!(&quot;Calling Bar::hi for String&quot;);
+    };
+}
+impl Foo for u32 {
+    fn hi(&amp;self) {
+        println!(&quot;Calling Foo::hi for u32&quot;);
+    };
+}
+```&lt;str as ToString&gt;::to_string(&quot;hi)``` is the fully qualified method call for qualified method call ```ToString::to_string(&quot;hi&quot;)``` and the 
+
+
+
+</code></pre>
 
                     </main>
 
