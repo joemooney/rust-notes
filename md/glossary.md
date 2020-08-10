@@ -4,6 +4,60 @@
 
 A book about writing unsafe code and the inner guts of Rust. |
 
+### Statement
+A statement is a component of a block, which is in turn a component of an *outer expression* or *function*. Rust has two kinds of statement: declaration statements and expression statements.
+
+### expression statement
+An *expression statement* is one that evaluates an *expression* and ignores its result.
+
+### expression 
+An expression may have two roles: it always produces a value, and it may have effects (otherwise known as "side effects"). An expression evaluates to a value, and has effects during evaluation. Many expressions contain sub-expressions (operands).
+
+### Declaration statements
+A declaration statement is one that introduces one or more names into the enclosing statement block. The declared names may denote new variables or new items.
+The two kinds of declaration statements are item declarations and let statements.
+
+### shadow/shadowed variable
+A different variable declared with the same name, the first is no longer accessible. The first is not dropped until out of scope. The second declaration does not trigger a drop.
+
+### drop/drop scope
+A variable is dropped when it goes out of scope. This is called the variables *drop scope*. *Drop* is the trait which can be implemented to control behavior when dropped.
+
+### bind/bound
+A variable is *bound* to a value. |
+A module is *bound to the current scope* via the ```use``` statement. ```use p::q::{r, s}``` both *r* and *s* are bound in the current but not *q*. Use ```use p::q::{self, r, s}``` to also bind *q* in the current but not *q*.
+
+### Enumeration
+An *enumeration* or *enum* is a type that can be one of multiple *variants*.
+
+### variant
+A *variant* is one of the types an *enumeration* can take.
+
+### crate
+A crate is a collection of Rust source files. It is what ```cargo build``` builds. It can either be a *library crate* or a *binary crate* and is specified using a *Cargo.toml* file.
+
+### library crate
+A *library crate* 
+
+### binary crate
+A *binary crate* is an executable.
+
+### match expression
+A ```match``` statement is an expression. It has a value to match against and a number of *arms* each with a pattern and code to execute if the pattern matches.
+
+### expression
+An *expression* is a statement that returns a value.
+
+### currying
+Instead of a function with multiple arguments, you break it down into several functions that each take a single argument and return a function taking a single argument. For the last argument you have a function which takes the final argument and returns the desired value. Each step of the currying process is basically taking a function and substituting the variable with the corresponding argument resulting in a new function. This is cool since you can generate functions at run time and store as objects and pass as arguments etc. Currying allows for easier formal proofs of program correctness.
+
+### method
+A *method* is a function defined in the *impl* block for a type.
+A method is called via ```my_object.method_name(args, ...)```
+
+### Semantic Versioning
+Semantic versioning or *semver* is of the form **x.y.z** where *x* is the major version for incompatible API updates, *y* is for backwards compatible functionality updates, and *z* version when you make backwards compatible bug fixes.
+
 ### iterator adapters
 
 Functions which take an Iterator and return another Iterator are often called 'iterator adapters', as they're a form of the 'adapter pattern'.
@@ -39,30 +93,33 @@ The command to upgrade your Rust compiler: `rustup update`
 The rust compiler, `rustc --version`
 
 ## Fully Qualified Method Calls
+```<str as ToString>::to_string("hi)``` is the fully qualified method call for qualified method call ```ToString::to_string("hi")``` or ```str::to_string("hi")```, all of which equate to the simplest form ```"hi".to_string()```
+
+
+## object safe
+A trait is object safe if the concrete is reffered by ```&self``` reference tnd not by ```self``` value.
 
 ```
-trait Foo {
-    fn hi(&self);
+trait T1 {
+    fn foo(self); // not object safe,
+                  // size of object is unknowable at compile time.
 }
-trait Bar {
-    fn hi(&self);
+
+trait T2 {
+    fn foo(&self); // object safe
 }
-impl Foo for String {
-    fn hi(&self) {
-        println!("Calling Foo::hi for String");
-    };
-}
-impl Bar for String {
-    fn hi(&self) {
-        println!("Calling Bar::hi for String");
-    };
-}
-impl Foo for u32 {
-    fn hi(&self) {
-        println!("Calling Foo::hi for u32");
-    };
-}
-```<str as ToString>::to_string("hi)``` is the fully qualified method call for qualified method call ```ToString::to_string("hi")``` and the 
+```
 
 
+## Dynamic Dispatch
+The concrete type of an object is unknown at compile time.
+```
+fn foo(o: dyn MyTrait) {  // this will not compile, unknown size
+}
+```
 
+## Monomorphism
+```
+fn foo(o: impl MyTrait) {  // this will compile
+}
+```
