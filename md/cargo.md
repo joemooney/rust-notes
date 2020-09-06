@@ -1,5 +1,7 @@
 # Cargo
 
+- To create a new project crate ```cargo new mycrate```
+
 - To upgrade all your your existing crates you have installed run ```cargo install-update -a```
 
 Say you have an existing directory, an empty git repo.

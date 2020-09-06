@@ -1,5 +1,95 @@
 # Trait Objects
 
+Why use trait objects? It depends is one answer. Trait objects result in smaller, slower binaries.
+
+```rust
+// https://stevedonovan.github.io/rustifications/2018/09/08/common-rust-traits.html
+
+use std::string::ToString;
+
+// monomorphic - generic
+fn to_string1<T: ToString> (item: &T) -> String {
+    item.to_string()
+}
+// polymorphic - dynamic dispatch
+fn to_string2(item: &dyn ToString) -> String {
+    item.to_string()
+}
+
+println!("{}", to_string1(&42));
+println!("{}", to_string2(&42));
+println!("{}", to_string1(&"hello"));
+println!("{}", to_string2(&"hello"));
+
+```
+
+Another example of using a Vec of trait objects looks pretty slick.
+
+```rust
+// https://dev.to/magnusstrale/rust-trait-objects-in-a-vector-non-trivial-4co5
+
+use std::f32::consts::PI;
+
+#[derive(PartialEq)]
+struct Circle {
+    radius: u32,
+}
+
+struct Square {
+    side: u32,
+}
+
+trait Shape: Any {
+    fn box_eq(&self, other: &dyn Any) -> bool;
+    fn as_any(&self) -> &dyn Any;    
+    fn area(&self) -> u32;
+}
+
+impl Shape for Square {
+    // boilerplate, same for all impl of Shape
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+    // boilerplate, same for all impl of Shape
+    fn box_eq(&self, other: &dyn Any) -> bool {
+        other.downcast_ref::<Self>().map_or(false, |a| self == a)
+    }
+    fn area(&self) -> u32 {
+        self.size * self.size
+    }
+}
+
+impl Shape for Circle {
+    // boilerplate, same for all impl of Shape
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
+    // boilerplate, same for all impl of Shape
+    fn box_eq(&self, other: &dyn Any) -> bool {
+        other.downcast_ref::<Self>().map_or(false, |a| self == a)
+    }
+    fn area(&self) -> u32 {
+        self.radius.pow(2) * PI
+    }
+}
+
+impl PartialEq for Box<dyn Shape> {
+    fn eq(&self, other: &Box<dyn Shape>) -> bool {
+        self.box_eq(other.as_any())
+    }
+}
+
+fn do_stuff(objects: Vec<Box<dyn Shape>>) {
+    let obj1 = &objects[0];
+    let obj2 = &objects[1];
+    if obj1 == obj2 { println!("Equal"); }
+}
+
+```
+
+Here we see a Vec of a Trait type which can contain different types of concrete objects which can be differentiated 
+
+
 If you want to pass a variable to a function which may be of different types at run time, then you can use a trait object.
 Alternatively, you can use a generic function will generate a different function for each type that calls the function but a trait object will use the same single function with *dynamic dispatch* to make any calls to methods of the trait object in the function.
 
@@ -25,25 +115,4 @@ fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
 }
 ```
 
-
-```rust
-// https://stevedonovan.github.io/rustifications/2018/09/08/common-rust-traits.html
-
-use std::string::ToString;
-
-// monomorphic - generic
-fn to_string1<T: ToString> (item: &T) -> String {
-    item.to_string()
-}
-// polymorphic - dynamic dispatch
-fn to_string2(item: &dyn ToString) -> String {
-    item.to_string()
-}
-
-println!("{}", to_string1(&42));
-println!("{}", to_string2(&42));
-println!("{}", to_string1(&"hello"));
-println!("{}", to_string2(&"hello"));
-
-```
 

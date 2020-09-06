@@ -148,6 +148,96 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#trait-objects" id="trait-objects">Trait Objects</a></h1>
+<p>Why use trait objects? It depends is one answer. Trait objects result in smaller, slower binaries.</p>
+<pre><pre class="playpen"><code class="language-rust">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>// https://stevedonovan.github.io/rustifications/2018/09/08/common-rust-traits.html
+
+use std::string::ToString;
+
+// monomorphic - generic
+fn to_string1&lt;T: ToString&gt; (item: &amp;T) -&gt; String {
+    item.to_string()
+}
+// polymorphic - dynamic dispatch
+fn to_string2(item: &amp;dyn ToString) -&gt; String {
+    item.to_string()
+}
+
+println!(&quot;{}&quot;, to_string1(&amp;42));
+println!(&quot;{}&quot;, to_string2(&amp;42));
+println!(&quot;{}&quot;, to_string1(&amp;&quot;hello&quot;));
+println!(&quot;{}&quot;, to_string2(&amp;&quot;hello&quot;));
+
+<span class="boring">}
+</span></code></pre></pre>
+<p>Another example of using a Vec of trait objects looks pretty slick.</p>
+<pre><pre class="playpen"><code class="language-rust">
+<span class="boring">#![allow(unused_variables)]
+</span><span class="boring">fn main() {
+</span>// https://dev.to/magnusstrale/rust-trait-objects-in-a-vector-non-trivial-4co5
+
+use std::f32::consts::PI;
+
+#[derive(PartialEq)]
+struct Circle {
+    radius: u32,
+}
+
+struct Square {
+    side: u32,
+}
+
+trait Shape: Any {
+    fn box_eq(&amp;self, other: &amp;dyn Any) -&gt; bool;
+    fn as_any(&amp;self) -&gt; &amp;dyn Any;    
+    fn area(&amp;self) -&gt; u32;
+}
+
+impl Shape for Square {
+    // boilerplate, same for all impl of Shape
+    fn as_any(&amp;self) -&gt; &amp;dyn Any {
+        self
+    }
+    // boilerplate, same for all impl of Shape
+    fn box_eq(&amp;self, other: &amp;dyn Any) -&gt; bool {
+        other.downcast_ref::&lt;Self&gt;().map_or(false, |a| self == a)
+    }
+    fn area(&amp;self) -&gt; u32 {
+        self.size * self.size
+    }
+}
+
+impl Shape for Circle {
+    // boilerplate, same for all impl of Shape
+    fn as_any(&amp;self) -&gt; &amp;dyn Any {
+        self
+    }
+    // boilerplate, same for all impl of Shape
+    fn box_eq(&amp;self, other: &amp;dyn Any) -&gt; bool {
+        other.downcast_ref::&lt;Self&gt;().map_or(false, |a| self == a)
+    }
+    fn area(&amp;self) -&gt; u32 {
+        self.radius.pow(2) * PI
+    }
+}
+
+impl PartialEq for Box&lt;dyn Shape&gt; {
+    fn eq(&amp;self, other: &amp;Box&lt;dyn Shape&gt;) -&gt; bool {
+        self.box_eq(other.as_any())
+    }
+}
+
+fn do_stuff(objects: Vec&lt;Box&lt;dyn Shape&gt;&gt;) {
+    let obj1 = &amp;objects[0];
+    let obj2 = &amp;objects[1];
+    if obj1 == obj2 { println!(&quot;Equal&quot;); }
+}
+
+<span class="boring">}
+</span></code></pre></pre>
+<p>Here we see a Vec of a Trait type which can contain different types of concrete objects which can be differentiated </p>
 <p>If you want to pass a variable to a function which may be of different types at run time, then you can use a trait object.
 Alternatively, you can use a generic function will generate a different function for each type that calls the function but a trait object will use the same single function with <em>dynamic dispatch</em> to make any calls to methods of the trait object in the function.</p>
 <p>A <em>trait object</em> is a value which we can pass as a parameter to a function and which has as its type a trait as opposed to a concrete type. This means that for all of the trait methods the sizes of the parameters and the return values must be known at compile time. The <em>trait object</em> has an unknown type at compile time because the underlying concrete type is unknown. Lots of types can implement a trait. Some of those types may have a size that changes during execution. For example, if a struct has a String or a Vec, the size of the struct will change as the values are changed. Such a type cannot be placed on the stack and as such it cannot be passed or returned from a function.</p>
@@ -170,29 +260,6 @@ Alternatively, you can use a generic function will generate a different function
 </span>fn returns_closure() -&gt; Box&lt;dyn Fn(i32) -&gt; i32&gt; {
     Box::new(|x| x + 1)
 }
-<span class="boring">}
-</span></code></pre></pre>
-<pre><pre class="playpen"><code class="language-rust">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>// https://stevedonovan.github.io/rustifications/2018/09/08/common-rust-traits.html
-
-use std::string::ToString;
-
-// monomorphic - generic
-fn to_string1&lt;T: ToString&gt; (item: &amp;T) -&gt; String {
-    item.to_string()
-}
-// polymorphic - dynamic dispatch
-fn to_string2(item: &amp;dyn ToString) -&gt; String {
-    item.to_string()
-}
-
-println!(&quot;{}&quot;, to_string1(&amp;42));
-println!(&quot;{}&quot;, to_string2(&amp;42));
-println!(&quot;{}&quot;, to_string1(&amp;&quot;hello&quot;));
-println!(&quot;{}&quot;, to_string2(&amp;&quot;hello&quot;));
-
 <span class="boring">}
 </span></code></pre></pre>
 
