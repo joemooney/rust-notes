@@ -21,6 +21,7 @@ In order to create this book and play around with Rust, I have used the followin
     - Git Graph
     - GitLens
     - Rust
+    - crates  - thumbs up if cargo.toma dependencies are up-to-date
     - TabNine
     - Vim
 - Firefox
