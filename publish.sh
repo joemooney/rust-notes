@@ -52,7 +52,7 @@ publish() {
     rsync -avx --delete --info=progress2 ./book/ ./docs/  &&\
     [ $opt_noexec -eq 0 ]                                 &&\
     changed                                               && \
-    git status                                            && \
+    git status  | grep -v 'docs/'                         && \
     echo 'git commit -am'                                 && \
     echo -n "Comment: " && read comment                   && \
     git add .                                             && \
