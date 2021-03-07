@@ -11,7 +11,7 @@ _________________________________________________________
 
 _________________________________________________________
 
-[on](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=e9cc8920b712c93f0c09c1fe56f831b8)
+[one](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=e9cc8920b712c93f0c09c1fe56f831b8)
 
 
 [two](https://gist.github.com/e9cc8920b712c93f0c09c1fe56f831b8)
@@ -47,7 +47,7 @@ _________________________________________________________
 ?Q What is the difference between <code>unwrap_or</code> and `unwrap_or_else`?
 
 ?A `unwrap_or_else` is lazy, `unwrap_or` is eager.
-So unwrap_or_else is for pasing a closure and unwrap_or is for a exiting value.
+So unwrap_or_else is generally for passing a closure which is evaluated only when needed and unwrap_or is for an existing literal value known at the time of execution.
 
 ```rust,editable
 assert_eq!(Some("car").unwrap_or("bike"), "car");
@@ -55,6 +55,7 @@ assert_eq!(None.unwrap_or("bike"), "bike");
 let k = 10;
 assert_eq!(Some(4).unwrap_or_else(|| 2 * k), 4);
 assert_eq!(None.unwrap_or_else(|| 2 * k), 20);
+println("it ran");
 ```
 
 ?E

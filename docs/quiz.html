@@ -153,7 +153,7 @@
 <details><summary>Q:  Can you implement a trait on a type you did not define
 </summary>A:  <span style='color:green'>Yes!</span> But you cannot implement an external trait (one that you did not define) on an external type (one that you did not define).</details>
 <hr />
-<p><a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=e9cc8920b712c93f0c09c1fe56f831b8">on</a></p>
+<p><a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=e9cc8920b712c93f0c09c1fe56f831b8">one</a></p>
 <p><a href="https://gist.github.com/e9cc8920b712c93f0c09c1fe56f831b8">two</a></p>
 <p><a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;code=%23!%5Ballow(unused)%5D%0Afn%20main()%20%7B%0Ause%20std%3A%3Aio%3A%3A%7Bself%2C%20Write%7D%3B%0A%0Aprint!(%22this%20%22)%3B%0Aprint!(%22will%20%22)%3B%0Aprint!(%22be%20%22)%3B%0Aprint!(%22on%20%22)%3B%0Aprint!(%22the%20%22)%3B%0Aprint!(%22same%20%22)%3B%0Aprint!(%22line%20%22)%3B%0A%0Aio%3A%3Astdout().flush().unwrap()%3B%0A%0Aprint!(%22this%20string%20has%20a%20newline%2C%20why%20not%20choose%20println!%20instead%3F%5Cn%22)%3B%0A%0Aio%3A%3Astdout().flush().unwrap()%3B%0A%7D">three</a></p>
 <details><summary>Q:  How to read a line from stdin?
@@ -179,7 +179,7 @@ _________________________________________________________
 <hr />
 <details><summary>Q:  What is the difference between <code>unwrap_or</code> and <code>unwrap_or_else</code>?
 </summary>A:  <code>unwrap_or_else</code> is lazy, <code>unwrap_or</code> is eager.
-So unwrap_or_else is for pasing a closure and unwrap_or is for a exiting value.
+So unwrap_or_else is generally for passing a closure which is evaluated only when needed and unwrap_or is for an existing literal value known at the time of execution.
 <pre><pre class="playpen"><code class="language-rust editable">
 <span class="boring">#![allow(unused_variables)]
 </span><span class="boring">fn main() {
@@ -188,6 +188,7 @@ assert_eq!(None.unwrap_or(&quot;bike&quot;), &quot;bike&quot;);
 let k = 10;
 assert_eq!(Some(4).unwrap_or_else(|| 2 * k), 4);
 assert_eq!(None.unwrap_or_else(|| 2 * k), 20);
+println(&quot;it ran&quot;);
 <span class="boring">}
 </span></code></pre></pre>
 </details>
