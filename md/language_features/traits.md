@@ -17,3 +17,5 @@ trait T2 {
     fn foo(&self); // object safe
 }
 ```
+
+[Combine multiple traits to for a new trait](https://stackoverflow.com/questions/26983355/is-there-a-way-to-combine-multiple-traits-in-order-to-define-a-new-trait)

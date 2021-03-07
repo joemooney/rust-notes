@@ -12,6 +12,10 @@
   mattgraham has some seriously helpful post on metaprogramming
   - [Enums of Vectors](https://exphp.github.io/2019/05/05/enums-of-vectors-part-1.html)
   - [Debuggable](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=dd5cf4f3119903f83c46a9587ada1ca9) print out text of closure or function name.
+  https://exphp.github.io/
+  https://stevedonovan.github.io/rustifications/
+  
+
 ## Excercises
 
 - [Project Euler](https://projecteuler.net/)

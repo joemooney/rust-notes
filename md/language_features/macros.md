@@ -12,6 +12,9 @@ References
     - are an elegant way to add a lot of power to a program, with limited risk
     - are well thought out and tightly integrated into the ecosystem 
     - have few detractors within the Rust community
+    - can only expand to what is expected at that position (e.g. expression or type definition)
+    - can never expand to an incomplete or invalid construct (e.g. unbalanced parenthesis). In C you could `#define Foo Bar(` that is impossible in Rust.
+    - can be recursive (up to 32 levels by default)
     - are actually a big selling point of the language
 
 

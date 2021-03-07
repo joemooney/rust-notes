@@ -1,6 +1,10 @@
 # Cargo
 
-- To create a new project crate ```cargo new mycrate```
+- To create a new project crate:
+  -  ```cargo new mycrate```
+  -  ```cd mycrate```
+  -  git init .
+  -  hub new
 
 - To upgrade all your your existing crates you have installed run ```cargo install-update -a```
 
