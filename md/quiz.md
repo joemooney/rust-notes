@@ -52,10 +52,12 @@ So unwrap_or_else is generally for passing a closure which is evaluated only whe
 ```rust,editable
 assert_eq!(Some("car").unwrap_or("bike"), "car");
 assert_eq!(None.unwrap_or("bike"), "bike");
+assert_eq!(None.unwrap_or_else("bike"), "bike");
 let k = 10;
-assert_eq!(Some(4).unwrap_or_else(|| 2 * k), 4);
-assert_eq!(None.unwrap_or_else(|| 2 * k), 20);
-println("it ran");
+assert_eq!(Some(4).unwrap_or(|| {println!("eager ran"); 2 * k}), 4);
+assert_eq!(Some(4).unwrap_or_else(|| {println!("lazy did not run"); 2 * k}), 4);
+assert_eq!(None.unwrap_or_else(|| {println!("lazy ran"); 2 * k}), 20);
+println!("it ran");
 ```
 
 ?E

@@ -157,7 +157,9 @@ and documenting how I went about documenting.</p>
 <p>As a byproduct, this repo will have commands and instructions for
 creating a new empty book.</p>
 <p>The contents of the &quot;book&quot; are stored on GitHub.
-It is a &quot;book&quot; because it uses the mdbook crate.</p>
+It is a &quot;book&quot; because it uses the mdbook crate.
+Beyond mdbook I have added in some bells and whistles such as a preprocessor that makes it easy to generate an interactive quiz.</p>
+<p>View the book here:  <a href="https://joemooney.github.io/rust-notes/">https://joemooney.github.io/rust-notes/</a></p>
 <h2><a class="header" href="#goals" id="goals">Goals</a></h2>
 <ul>
 <li>document words of wisdom I have learned about Rust.</li>
@@ -171,14 +173,13 @@ It is a &quot;book&quot; because it uses the mdbook crate.</p>
 </ul>
 <h2><a class="header" href="#installbootstrap" id="installbootstrap">Install/Bootstrap</a></h2>
 <ul>
-<li>View the published book:  <a href="https://joemooney.github.io/rust-notes/">https://joemooney.github.io/rust-notes/</a></li>
 <li>GitHub source code for book: <a href="https://github.com/joemooney/rust-notes/">https://github.com/joemooney/rust-notes/</a>
 -- View the book locally: <a href="file:///home/jpm/rust/rust-notes/book/index.html">file:///home/jpm/rust/rust-notes/book/index.html</a></li>
 </ul>
 <p>Once you have opened the book the rest of the instructions for
 setting up a new book, editing, publishing etc. are within the book itself.</p>
 <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><sub><span style='color:gray'><em>Last Updated: 2021-03-07 12:44:40</em></span></sub></p>
+<p><sub><span style='color:gray'><em>Last Updated: 2021-03-07 12:57:49</em></span></sub></p>
 <p>This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.</p>
 <p>In order to create this book and play around with Rust, I have used the following tools:</p>
@@ -1522,10 +1523,12 @@ So unwrap_or_else is generally for passing a closure which is evaluated only whe
 </span><span class="boring">fn main() {
 </span>assert_eq!(Some(&quot;car&quot;).unwrap_or(&quot;bike&quot;), &quot;car&quot;);
 assert_eq!(None.unwrap_or(&quot;bike&quot;), &quot;bike&quot;);
+assert_eq!(None.unwrap_or_else(&quot;bike&quot;), &quot;bike&quot;);
 let k = 10;
-assert_eq!(Some(4).unwrap_or_else(|| 2 * k), 4);
-assert_eq!(None.unwrap_or_else(|| 2 * k), 20);
-println(&quot;it ran&quot;);
+assert_eq!(Some(4).unwrap_or(|| {println!(&quot;eager ran&quot;); 2 * k}), 4);
+assert_eq!(Some(4).unwrap_or_else(|| {println!(&quot;lazy did not run&quot;); 2 * k}), 4);
+assert_eq!(None.unwrap_or_else(|| {println!(&quot;lazy ran&quot;); 2 * k}), 20);
+println!(&quot;it ran&quot;);
 <span class="boring">}
 </span></code></pre></pre>
 </details>

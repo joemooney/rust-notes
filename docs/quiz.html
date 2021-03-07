@@ -185,10 +185,12 @@ So unwrap_or_else is generally for passing a closure which is evaluated only whe
 </span><span class="boring">fn main() {
 </span>assert_eq!(Some(&quot;car&quot;).unwrap_or(&quot;bike&quot;), &quot;car&quot;);
 assert_eq!(None.unwrap_or(&quot;bike&quot;), &quot;bike&quot;);
+assert_eq!(None.unwrap_or_else(&quot;bike&quot;), &quot;bike&quot;);
 let k = 10;
-assert_eq!(Some(4).unwrap_or_else(|| 2 * k), 4);
-assert_eq!(None.unwrap_or_else(|| 2 * k), 20);
-println(&quot;it ran&quot;);
+assert_eq!(Some(4).unwrap_or(|| {println!(&quot;eager ran&quot;); 2 * k}), 4);
+assert_eq!(Some(4).unwrap_or_else(|| {println!(&quot;lazy did not run&quot;); 2 * k}), 4);
+assert_eq!(None.unwrap_or_else(|| {println!(&quot;lazy ran&quot;); 2 * k}), 20);
+println!(&quot;it ran&quot;);
 <span class="boring">}
 </span></code></pre></pre>
 </details>

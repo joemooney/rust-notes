@@ -10,6 +10,9 @@ creating a new empty book.
 
 The contents of the "book" are stored on GitHub.
 It is a "book" because it uses the mdbook crate.
+Beyond mdbook I have added in some bells and whistles such as a preprocessor that makes it easy to generate an interactive quiz.
+
+View the book here:  [https://joemooney.github.io/rust-notes/](https://joemooney.github.io/rust-notes/)
 
 ## Goals
 
@@ -24,7 +27,6 @@ It is a "book" because it uses the mdbook crate.
 
 ## Install/Bootstrap
 
-- View the published book:  [https://joemooney.github.io/rust-notes/](https://joemooney.github.io/rust-notes/)
 - GitHub source code for book: [https://github.com/joemooney/rust-notes/](https://github.com/joemooney/rust-notes/)
 -- View the book locally: [file:///home/jpm/rust/rust-notes/book/index.html](file:///home/jpm/rust/rust-notes/book/index.html)
 
