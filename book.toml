@@ -15,6 +15,9 @@ anymap = "~0.12.1"
 theme = "my-theme"
 default-theme = "coal"
 
+[output.html.playground]
+editable = true
+
 # Flowcharts diagrams etc.
 #[preprocessor.mermaid]
 #renderer = ["html", "epub"]

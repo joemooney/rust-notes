@@ -32,3 +32,7 @@ View the book here:  [https://joemooney.github.io/rust-notes/](https://joemooney
 
 Once you have opened the book the rest of the instructions for
 setting up a new book, editing, publishing etc. are within the book itself.
+
+```rust,editable
+let x:Option<u32> = None.unwrap();
+```
