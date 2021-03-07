@@ -163,6 +163,9 @@
 <li>are an elegant way to add a lot of power to a program, with limited risk</li>
 <li>are well thought out and tightly integrated into the ecosystem </li>
 <li>have few detractors within the Rust community</li>
+<li>can only expand to what is expected at that position (e.g. expression or type definition)</li>
+<li>can never expand to an incomplete or invalid construct (e.g. unbalanced parenthesis). In C you could <code>#define Foo Bar(</code> that is impossible in Rust.</li>
+<li>can be recursive (up to 32 levels by default)</li>
 <li>are actually a big selling point of the language</li>
 </ul>
 </li>

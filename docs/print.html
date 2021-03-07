@@ -173,7 +173,7 @@ creating a new empty book.</p>
 <p>Once you have opened the book the rest of the instructions for
 setting up a new book, editing, publishing etc. are within the book itself.</p>
 <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><sub><span style='color:gray'><em>Last Updated: 2020-10-09 18:41:11</em></span></sub></p>
+<p><sub><span style='color:gray'><em>Last Updated: 2021-03-07 12:30:46</em></span></sub></p>
 <p>This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.</p>
 <p>In order to create this book and play around with Rust, I have used the following tools:</p>
@@ -278,7 +278,13 @@ Coolest --&gt; [</em>]</p>
 <h1><a class="header" href="#cargo" id="cargo">Cargo</a></h1>
 <ul>
 <li>
-<p>To create a new project crate <code>cargo new mycrate</code></p>
+<p>To create a new project crate:</p>
+<ul>
+<li><code>cargo new mycrate</code></li>
+<li><code>cd mycrate</code></li>
+<li>git init .</li>
+<li>hub new</li>
+</ul>
 </li>
 <li>
 <p>To upgrade all your your existing crates you have installed run <code>cargo install-update -a</code></p>
@@ -1135,6 +1141,9 @@ letoverwritten = PrintOnDrop(&quot;drops when scope ends&quot;);
 <li>are an elegant way to add a lot of power to a program, with limited risk</li>
 <li>are well thought out and tightly integrated into the ecosystem </li>
 <li>have few detractors within the Rust community</li>
+<li>can only expand to what is expected at that position (e.g. expression or type definition)</li>
+<li>can never expand to an incomplete or invalid construct (e.g. unbalanced parenthesis). In C you could <code>#define Foo Bar(</code> that is impossible in Rust.</li>
+<li>can be recursive (up to 32 levels by default)</li>
 <li>are actually a big selling point of the language</li>
 </ul>
 </li>
@@ -1269,6 +1278,7 @@ trait T2 {
     fn foo(&amp;self); // object safe
 }
 </code></pre>
+<p><a href="https://stackoverflow.com/questions/26983355/is-there-a-way-to-combine-multiple-traits-in-order-to-define-a-new-trait">Combine multiple traits to for a new trait</a></p>
 <h1><a class="header" href="#iterator" id="iterator">Iterator</a></h1>
 <p>You implement an iterator for some custom collection type you define. Maybe you have a company struct which contains a vector
 list of employees but the list may contain former employees 
@@ -1528,7 +1538,9 @@ assert_eq!(None.unwrap_or_else(|| 2 * k), 20);
 mattgraham has some seriously helpful post on metaprogramming
 <ul>
 <li><a href="https://exphp.github.io/2019/05/05/enums-of-vectors-part-1.html">Enums of Vectors</a></li>
-<li><a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=dd5cf4f3119903f83c46a9587ada1ca9">Debuggable</a> print out text of closure or function name.</li>
+<li><a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=dd5cf4f3119903f83c46a9587ada1ca9">Debuggable</a> print out text of closure or function name.
+https://exphp.github.io/
+https://stevedonovan.github.io/rustifications/</li>
 </ul>
 </li>
 </ul>
