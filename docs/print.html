@@ -185,7 +185,7 @@ setting up a new book, editing, publishing etc. are within the book itself.</p>
 <span class="boring">}
 </span></code></pre></pre>
 <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
-<p><sub><span style='color:gray'><em>Last Updated: 2021-03-07 15:04:32</em></span></sub></p>
+<p><sub><span style='color:gray'><em>Last Updated: 2021-05-02 20:05:06</em></span></sub></p>
 <p>This book contains notes from learning Rust.
 It will also contain notes on how I wrote this book.</p>
 <p>In order to create this book and play around with Rust, I have used the following tools:</p>
@@ -951,7 +951,7 @@ impl P15 {
  
     fn play(&amp;mut self, direction: &amp;Direction) {
         let i = self.get_empty_position();
-        // This is safe because &lt;code&gt;ask_action&lt;/code&gt; only returns legal moves
+        // This is safe because `ask_action` only returns legal moves
         match *direction {
             Direction::Up =&gt; self.board.swap(i, i - 4),
             Direction::Left =&gt; self.board.swap(i, i - 1),
@@ -1117,7 +1117,7 @@ letoverwritten = PrintOnDrop(&quot;drops when scope ends&quot;);
 <li>Rust prefers code to be explicit if memory is heap or stack.</li>
 <li><code>dyn</code> indicates that memory is in the heap.</li>
 <li>For a generic function we need to ensure that the arguments are sized.</li>
-<li>Rust defaults all generic type parameters to be <code>Sized</code>. So <code>fn generic_fn<T>(x: T) -&gt; T { ... }</code> is the equivalent of <code>fn generic_fn&lt;T: Sized&gt;(x: T) -&gt; T { ... }</code>. But <span style='color:yellow'>you may not want that</span>. So <code>fn generic_fn&lt;T: ?Sized&gt;(x: &amp;T) -&gt; u32 { ... }</code> allows you to call generic_fn(&quot;abc&quot;) where <code>T == str</code> which is an unsized type <code>str</code> but the argument is <code>&amp;T</code> which is sized so all is good.</li>
+<li>Rust defaults all generic type parameters to be <code>Sized</code>. So <code>fn generic_fn&lt;T&gt;(x: T) -&gt; T { ... }</code> is the equivalent of <code>fn generic_fn&lt;T: Sized&gt;(x: T) -&gt; T { ... }</code>. But <span style='color:yellow'>you may not want that</span>. So <code>fn generic_fn&lt;T: ?Sized&gt;(x: &amp;T) -&gt; u32 { ... }</code> allows you to call generic_fn(&quot;abc&quot;) where <code>T == str</code> which is an unsized type <code>str</code> but the argument is <code>&amp;T</code> which is sized so all is good.</li>
 <li><code>trait</code> has an implicit <code>?Sized</code> bound on <code>Self</code>.</li>
 <li><code>trait</code>s can be implemented for sized <strong>and</strong> unsized types. For example, any trait which only contains methods which only take and return Self by reference can be implemented for unsized types.</li>
 <li>If you want to return <code>Self</code> by value or accept <code>Self</code> as an argument by value, you need to either bind the trait with <code>Sized</code> or bind the function with <code>Sized</code>: <code>trait A: Sized { ... }</code> or </li>
@@ -1536,7 +1536,8 @@ impl System for MySystem { ... }
 <pre><pre class="playpen"><code class="language-rust editable">
 <span class="boring">#![allow(unused_variables)]
 </span><span class="boring">fn main() {
-</span>use std::io;
+</span>// editable?
+use std::io;
 use std::io::Write;
 let mut s = String::new();
 print!(&quot;Please enter something: &quot;);
@@ -1553,12 +1554,12 @@ _________________________________________________________
 </span>let x:Option&lt;u32&gt; = None.unwrap();
 <span class="boring">}
 </span></code></pre></pre>
-</summary>A:    <span style='color:red'>The program panics!</span> You cannot unwrap() a None, use <code>unwrap_or(...)</code> instead</details>
+</summary>A:    <span style='color:red'>The program panics!</span> You cannot unwrap() a None, use `unwrap_or(...)` instead</details>
 <hr />
-<details><summary>Q:  What is the difference between <code>unwrap_or</code> and <code>unwrap_or_else</code>?
-</summary>A:  <code>unwrap_or_else</code> is lazy, <code>unwrap_or</code> is eager.
-So unwrap_or_else is generally for passing a closure which is evaluated only when needed and unwrap_or is for an existing literal value known at the time of execution. <code>unwrap_or_else</code> expects a <code>Fn<()></code> so you cannot just provide a literal or a simple expression.
-<code>unwrap_or</code> on the otherhand will not accept a closure.
+<details><summary>Q:  What is the difference between <code>unwrap_or</code> and `unwrap_or_else`?
+</summary>A:  `unwrap_or_else` is lazy, `unwrap_or` is eager.
+So unwrap_or_else is generally for passing a closure which is evaluated only when needed and unwrap_or is for an existing literal value known at the time of execution. `unwrap_or_else` expects a `Fn<()>` so you cannot just provide a literal or a simple expression.
+`unwrap_or` on the otherhand will not accept a closure.
 <pre><pre class="playpen"><code class="language-rust editable">
 <span class="boring">#![allow(unused_variables)]
 </span><span class="boring">fn main() {
@@ -1577,7 +1578,7 @@ println!(&quot;it ran&quot;);
 <span class="boring">}
 </span></code></pre></pre>
 </details>
-<details><summary>Q:  What is the another way to think of <code>&mut x</code>?</summary>A:  Ryan Levick says <code>&mut x</code> is more correctly viewed as **exclusive** reference, **not** a mutable reference.</details><h1><a class="header" href="#references-1" id="references-1">References</a></h1>
+<details><summary>Q:  What is the another way to think of `&mut x`?</summary>A:  Ryan Levick says `&mut x` is more correctly viewed as **exclusive** reference, **not** a mutable reference.</details><h1><a class="header" href="#references-1" id="references-1">References</a></h1>
 <ul>
 <li><a href="https://doc.rust-lang.org/book/title-page.html">Rust Book</a></li>
 <li><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></li>

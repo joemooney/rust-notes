@@ -22,10 +22,11 @@ editable = true
 #[preprocessor.mermaid]
 #renderer = ["html", "epub"]
 
-# Given preprocessor-foo: look for mdbook-foo executable
+# Given [preprocessor-foo]: look for mdbook-foo executable
 # Override this with command="..."
-[preprocessor.plus]
+
 # Instead of mdbook-foo executable, run this command
 # command = "python3 /path/to/foo.py"
 # Only run the `foo` preprocessor for the HTML and EPUB renderer
+[preprocessor.plus]
 renderer = ["html", "epub"]

@@ -45,6 +45,7 @@ This is the anchor3.
 ?A
 
 ```rust,editable
+// editable?
 use std::io;
 use std::io::Write;
 let mut s = String::new();

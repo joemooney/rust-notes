@@ -284,7 +284,7 @@ impl P15 {
  
     fn play(&amp;mut self, direction: &amp;Direction) {
         let i = self.get_empty_position();
-        // This is safe because &lt;code&gt;ask_action&lt;/code&gt; only returns legal moves
+        // This is safe because `ask_action` only returns legal moves
         match *direction {
             Direction::Up =&gt; self.board.swap(i, i - 4),
             Direction::Left =&gt; self.board.swap(i, i - 1),
