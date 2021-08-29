@@ -15,6 +15,9 @@
   https://exphp.github.io/
   https://stevedonovan.github.io/rustifications/
   
+## YouTube Tutorials
+- [Chat Server](https://www.youtube.com/watch?v=4DqP57BHaXI)
+
 
 ## Excercises
 

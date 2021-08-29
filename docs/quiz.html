@@ -4,39 +4,33 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Quiz - Rust Notes</title>
-        
-
+        <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Notes on learning Rust programming language.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
-
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
-
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "coal";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "coal";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -81,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Readme</a></li><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">3.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">4.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates.html"><strong aria-hidden="true">5.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">5.1.</strong> anymap</a></li><li class="chapter-item expanded "><a href="crates/notify.html"><strong aria-hidden="true">5.2.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">6.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">7.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">7.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">7.2.</strong> Rust Cookbook</a></li><li class="chapter-item expanded "><a href="samples/rosetta.html"><strong aria-hidden="true">7.3.</strong> Rosetta Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/rosetta/100_doors.html"><strong aria-hidden="true">7.3.1.</strong> 100 Doors</a></li><li class="chapter-item expanded "><a href="samples/rosetta/100_prisoners.html"><strong aria-hidden="true">7.3.2.</strong> 100 Prisoners</a></li><li class="chapter-item expanded "><a href="samples/rosetta/15_puzzle_game.html"><strong aria-hidden="true">7.3.3.</strong> 15 Puzzle Game</a></li><li class="chapter-item expanded "><a href="samples/rosetta/15_puzzle_solver.html"><strong aria-hidden="true">7.3.4.</strong> 15 puzzle solver</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="linux.html"><strong aria-hidden="true">8.</strong> Linux Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="non_rust.html"><strong aria-hidden="true">8.1.</strong> Non-Rust Utilities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="terminator.html"><strong aria-hidden="true">8.1.1.</strong> Terminator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_features.html"><strong aria-hidden="true">9.</strong> Language Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="language_features/destructor.html"><strong aria-hidden="true">9.1.</strong> Destructuror</a></li><li class="chapter-item expanded "><a href="language_features/memory.html"><strong aria-hidden="true">9.2.</strong> Memory</a></li><li class="chapter-item expanded "><a href="language_features/macros.html"><strong aria-hidden="true">9.3.</strong> Macros</a></li><li class="chapter-item expanded "><a href="language_features/trait_objects.html"><strong aria-hidden="true">9.4.</strong> Trait Objectss</a></li><li class="chapter-item expanded "><a href="language_features/traits.html"><strong aria-hidden="true">9.5.</strong> Traits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="language_features/traits/memory.html"><strong aria-hidden="true">9.5.1.</strong> Iterator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_limitations.html"><strong aria-hidden="true">10.</strong> Language Limitations</a></li><li class="chapter-item expanded "><a href="best_practices.html"><strong aria-hidden="true">11.</strong> Best Practices</a></li><li class="chapter-item expanded "><a href="miscellaneous.html"><strong aria-hidden="true">12.</strong> Miscellaneous</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">13.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">14.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="quiz.html" class="active"><strong aria-hidden="true">15.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">16.</strong> References</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Readme</a></li><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">3.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">4.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates/crates.html"><strong aria-hidden="true">5.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/executable-crates/executable-crates.html"><strong aria-hidden="true">5.1.</strong> Executable Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/ripgrep.html"><strong aria-hidden="true">5.1.1.</strong> ripgrep</a></li></ol></li><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">5.2.</strong> anymap</a></li><li class="chapter-item expanded "><a href="crates/notify.html"><strong aria-hidden="true">5.3.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">6.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">7.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">7.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">7.2.</strong> Rust Cookbook</a></li><li class="chapter-item expanded "><a href="samples/rosetta.html"><strong aria-hidden="true">7.3.</strong> Rosetta Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/rosetta/100_doors.html"><strong aria-hidden="true">7.3.1.</strong> 100 Doors</a></li><li class="chapter-item expanded "><a href="samples/rosetta/100_prisoners.html"><strong aria-hidden="true">7.3.2.</strong> 100 Prisoners</a></li><li class="chapter-item expanded "><a href="samples/rosetta/15_puzzle_game.html"><strong aria-hidden="true">7.3.3.</strong> 15 Puzzle Game</a></li><li class="chapter-item expanded "><a href="samples/rosetta/15_puzzle_solver.html"><strong aria-hidden="true">7.3.4.</strong> 15 puzzle solver</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="linux.html"><strong aria-hidden="true">8.</strong> Linux Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="non_rust.html"><strong aria-hidden="true">8.1.</strong> Non-Rust Utilities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="terminator.html"><strong aria-hidden="true">8.1.1.</strong> Terminator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_features.html"><strong aria-hidden="true">9.</strong> Language Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="language_features/destructor.html"><strong aria-hidden="true">9.1.</strong> Destructuror</a></li><li class="chapter-item expanded "><a href="language_features/memory.html"><strong aria-hidden="true">9.2.</strong> Memory</a></li><li class="chapter-item expanded "><a href="language_features/macros.html"><strong aria-hidden="true">9.3.</strong> Macros</a></li><li class="chapter-item expanded "><a href="language_features/trait_objects.html"><strong aria-hidden="true">9.4.</strong> Trait Objectss</a></li><li class="chapter-item expanded "><a href="language_features/traits.html"><strong aria-hidden="true">9.5.</strong> Traits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="language_features/traits/memory.html"><strong aria-hidden="true">9.5.1.</strong> Iterator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_limitations.html"><strong aria-hidden="true">10.</strong> Language Limitations</a></li><li class="chapter-item expanded "><a href="best_practices.html"><strong aria-hidden="true">11.</strong> Best Practices</a></li><li class="chapter-item expanded "><a href="miscellaneous.html"><strong aria-hidden="true">12.</strong> Miscellaneous</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">13.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">14.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="quiz.html" class="active"><strong aria-hidden="true">15.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">16.</strong> References</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -89,7 +83,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -106,11 +99,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Rust Notes</h1>
@@ -119,14 +110,12 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -134,8 +123,6 @@
                         </ul>
                     </div>
                 </div>
-                
-
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -147,8 +134,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#quiz" id="quiz">Quiz</a></h1>
-<h2><a class="header" href="#option" id="option">Option</a></h2>
+                        <h1 id="quiz"><a class="header" href="#quiz">Quiz</a></h1>
+<h2 id="option"><a class="header" href="#option">Option</a></h2>
 <hr />
 <details><summary>Q:  Can you implement a trait on a type you did not define
 </summary>A:  <span style='color:green'>Yes!</span> But you cannot implement an external trait (one that you did not define) on an external type (one that you did not define).</details>
@@ -157,69 +144,46 @@
 <p><a href="https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=e9cc8920b712c93f0c09c1fe56f831b8">one</a></p>
 <p><a href="https://gist.github.com/e9cc8920b712c93f0c09c1fe56f831b8">two</a></p>
 <p>Here is a anchor1:</p>
-<pre><pre class="playpen"><code class="language-rust no_run noplayground">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>struct Paddle {
+<pre><code class="language-rust no_run noplayground">struct Paddle {
     hello: f32,
 }
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>Here is a anchor2:</p>
-<pre><pre class="playpen"><code class="language-rust no_run noplayground">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>impl System for MySystem { ... }
-<span class="boring">}
-</span></code></pre></pre>
+<pre><code class="language-rust no_run noplayground">impl System for MySystem { ... }
+</code></pre>
 <p>This is the anchor3.</p>
-<pre><pre class="playpen"><code class="language-rust no_run noplayground">
-<span class="boring">#![allow(unused_variables)]
-</span>
-<span class="boring">fn main() {
-</span>struct Paddle {
+<pre><code class="language-rust no_run noplayground">
+struct Paddle {
     hello: f32,
 }
 
 impl System for MySystem { ... }
 
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <script src="https://gist.github.com/joemooney/815626d5cd658d191d10ae48d4803047.js" data-gist-hide-line-numbers="true"></script>
 </details>
 <details><summary>Q:  How to read a line from stdin?
 </summary>A: 
-<pre><pre class="playpen"><code class="language-rust editable">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>// editable?
+<pre><pre class="playground"><code class="language-rust editable">// editable?
 use std::io;
 use std::io::Write;
 let mut s = String::new();
 print!(&quot;Please enter something: &quot;);
 io::stdin().read_line(&amp;mut s).expect(&quot;Failed to read line from stdin&quot;);
 println!(&quot;You entered: {}&quot;, s);
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre></pre>
 </details>
 _________________________________________________________
 <details><summary>Q:  What happens here upon <code>unwrap</code>?
-<pre><pre class="playpen"><code class="language-rust editable">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>let x:Option&lt;u32&gt; = None.unwrap();
-<span class="boring">}
-</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust editable">let x:Option&lt;u32&gt; = None.unwrap();
+</code></pre></pre>
 </summary>A:    <span style='color:red'>The program panics!</span> You cannot unwrap() a None, use `unwrap_or(...)` instead</details>
 <hr />
 <details><summary>Q:  What is the difference between <code>unwrap_or</code> and `unwrap_or_else`?
 </summary>A:  `unwrap_or_else` is lazy, `unwrap_or` is eager.
 So unwrap_or_else is generally for passing a closure which is evaluated only when needed and unwrap_or is for an existing literal value known at the time of execution. `unwrap_or_else` expects a `Fn<()>` so you cannot just provide a literal or a simple expression.
 `unwrap_or` on the otherhand will not accept a closure.
-<pre><pre class="playpen"><code class="language-rust editable">
-<span class="boring">#![allow(unused_variables)]
-</span><span class="boring">fn main() {
-</span>fn foo(k: u32) -&gt; u32 {
+<pre><pre class="playground"><code class="language-rust editable">fn foo(k: u32) -&gt; u32 {
     println!(&quot;eager ran&quot;);
     2 * k
 }
@@ -231,75 +195,50 @@ assert_eq!(Some(4).unwrap_or(foo(k)), 4);
 assert_eq!(Some(4).unwrap_or_else(|| {println!(&quot;lazy did not run&quot;); 2 * k}), 4);
 assert_eq!(None.unwrap_or_else(|| {println!(&quot;lazy ran&quot;); 2 * k}), 20);
 println!(&quot;it ran&quot;);
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre></pre>
 </details>
 <details><summary>Q:  What is the another way to think of `&mut x`?</summary>A:  Ryan Levick says `&mut x` is more correctly viewed as **exclusive** reference, **not** a mutable reference.</details>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="troubleshooting.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
-
-                        
                             <a rel="next" href="references.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="troubleshooting.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
-
-                
                     <a rel="next" href="references.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
-
-        
-
-        
-        
-        
         <script type="text/javascript">
-            window.playpen_copyable = true;
+            window.playground_copyable = true;
         </script>
-        
-
-        
-
-        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
         <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
-
-        
-
     </body>
 </html>

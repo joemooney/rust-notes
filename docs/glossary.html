@@ -4,39 +4,33 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Glossary - Rust Notes</title>
-        
-
+        <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Notes on learning Rust programming language.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
-
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
-
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "coal";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "coal";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -81,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Readme</a></li><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">3.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">4.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates.html"><strong aria-hidden="true">5.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">5.1.</strong> anymap</a></li><li class="chapter-item expanded "><a href="crates/notify.html"><strong aria-hidden="true">5.2.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">6.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">7.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">7.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">7.2.</strong> Rust Cookbook</a></li><li class="chapter-item expanded "><a href="samples/rosetta.html"><strong aria-hidden="true">7.3.</strong> Rosetta Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/rosetta/100_doors.html"><strong aria-hidden="true">7.3.1.</strong> 100 Doors</a></li><li class="chapter-item expanded "><a href="samples/rosetta/100_prisoners.html"><strong aria-hidden="true">7.3.2.</strong> 100 Prisoners</a></li><li class="chapter-item expanded "><a href="samples/rosetta/15_puzzle_game.html"><strong aria-hidden="true">7.3.3.</strong> 15 Puzzle Game</a></li><li class="chapter-item expanded "><a href="samples/rosetta/15_puzzle_solver.html"><strong aria-hidden="true">7.3.4.</strong> 15 puzzle solver</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="linux.html"><strong aria-hidden="true">8.</strong> Linux Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="non_rust.html"><strong aria-hidden="true">8.1.</strong> Non-Rust Utilities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="terminator.html"><strong aria-hidden="true">8.1.1.</strong> Terminator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_features.html"><strong aria-hidden="true">9.</strong> Language Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="language_features/destructor.html"><strong aria-hidden="true">9.1.</strong> Destructuror</a></li><li class="chapter-item expanded "><a href="language_features/memory.html"><strong aria-hidden="true">9.2.</strong> Memory</a></li><li class="chapter-item expanded "><a href="language_features/macros.html"><strong aria-hidden="true">9.3.</strong> Macros</a></li><li class="chapter-item expanded "><a href="language_features/trait_objects.html"><strong aria-hidden="true">9.4.</strong> Trait Objectss</a></li><li class="chapter-item expanded "><a href="language_features/traits.html"><strong aria-hidden="true">9.5.</strong> Traits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="language_features/traits/memory.html"><strong aria-hidden="true">9.5.1.</strong> Iterator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_limitations.html"><strong aria-hidden="true">10.</strong> Language Limitations</a></li><li class="chapter-item expanded "><a href="best_practices.html"><strong aria-hidden="true">11.</strong> Best Practices</a></li><li class="chapter-item expanded "><a href="miscellaneous.html"><strong aria-hidden="true">12.</strong> Miscellaneous</a></li><li class="chapter-item expanded "><a href="glossary.html" class="active"><strong aria-hidden="true">13.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">14.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="quiz.html"><strong aria-hidden="true">15.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">16.</strong> References</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Readme</a></li><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="create_book.html"><strong aria-hidden="true">3.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="cargo.html"><strong aria-hidden="true">4.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="crates/crates.html"><strong aria-hidden="true">5.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/executable-crates/executable-crates.html"><strong aria-hidden="true">5.1.</strong> Executable Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crates/ripgrep.html"><strong aria-hidden="true">5.1.1.</strong> ripgrep</a></li></ol></li><li class="chapter-item expanded "><a href="crates/anymap.html"><strong aria-hidden="true">5.2.</strong> anymap</a></li><li class="chapter-item expanded "><a href="crates/notify.html"><strong aria-hidden="true">5.3.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="github_init.html"><strong aria-hidden="true">6.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="sample_code.html"><strong aria-hidden="true">7.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/hello_world.html"><strong aria-hidden="true">7.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="samples/rust_cookbook.html"><strong aria-hidden="true">7.2.</strong> Rust Cookbook</a></li><li class="chapter-item expanded "><a href="samples/rosetta.html"><strong aria-hidden="true">7.3.</strong> Rosetta Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="samples/rosetta/100_doors.html"><strong aria-hidden="true">7.3.1.</strong> 100 Doors</a></li><li class="chapter-item expanded "><a href="samples/rosetta/100_prisoners.html"><strong aria-hidden="true">7.3.2.</strong> 100 Prisoners</a></li><li class="chapter-item expanded "><a href="samples/rosetta/15_puzzle_game.html"><strong aria-hidden="true">7.3.3.</strong> 15 Puzzle Game</a></li><li class="chapter-item expanded "><a href="samples/rosetta/15_puzzle_solver.html"><strong aria-hidden="true">7.3.4.</strong> 15 puzzle solver</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="linux.html"><strong aria-hidden="true">8.</strong> Linux Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="non_rust.html"><strong aria-hidden="true">8.1.</strong> Non-Rust Utilities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="terminator.html"><strong aria-hidden="true">8.1.1.</strong> Terminator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_features.html"><strong aria-hidden="true">9.</strong> Language Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="language_features/destructor.html"><strong aria-hidden="true">9.1.</strong> Destructuror</a></li><li class="chapter-item expanded "><a href="language_features/memory.html"><strong aria-hidden="true">9.2.</strong> Memory</a></li><li class="chapter-item expanded "><a href="language_features/macros.html"><strong aria-hidden="true">9.3.</strong> Macros</a></li><li class="chapter-item expanded "><a href="language_features/trait_objects.html"><strong aria-hidden="true">9.4.</strong> Trait Objectss</a></li><li class="chapter-item expanded "><a href="language_features/traits.html"><strong aria-hidden="true">9.5.</strong> Traits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="language_features/traits/memory.html"><strong aria-hidden="true">9.5.1.</strong> Iterator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="language_limitations.html"><strong aria-hidden="true">10.</strong> Language Limitations</a></li><li class="chapter-item expanded "><a href="best_practices.html"><strong aria-hidden="true">11.</strong> Best Practices</a></li><li class="chapter-item expanded "><a href="miscellaneous.html"><strong aria-hidden="true">12.</strong> Miscellaneous</a></li><li class="chapter-item expanded "><a href="glossary.html" class="active"><strong aria-hidden="true">13.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="troubleshooting.html"><strong aria-hidden="true">14.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="quiz.html"><strong aria-hidden="true">15.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">16.</strong> References</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -89,7 +83,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -106,11 +99,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Rust Notes</h1>
@@ -119,14 +110,12 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -134,8 +123,6 @@
                         </ul>
                     </div>
                 </div>
-                
-
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -147,42 +134,42 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#glossary" id="glossary">Glossary</a></h1>
-<h3><a class="header" href="#a-hrefhttpsdocrust-langorgnomiconindexhtmlrustonomicoma" id="a-hrefhttpsdocrust-langorgnomiconindexhtmlrustonomicoma"><a href="https://doc.rust-lang.org/nomicon/index.html">Rustonomicom</a></a></h3>
+                        <h1 id="glossary"><a class="header" href="#glossary">Glossary</a></h1>
+<h3 id="a-hrefhttpsdocrust-langorgnomiconindexhtmlrustonomicoma"><a class="header" href="#a-hrefhttpsdocrust-langorgnomiconindexhtmlrustonomicoma"><a href="https://doc.rust-lang.org/nomicon/index.html">Rustonomicom</a></a></h3>
 <p>A book about writing unsafe code and the inner guts of Rust. |</p>
-<h3><a class="header" href="#block" id="block">block</a></h3>
+<h3 id="block"><a class="header" href="#block">block</a></h3>
 <p>A block is a set of statements enclosed in braces {...}.
 A block is an <em>expression</em>.
 Before the statements where may be <em>inner attributes</em>.</p>
-<h3><a class="header" href="#attributes" id="attributes">attributes</a></h3>
+<h3 id="attributes"><a class="header" href="#attributes">attributes</a></h3>
 <pre><code>- Built-in attributes
 - Macro attributes
 - Derive macro helper attributes
 - Tool attributes
 </code></pre>
-<h3><a class="header" href="#inner-attributes" id="inner-attributes">inner attributes</a></h3>
+<h3 id="inner-attributes"><a class="header" href="#inner-attributes">inner attributes</a></h3>
 <p>Inner attributes <code>#![allow(unused_variables)]</code> apply to the item containing the attribute. Within a block this means the block may contain unused variables.</p>
-<h3><a class="header" href="#outer-attributes" id="outer-attributes">outer attributes</a></h3>
+<h3 id="outer-attributes"><a class="header" href="#outer-attributes">outer attributes</a></h3>
 <p>Outer attributes <code>#[test]</code> apply to the <em>thing</em> that follows the attribute.</p>
-<h3><a class="header" href="#statement" id="statement">Statement</a></h3>
+<h3 id="statement"><a class="header" href="#statement">Statement</a></h3>
 <p>A statement is a component of a block, which is in turn a component of an <em>outer expression</em> or <em>function</em>. Rust has two kinds of statement: declaration statements and expression statements.</p>
-<h3><a class="header" href="#expression-statement" id="expression-statement">expression statement</a></h3>
+<h3 id="expression-statement"><a class="header" href="#expression-statement">expression statement</a></h3>
 <p>An <em>expression statement</em> is one that evaluates an <em>expression</em> and ignores its result.</p>
-<h3><a class="header" href="#expression" id="expression">expression</a></h3>
+<h3 id="expression"><a class="header" href="#expression">expression</a></h3>
 <p>An expression may have two roles: it always produces a value, and it may have effects (otherwise known as &quot;side effects&quot;). An expression evaluates to a value, and has effects during evaluation. Many expressions contain sub-expressions (operands).</p>
-<h3><a class="header" href="#declaration-statements" id="declaration-statements">Declaration statements</a></h3>
+<h3 id="declaration-statements"><a class="header" href="#declaration-statements">Declaration statements</a></h3>
 <p>A declaration statement is one that introduces one or more names into the enclosing statement block. The declared names may denote new variables or new items.
 The two kinds of declaration statements are item declarations and let statements.</p>
-<h3><a class="header" href="#monomorphicpolymorphic" id="monomorphicpolymorphic">monomorphic/polymorphic</a></h3>
+<h3 id="monomorphicpolymorphic"><a class="header" href="#monomorphicpolymorphic">monomorphic/polymorphic</a></h3>
 <p>A <em>generic</em> function is <em>monomorphic</em>. A function taking a <em>trait object</em> as an argument is <em>polymorphic</em>. 
 There is a separate function generated by the compiler for each different type used to call a <em>monomorphic</em> function.
 There is just one <em>polymorphic</em> function generated by the compiler for a <em>polymorphic</em> function and <em>static dispatch</em> is employed at runtime to call <em>concrete</em> methods of the abstract <em>trait object</em>.</p>
 <p>The <em>monomorphic</em> function is like a C++ templated function.
 The <em>polymorphic</em> function is like a C++ base class virtual method or Java interface.
 <em>monomorphic</em> is more efficient and can be inlined.</p>
-<h3><a class="header" href="#function-pointer" id="function-pointer">function pointer</a></h3>
+<h3 id="function-pointer"><a class="header" href="#function-pointer">function pointer</a></h3>
 <p>Function pointer types, written using the fn keyword, refer to a function whose identity is not necessarily known at compile-time.</p>
-<pre><pre class="playpen"><code class="language-rust">fn add_one(x: i32) -&gt; i32 {
+<pre><pre class="playground"><code class="language-rust">fn add_one(x: i32) -&gt; i32 {
     x + 1
 }
 fn do_twice(f: fn(i32) -&gt; i32, arg: i32) -&gt; i32 {
@@ -194,57 +181,57 @@ fn main() {
 }
 </code></pre></pre>
 <p>Unlike <em>closures</em>, fn is a <em>type</em> rather than a <em>trait</em>, so we specify fn as the <em>parameter type</em> directly rather than declaring a <em>generic type parameter</em> with one of the Fn traits as a <em>trait bound</em>.</p>
-<h3><a class="header" href="#shadowshadowed-variable" id="shadowshadowed-variable">shadow/shadowed variable</a></h3>
+<h3 id="shadowshadowed-variable"><a class="header" href="#shadowshadowed-variable">shadow/shadowed variable</a></h3>
 <p>A different variable declared with the same name, the first is no longer accessible. The first is not dropped until out of scope. The second declaration does not trigger a drop.</p>
-<h3><a class="header" href="#dropdrop-scope" id="dropdrop-scope">drop/drop scope</a></h3>
+<h3 id="dropdrop-scope"><a class="header" href="#dropdrop-scope">drop/drop scope</a></h3>
 <p>A variable is dropped when it goes out of scope. This is called the variables <em>drop scope</em>. <em>Drop</em> is the trait which can be implemented to control behavior when dropped.</p>
-<h3><a class="header" href="#bindbound" id="bindbound">bind/bound</a></h3>
+<h3 id="bindbound"><a class="header" href="#bindbound">bind/bound</a></h3>
 <p>A variable is <em>bound</em> to a value. |
 A module is <em>bound to the current scope</em> via the <code>use</code> statement. <code>use p::q::{r, s}</code> both <em>r</em> and <em>s</em> are bound in the current but not <em>q</em>. Use <code>use p::q::{self, r, s}</code> to also bind <em>q</em> in the current but not <em>q</em>.</p>
-<h3><a class="header" href="#enumeration" id="enumeration">Enumeration</a></h3>
+<h3 id="enumeration"><a class="header" href="#enumeration">Enumeration</a></h3>
 <p>An <em>enumeration</em> or <em>enum</em> is a type that can be one of multiple <em>variants</em>.</p>
-<h3><a class="header" href="#variant" id="variant">variant</a></h3>
+<h3 id="variant"><a class="header" href="#variant">variant</a></h3>
 <p>A <em>variant</em> is one of the types an <em>enumeration</em> can take.</p>
-<h3><a class="header" href="#crate" id="crate">crate</a></h3>
+<h3 id="crate"><a class="header" href="#crate">crate</a></h3>
 <p>A crate is a collection of Rust source files. It is what <code>cargo build</code> builds. It can either be a <em>library crate</em> or a <em>binary crate</em> and is specified using a <em>Cargo.toml</em> file.</p>
-<h3><a class="header" href="#library-crate" id="library-crate">library crate</a></h3>
+<h3 id="library-crate"><a class="header" href="#library-crate">library crate</a></h3>
 <p>A <em>library crate</em> </p>
-<h3><a class="header" href="#binary-crate" id="binary-crate">binary crate</a></h3>
+<h3 id="binary-crate"><a class="header" href="#binary-crate">binary crate</a></h3>
 <p>A <em>binary crate</em> is an executable.</p>
-<h3><a class="header" href="#match-expression" id="match-expression">match expression</a></h3>
+<h3 id="match-expression"><a class="header" href="#match-expression">match expression</a></h3>
 <p>A <code>match</code> statement is an expression. It has a value to match against and a number of <em>arms</em> each with a pattern and code to execute if the pattern matches.</p>
-<h3><a class="header" href="#expression-1" id="expression-1">expression</a></h3>
+<h3 id="expression-1"><a class="header" href="#expression-1">expression</a></h3>
 <p>An <em>expression</em> is a statement that returns a value.</p>
-<h3><a class="header" href="#currying" id="currying">currying</a></h3>
+<h3 id="currying"><a class="header" href="#currying">currying</a></h3>
 <p>Instead of a function with multiple arguments, you break it down into several functions that each take a single argument and return a function taking a single argument. For the last argument you have a function which takes the final argument and returns the desired value. Each step of the currying process is basically taking a function and substituting the variable with the corresponding argument resulting in a new function. This is cool since you can generate functions at run time and store as objects and pass as arguments etc. Currying allows for easier formal proofs of program correctness.</p>
-<h3><a class="header" href="#method" id="method">method</a></h3>
+<h3 id="method"><a class="header" href="#method">method</a></h3>
 <p>A <em>method</em> is a function defined in the <em>impl</em> block for a type.
 A method is called via <code>my_object.method_name(args, ...)</code></p>
-<h3><a class="header" href="#semantic-versioning" id="semantic-versioning">Semantic Versioning</a></h3>
+<h3 id="semantic-versioning"><a class="header" href="#semantic-versioning">Semantic Versioning</a></h3>
 <p>Semantic versioning or <em>semver</em> is of the form <strong>x.y.z</strong> where <em>x</em> is the major version for incompatible API updates, <em>y</em> is for backwards compatible functionality updates, and <em>z</em> version when you make backwards compatible bug fixes.</p>
-<h3><a class="header" href="#iterator-adapters" id="iterator-adapters">iterator adapters</a></h3>
+<h3 id="iterator-adapters"><a class="header" href="#iterator-adapters">iterator adapters</a></h3>
 <p>Functions which take an Iterator and return another Iterator are often called 'iterator adapters', as they're a form of the 'adapter pattern'.</p>
-<h3><a class="header" href="#iterator" id="iterator">iterator</a></h3>
+<h3 id="iterator"><a class="header" href="#iterator">iterator</a></h3>
 <p>Iterator is a trait with method <code>next</code> which returns <code>Some(Item)</code> as it iterates thru Items and returns <code>None</code> when there are no more items.</p>
-<h3><a class="header" href="#method-1" id="method-1">method</a></h3>
+<h3 id="method-1"><a class="header" href="#method-1">method</a></h3>
 <p>Methods are functions attached to objects which have access to the data of the object and its other methods via the <code>self</code> keyword and defined in an <code>impl</code> block.</p>
 <p>A method may either be a <code>static</code> or and <code>instance</code> method.</p>
-<h3><a class="header" href="#static-method" id="static-method">static method</a></h3>
+<h3 id="static-method"><a class="header" href="#static-method">static method</a></h3>
 <p>A static method does not have <code>self</code> as the first parameter.</p>
-<h3><a class="header" href="#instance-method" id="instance-method">instance method</a></h3>
+<h3 id="instance-method"><a class="header" href="#instance-method">instance method</a></h3>
 <p>An instance method has <code>self</code> as the first parameter.</p>
-<h3><a class="header" href="#external-traitexternal-type" id="external-traitexternal-type">external trait/external type</a></h3>
+<h3 id="external-traitexternal-type"><a class="header" href="#external-traitexternal-type">external trait/external type</a></h3>
 <p>A trait or type that is not defined in the current module. You cannot implement an external trait on an external type but you can implement an external trait on a type you defined and someone
 else can implement a trait defined in your module in one of their modules on their own type.</p>
-<h2><a class="header" href="#cargo" id="cargo">cargo</a></h2>
+<h2 id="cargo"><a class="header" href="#cargo">cargo</a></h2>
 <p>Rust's package manager and build system. <code>cargo --version</code> <code>cargo build</code> <code>cargo run</code> <code>cargo install</code> <code>cargo check</code> <code>cargo new {name}</code></p>
-<h2><a class="header" href="#rustup" id="rustup">rustup</a></h2>
+<h2 id="rustup"><a class="header" href="#rustup">rustup</a></h2>
 <p>The command to upgrade your Rust compiler: <code>rustup update</code></p>
-<h2><a class="header" href="#rustc" id="rustc">rustc</a></h2>
+<h2 id="rustc"><a class="header" href="#rustc">rustc</a></h2>
 <p>The rust compiler, <code>rustc --version</code></p>
-<h2><a class="header" href="#fully-qualified-method-calls" id="fully-qualified-method-calls">Fully Qualified Method Calls</a></h2>
+<h2 id="fully-qualified-method-calls"><a class="header" href="#fully-qualified-method-calls">Fully Qualified Method Calls</a></h2>
 <p><code>&lt;str as ToString&gt;::to_string(&quot;hi)</code> is the fully qualified method call for qualified method call <code>ToString::to_string(&quot;hi&quot;)</code> or <code>str::to_string(&quot;hi&quot;)</code>, all of which equate to the simplest form <code>&quot;hi&quot;.to_string()</code></p>
-<h2><a class="header" href="#object-safe" id="object-safe">object safe</a></h2>
+<h2 id="object-safe"><a class="header" href="#object-safe">object safe</a></h2>
 <p>A trait is object safe if the concrete is reffered by <code>&amp;self</code> reference tnd not by <code>self</code> value.</p>
 <pre><code>trait T1 {
     fn foo(self); // not object safe,
@@ -255,12 +242,12 @@ trait T2 {
     fn foo(&amp;self); // object safe
 }
 </code></pre>
-<h2><a class="header" href="#dynamic-dispatch" id="dynamic-dispatch">Dynamic Dispatch</a></h2>
+<h2 id="dynamic-dispatch"><a class="header" href="#dynamic-dispatch">Dynamic Dispatch</a></h2>
 <p>The concrete type of an object is unknown at compile time.</p>
 <pre><code>fn foo(o: dyn MyTrait) {  // this will not compile, unknown size
 }
 </code></pre>
-<h2><a class="header" href="#monomorphism" id="monomorphism">Monomorphism</a></h2>
+<h2 id="monomorphism"><a class="header" href="#monomorphism">Monomorphism</a></h2>
 <pre><code>fn foo(o: impl MyTrait) {  // this will compile
 }
 </code></pre>
@@ -269,67 +256,43 @@ trait T2 {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="miscellaneous.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
-
-                        
                             <a rel="next" href="troubleshooting.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="miscellaneous.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
-
-                
                     <a rel="next" href="troubleshooting.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
-
-        
-
-        
-        
-        
         <script type="text/javascript">
-            window.playpen_copyable = true;
+            window.playground_copyable = true;
         </script>
-        
-
-        
-
-        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
         <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
-
-        
-
     </body>
 </html>

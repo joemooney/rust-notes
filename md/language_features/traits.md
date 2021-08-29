@@ -1,5 +1,17 @@
 # Traits
 
+Per https://doc.rust-lang.org/rust-by-example/trait.html, a trait is a collection of methods defined for an unknown type: Self. They can access other methods declared in the same trait.
+
+?Q
+Is a trait is type?
+
+?A
+Yes
+
+?E
+
+
+
 ## Object safety
 A trait is *object safe* if all the methods defined in the trait have the following properties:
     - The return type isn’t Self.

@@ -3,7 +3,7 @@
 Create a markdown book with mdbook crate.
 This is the crate used to create the official 
 Rust Programming Book.
-It is also the crate I used to this book.
+It is also the crate used to this book.
 mdbook allows you to add preprocessors so that you can have your own custom markdown extensions (like I am doing).
 
 - cargo install mdbook
@@ -11,14 +11,13 @@ mdbook allows you to add preprocessors so that you can have your own custom mark
 - cd mybook
 - mdbook init
 
-For my preprocessor I googled and found [mdbook-toc](https://github.com/badboy/mdbook-toc/blob/master/Cargo.toml)
-which I cloned and gutted to create my own preprocessor.
-If I want a Table of Contents, I will use mdbook-toc.
-For my preprocessor so far all I need is just a simple
-global search an replace.
-Preprocessors are powerful, they have access to the entire parsed token tree. This allows you much finer grain control over the substitutions.
+An example preprocessor is [mdbook-toc](https://github.com/badboy/mdbook-toc/blob/master/Cargo.toml)
+This book's git repo include a preprocessor that adds question/answer and other capabilities.
+For a Table of Contents, use mdbook-toc.
 
-To publish the book I use a simple shell script:
+Preprocessors are powerful, they have access to the entire parsed token tree. This allows for finer grain control over changes.
+
+To publish this book there is a simple shell script the outline of which is:
 
 ```bash
 

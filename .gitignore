@@ -1,4 +1,5 @@
 .history/**
+.rgignore
 book
 md/README.md
 
