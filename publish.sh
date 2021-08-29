@@ -42,8 +42,12 @@ postprocess() {
 
 changed() {
   changes=$(git  diff  -U0 docs | egrep -v '^(\+\+\+|---) ' | egrep '^[+-]' | egrep -v 'Last Updated:' | wc -l)
-  [ $changes -eq 0 ] && echo "No Changes" && return 1
+  [ $changes -eq 0 -a $opt_force -eq 0 ] && echo "No Changes" && return 1
   return 0
+}
+
+repo_url() {
+    git config --get remote.origin.url | sed 's,:,/,;s,git@,https://,;s/.git$//'
 }
 
 publish() { 
@@ -59,7 +63,8 @@ publish() {
     git commit -am "$comment"                             && \
     git push                                              && \
     echo "Published: $url"                                && \
-    echo "This takes a few minutes for GitHub to update"
+    echo "This takes a few minutes for GitHub to update"  && \
+    repo_url
 }
 
 ####################################################################
