@@ -28,6 +28,8 @@
   - [Trait Objectss](./language_features/trait_objects.md)
   - [Traits](./language_features/traits.md)
     - [Iterator](./language_features/traits/memory.md)
+  - [Enums](./language_features/enums.md)
+  - [Object Orientation](./language_features/oop.md)
 - [Language Limitations](./language_limitations.md)
 - [Best Practices](./best_practices.md)
 - [Miscellaneous](./miscellaneous.md)

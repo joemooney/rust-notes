@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Traits - Rust Notes</title>
+        <title>Object Orientation - Rust Notes</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Notes on learning Rust programming language.">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Readme</a></li><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../create_book.html"><strong aria-hidden="true">3.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="../cargo.html"><strong aria-hidden="true">4.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../crates/crates.html"><strong aria-hidden="true">5.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../crates/executable-crates/executable-crates.html"><strong aria-hidden="true">5.1.</strong> Executable Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../crates/ripgrep.html"><strong aria-hidden="true">5.1.1.</strong> ripgrep</a></li></ol></li><li class="chapter-item expanded "><a href="../crates/anymap.html"><strong aria-hidden="true">5.2.</strong> anymap</a></li><li class="chapter-item expanded "><a href="../crates/notify.html"><strong aria-hidden="true">5.3.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="../github_init.html"><strong aria-hidden="true">6.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="../sample_code.html"><strong aria-hidden="true">7.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../samples/hello_world.html"><strong aria-hidden="true">7.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../samples/rust_cookbook.html"><strong aria-hidden="true">7.2.</strong> Rust Cookbook</a></li><li class="chapter-item expanded "><a href="../samples/rosetta.html"><strong aria-hidden="true">7.3.</strong> Rosetta Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../samples/rosetta/100_doors.html"><strong aria-hidden="true">7.3.1.</strong> 100 Doors</a></li><li class="chapter-item expanded "><a href="../samples/rosetta/100_prisoners.html"><strong aria-hidden="true">7.3.2.</strong> 100 Prisoners</a></li><li class="chapter-item expanded "><a href="../samples/rosetta/15_puzzle_game.html"><strong aria-hidden="true">7.3.3.</strong> 15 Puzzle Game</a></li><li class="chapter-item expanded "><a href="../samples/rosetta/15_puzzle_solver.html"><strong aria-hidden="true">7.3.4.</strong> 15 puzzle solver</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../linux.html"><strong aria-hidden="true">8.</strong> Linux Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../non_rust.html"><strong aria-hidden="true">8.1.</strong> Non-Rust Utilities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../terminator.html"><strong aria-hidden="true">8.1.1.</strong> Terminator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../language_features.html"><strong aria-hidden="true">9.</strong> Language Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../language_features/destructor.html"><strong aria-hidden="true">9.1.</strong> Destructuror</a></li><li class="chapter-item expanded "><a href="../language_features/memory.html"><strong aria-hidden="true">9.2.</strong> Memory</a></li><li class="chapter-item expanded "><a href="../language_features/macros.html"><strong aria-hidden="true">9.3.</strong> Macros</a></li><li class="chapter-item expanded "><a href="../language_features/trait_objects.html"><strong aria-hidden="true">9.4.</strong> Trait Objectss</a></li><li class="chapter-item expanded "><a href="../language_features/traits.html" class="active"><strong aria-hidden="true">9.5.</strong> Traits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../language_features/traits/memory.html"><strong aria-hidden="true">9.5.1.</strong> Iterator</a></li></ol></li><li class="chapter-item expanded "><a href="../language_features/enums.html"><strong aria-hidden="true">9.6.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../language_features/oop.html"><strong aria-hidden="true">9.7.</strong> Object Orientation</a></li></ol></li><li class="chapter-item expanded "><a href="../language_limitations.html"><strong aria-hidden="true">10.</strong> Language Limitations</a></li><li class="chapter-item expanded "><a href="../best_practices.html"><strong aria-hidden="true">11.</strong> Best Practices</a></li><li class="chapter-item expanded "><a href="../miscellaneous.html"><strong aria-hidden="true">12.</strong> Miscellaneous</a></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">13.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="../troubleshooting.html"><strong aria-hidden="true">14.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="../quiz.html"><strong aria-hidden="true">15.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">16.</strong> References</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Readme</a></li><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../create_book.html"><strong aria-hidden="true">3.</strong> Creating a Book</a></li><li class="chapter-item expanded "><a href="../cargo.html"><strong aria-hidden="true">4.</strong> Cargo</a></li><li class="chapter-item expanded "><a href="../crates/crates.html"><strong aria-hidden="true">5.</strong> Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../crates/executable-crates/executable-crates.html"><strong aria-hidden="true">5.1.</strong> Executable Crates</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../crates/ripgrep.html"><strong aria-hidden="true">5.1.1.</strong> ripgrep</a></li></ol></li><li class="chapter-item expanded "><a href="../crates/anymap.html"><strong aria-hidden="true">5.2.</strong> anymap</a></li><li class="chapter-item expanded "><a href="../crates/notify.html"><strong aria-hidden="true">5.3.</strong> notify</a></li></ol></li><li class="chapter-item expanded "><a href="../github_init.html"><strong aria-hidden="true">6.</strong> Storing on GitHub</a></li><li class="chapter-item expanded "><a href="../sample_code.html"><strong aria-hidden="true">7.</strong> Sample Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../samples/hello_world.html"><strong aria-hidden="true">7.1.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../samples/rust_cookbook.html"><strong aria-hidden="true">7.2.</strong> Rust Cookbook</a></li><li class="chapter-item expanded "><a href="../samples/rosetta.html"><strong aria-hidden="true">7.3.</strong> Rosetta Code</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../samples/rosetta/100_doors.html"><strong aria-hidden="true">7.3.1.</strong> 100 Doors</a></li><li class="chapter-item expanded "><a href="../samples/rosetta/100_prisoners.html"><strong aria-hidden="true">7.3.2.</strong> 100 Prisoners</a></li><li class="chapter-item expanded "><a href="../samples/rosetta/15_puzzle_game.html"><strong aria-hidden="true">7.3.3.</strong> 15 Puzzle Game</a></li><li class="chapter-item expanded "><a href="../samples/rosetta/15_puzzle_solver.html"><strong aria-hidden="true">7.3.4.</strong> 15 puzzle solver</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../linux.html"><strong aria-hidden="true">8.</strong> Linux Environment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../non_rust.html"><strong aria-hidden="true">8.1.</strong> Non-Rust Utilities</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../terminator.html"><strong aria-hidden="true">8.1.1.</strong> Terminator</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../language_features.html"><strong aria-hidden="true">9.</strong> Language Features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../language_features/destructor.html"><strong aria-hidden="true">9.1.</strong> Destructuror</a></li><li class="chapter-item expanded "><a href="../language_features/memory.html"><strong aria-hidden="true">9.2.</strong> Memory</a></li><li class="chapter-item expanded "><a href="../language_features/macros.html"><strong aria-hidden="true">9.3.</strong> Macros</a></li><li class="chapter-item expanded "><a href="../language_features/trait_objects.html"><strong aria-hidden="true">9.4.</strong> Trait Objectss</a></li><li class="chapter-item expanded "><a href="../language_features/traits.html"><strong aria-hidden="true">9.5.</strong> Traits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../language_features/traits/memory.html"><strong aria-hidden="true">9.5.1.</strong> Iterator</a></li></ol></li><li class="chapter-item expanded "><a href="../language_features/enums.html"><strong aria-hidden="true">9.6.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../language_features/oop.html" class="active"><strong aria-hidden="true">9.7.</strong> Object Orientation</a></li></ol></li><li class="chapter-item expanded "><a href="../language_limitations.html"><strong aria-hidden="true">10.</strong> Language Limitations</a></li><li class="chapter-item expanded "><a href="../best_practices.html"><strong aria-hidden="true">11.</strong> Best Practices</a></li><li class="chapter-item expanded "><a href="../miscellaneous.html"><strong aria-hidden="true">12.</strong> Miscellaneous</a></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">13.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="../troubleshooting.html"><strong aria-hidden="true">14.</strong> Troubleshooting</a></li><li class="chapter-item expanded "><a href="../quiz.html"><strong aria-hidden="true">15.</strong> Quiz</a></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">16.</strong> References</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,37 +134,40 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="traits"><a class="header" href="#traits">Traits</a></h1>
-<p>Per https://doc.rust-lang.org/rust-by-example/trait.html, a trait is a collection of methods defined for an unknown type: Self. They can access other methods declared in the same trait.</p>
-<details><summary>Q: 
-Is a trait is type?
-</summary>A: 
-Yes
-</details>
-<h2 id="object-safety"><a class="header" href="#object-safety">Object safety</a></h2>
-<p>A trait is <em>object safe</em> if all the methods defined in the trait have the following properties:
-- The return type isn’t Self.
-- There are no generic type parameters.</p>
-<p>For a trait to be <strong>object safe</strong> the underlying concrete type should be referred to by a <code>&amp;self</code> reference and not by <code>self</code> value. A reference is a known size (it is the same size, the size of a pointer, regardless of type) but a value is unknown (it varies depending on the type).</p>
-<pre><code>trait T1 {
-    fn foo(self); // not object safe,
-                  // size of object is unknowable at compile time.
+                        <h1 id="object-orientation"><a class="header" href="#object-orientation">Object Orientation</a></h1>
+<h2 id="inheritance"><a class="header" href="#inheritance">Inheritance</a></h2>
+<p>Favor composition over inheritance.</p>
+<pre><pre class="playground"><code class="language-rust editable">#[derive(Debug)]
+struct Person {
+    name: String,
+    age: u32,
+    phone: u64,
 }
 
-trait T2 {
-    fn foo(&amp;self); // object safe
+#[derive(Debug)]
+struct Employee {
+    person: Person,
+    phone: u64,
+    id: u32,
 }
-</code></pre>
-<p><a href="https://stackoverflow.com/questions/26983355/is-there-a-way-to-combine-multiple-traits-in-order-to-define-a-new-trait">Combine multiple traits to for a new trait</a></p>
+
+fn main() {
+    let p = Person { name: &quot;John&quot;.to_string(), age:33, phone:3334445555 };
+    let e = Employee {person:p, phone:1112223333, id:12345};
+    println!(&quot;{:?}&quot;, p);
+    println!(&quot;{:?}&quot;, e);
+    println!(&quot;{:?}, home phone:{}&quot;, e, e.person.phone);
+}
+</code></pre></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../language_features/trait_objects.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../language_features/enums.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../language_features/traits/memory.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../language_limitations.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -173,10 +176,10 @@ trait T2 {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../language_features/trait_objects.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../language_features/enums.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../language_features/traits/memory.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../language_limitations.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

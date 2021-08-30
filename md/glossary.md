@@ -79,7 +79,8 @@ An *enumeration* or *enum* is a type that can be one of multiple *variants*.
 A *variant* is one of the types an *enumeration* can take.
 
 ### crate
-A crate is a collection of Rust source files. It is what ```cargo build``` builds. It can either be a *library crate* or a *binary crate* and is specified using a *Cargo.toml* file.
+Per the book: A crate is tree of modules that produces a library or executable.
+A crate is a collection of Rust source files. It is what ```cargo build``` builds. It can either be a *library crate*  which typically has a lib.rs or a *binary crate* which has a main.rs. If a package has both a main.rs and a lib.rs then you have two crates. A crate is configured using a *Cargo.toml* file.
 
 ### library crate
 A *library crate* 
@@ -129,6 +130,9 @@ else can implement a trait defined in your module in one of their modules on the
 
 Rust's package manager and build system. `cargo --version` `cargo build` `cargo run` `cargo install` `cargo check` `cargo new {name}`
 
+## package
+Per the book: A package is one or more crates that provide a set of functionality. There can be at most one library and any number of binary crates in the package. Each file in src/bin is a separate binary crate.
+
 ## rustup
 
 The command to upgrade your Rust compiler: `rustup update`
@@ -168,3 +172,16 @@ fn foo(o: dyn MyTrait) {  // this will not compile, unknown size
 fn foo(o: impl MyTrait) {  // this will compile
 }
 ```
+
+## use
+The use keyword as in ```use x::y::z``` brings public items into scope. If z contains items (e.g. x::y::z::foo) then they can be refereced like ```z::foo```, if z is an item (say an enum or struct) then it can be accessed using just `z` and not using ```x::y::z```. You don't need to have a `use` statement. You can access any item that your package knows about using a full path in the code (e.g x::y::z::foo())
+
+## pub use
+The `pub` in front of the `use` **reexports** the items from whatever you are using to appear as they are defined within this module. For example, ```pub use x::y::Foo``` in module m, means that code that has a ```use m``` can use m::Foo instead of using x::y::Foo.
+
+## module
+A **module** is a namespace in which your items can be either `public` or `private`. A module named `xyz` is defined in one of three ways:
+* a ```mod xyz {...}``` block
+* a file `xyx.rs` that is imported into your crate via a `mod xzy;` statement
+* a subdirectory named `xyz` that contains a `mod.rs` file, likewise imported into your crate via a `mod xyz;` statement.
+Child modules can use `private` parent modules items but not vice-versa.
