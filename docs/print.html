@@ -145,8 +145,8 @@
                     <main>
                         <h1 id="rust-beginners-guide"><a class="header" href="#rust-beginners-guide">Rust Beginner's Guide</a></h1>
 <h3 id="by-joe-mooney"><a class="header" href="#by-joe-mooney"><strong>by Joe Mooney</strong></a></h3>
-<p>A beginner's guide to programming in Rust written by a beginner and a beginner's guide to writing an <em>mdbook</em>. </p>
-<p>This book is generated using a gitbook-like clone called <em>mdbook</em>. The book is stored in github and the book serves the additional purpose of documenting how to create a book.</p>
+<p>A beginner's guide to programming in Rust written by a beginner and a beginner's guide to writing an <em>mdbook</em> also by a beginner mdbook user. </p>
+<p>This book is generated using a gitbook-like clone called <em>mdbook</em>. The book is stored in github and the book serves the additional purpose of documenting how to create such a book.</p>
 <p>Included are commands and instructions for creating a new empty book and how to go about publishing the book on github.</p>
 <p>In addition to <code>mdbook</code> there some add-ons to mdbook stored in this repo. There is a preprocessor that makes it easy to generate an interactive quiz.</p>
 <h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
@@ -169,21 +169,28 @@
 <ul>
 <li>Build/View the book locally: <code>mdbook build --open</code></li>
 <li>Rebuild/View loop: <code>mdbook watch --open</code></li>
-<li>Edit pages and you should see the updates on page refresh.</li>
+<li>Edit pages and you should see the updates on page refresh. (README.md is an exception)</li>
 <li>Publish to github: ./publish.sh:  this shell script will generate and will publish changes to the book to github.</li>
 </ul>
+<h2 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h2>
+<h3 id="mdbook-plus"><a class="header" href="#mdbook-plus">mdbook-plus</a></h3>
+<p>Clone, build, and install this repo <code>https://github.com/joemooney/mdbook-plus</code>
+This is a mdbook preprocessor that I wrote. I use it for colored text and my quiz feature since I could not find an easier way to do these things.
+If you get a WARN <code>2021-12-04 14:45:30 [WARN] (mdbook::preprocess::cmd): The command wasn't found, is the &quot;plus&quot; preprocessor installed?</code> when you run <code>mdbook build --open</code> it means you have not installed my mdbook helper mdbook-plus
+To install clone the repo and then <code>cargo build</code> and <code>cargo install --path .</code></p>
 <h2 id="installbootstrap"><a class="header" href="#installbootstrap">Install/Bootstrap</a></h2>
 <ul>
 <li>Clone the GitHub repo for the book: <a href="https://github.com/joemooney/rust-notes/">https://github.com/joemooney/rust-notes/</a></li>
 </ul>
 <p>Once opened, the book contains the instructions for
 creating a new book, and editing, publishing etc.</p>
-<h3 id="mdbook-plus"><a class="header" href="#mdbook-plus">mdbook-plus</a></h3>
-<p>This is a mdbook preprocessor that I wrote. I use it for colored text and my quiz feature since I could not find an easier way to do these things.
-If you get a WARN <code>2021-12-04 14:45:30 [WARN] (mdbook::preprocess::cmd): The command wasn't found, is the &quot;plus&quot; preprocessor installed?</code> when you run <code>mdbook build --open</code> it means you have not installed my mdbook helper mdbook-plus
-To install clone the repo and then <code>cargo build</code> and <code>cargo install --path .</code></p>
+<p>The book contents (markdown) is contained in the md directory.
+Any time you change contents in the md directory then the <code>mdbook watch --open</code> will detect the change and regenerate the book locally.</p>
+<h3 id="publishing"><a class="header" href="#publishing">Publishing</a></h3>
+<p>To publish your changes to github run the <code>publish.sh</code> script. Use the <code>-f</code> force option if it reports there are no changes but you really know that there are and want to publish anyhow. Publishing will require access to github. It is best to install the <em>gh</em> command line tool from github <code>https://github.com/cli/cli</code> and then <code>gh auth login</code> and create a SSH login for your account.</p>
+<h3 id="checking-your-installation"><a class="header" href="#checking-your-installation">Checking your Installation</a></h3>
 <h2 id="interactive-code-example-feature"><a class="header" href="#interactive-code-example-feature">Interactive Code Example Feature</a></h2>
-<p>If you are viewing this book, then make sure this feature is working so that you can use the interactive editor to run Rust code while reading the book.</p>
+<p>When viewing the book, make sure this feature is working so that you can use the interactive editor to run Rust code while reading the book.</p>
 <p>Here is an example of embedding a question and answer code block into the book which the reader can edit and run using <em>rust playground</em>:
 If you see a '?Q' and '?A' then you have not installed <em>mdbook-plus</em> (see above)</p>
 <details><summary>Q: 
@@ -198,7 +205,7 @@ It panics, because you cannot unwrap a None.
 It is best not to unwrap unless you know there is no possibility of failure.
 </details>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p><sub><span style='color:gray'><em>Last Updated: 2021-12-04 15:18:27</em></span></sub></p>
+<p><sub><span style='color:gray'><em>Last Updated: 2021-12-04 15:27:01</em></span></sub></p>
 <p>This book contains notes from learning Rust and
 notes on how this book was put together.</p>
 <h2 id="generally-useful-tools"><a class="header" href="#generally-useful-tools">Generally useful tools:</a></h2>
