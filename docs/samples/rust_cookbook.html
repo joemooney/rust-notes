@@ -4,7 +4,10 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Rust Cookbook - Rust Notes</title>
+
+
         <!-- Custom HTML head -->
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Notes on learning Rust programming language.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,15 +19,18 @@
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
         <link rel="stylesheet" href="../css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="../fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
         <link rel="stylesheet" href="../tomorrow-night.css">
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -110,6 +116,7 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -123,6 +130,7 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -134,9 +142,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka"><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka"><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></a></h1>
+                        <h1 id="rust-cookbook"><a class="header" href="#rust-cookbook"><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></a></h1>
 <p>The code is all taken from the <a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a>, the links are back to the Rust Cookbook. The snippets here are just a condensed version without explanation. Read the Rust Cookbook to understand.</p>
-<h2 id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa"><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers">Random Numbers</a></a></h2>
+<h2 id="random-numbers"><a class="header" href="#random-numbers"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers">Random Numbers</a></a></h2>
 <pre><pre class="playground"><code class="language-rust editable">extern crate rand;
 
 use rand::Rng;
@@ -155,7 +163,7 @@ fn main() {
     println!(&quot;Float: {}&quot;, rng.gen_range(0.0, 10.0));
 }
 </code></pre></pre>
-<h2 id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmssortinghtmlsortinga"><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmssortinghtmlsortinga"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/sorting.html">Sorting</a></a></h2>
+<h2 id="sorting"><a class="header" href="#sorting"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/sorting.html">Sorting</a></a></h2>
 <pre><pre class="playground"><code class="language-rust editable">fn main() {
     let mut vec = vec![1, 5, 10, 2, 15];
 
@@ -210,7 +218,7 @@ fn main() {
 
 }
 </code></pre></pre>
-<h2 id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookcliargumentshtmlcommand-line-argument-parsinga"><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookcliargumentshtmlcommand-line-argument-parsinga"><a href="https://rust-lang-nursery.github.io/rust-cookbook/cli/arguments.html">Command Line Argument Parsing</a></a></h2>
+<h2 id="command-line-argument-parsing"><a class="header" href="#command-line-argument-parsing"><a href="https://rust-lang-nursery.github.io/rust-cookbook/cli/arguments.html">Command Line Argument Parsing</a></a></h2>
 <pre><pre class="playground"><code class="language-rust editable">use clap::{Arg, App};
 
 fn main() {
@@ -253,9 +261,11 @@ fn main() {
                             <a rel="prev" href="../samples/hello_world.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
+
                             <a rel="next" href="../samples/rosetta.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
@@ -265,6 +275,7 @@ fn main() {
                     <a rel="prev" href="../samples/hello_world.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
+
                     <a rel="next" href="../samples/rosetta.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
@@ -272,21 +283,29 @@ fn main() {
 
         </div>
 
+
+
+
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
+
         <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
         <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
         <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+
+
     </body>
 </html>

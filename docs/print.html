@@ -5,7 +5,10 @@
         <meta charset="UTF-8">
         <title>Rust Notes</title>
         <meta name="robots" content="noindex" />
+
+
         <!-- Custom HTML head -->
+
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Notes on learning Rust programming language.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,15 +20,18 @@
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -111,6 +117,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -124,6 +131,7 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -135,15 +143,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="random-rust-notes"><a class="header" href="#random-rust-notes">Random Rust Notes</a></h1>
-<p>A place to store notes about programming in Rust. 
-Stored using a gitbook-like clone called <em>mdbook</em>.
-This repo serves the dual purpose of documenting my experience
-and documenting how I went about documenting.</p>
-<p>As a byproduct, this repo will have commands and instructions for creating a new empty book.</p>
-<p>The contents of the &quot;book&quot; are stored on GitHub.
-It is a &quot;book&quot; because it uses the mdbook crate.
-Beyond mdbook there some bells and whistles such as a preprocessor that makes it easy to generate an interactive quiz.</p>
+                        <h1 id="rust-beginners-guide"><a class="header" href="#rust-beginners-guide">Rust Beginner's Guide</a></h1>
+<h3 id="by-joe-mooney"><a class="header" href="#by-joe-mooney"><strong>by Joe Mooney</strong></a></h3>
+<p>A beginner's guide to programming in Rust written by a beginner and a beginner's guide to writing an <em>mdbook</em>. </p>
+<p>This book is generated using a gitbook-like clone called <em>mdbook</em>. The book is stored in github and the book serves the additional purpose of documenting how to create a book.</p>
+<p>Included are commands and instructions for creating a new empty book and how to go about publishing the book on github.</p>
+<p>In addition to <code>mdbook</code> there some add-ons to mdbook stored in this repo. There is a preprocessor that makes it easy to generate an interactive quiz.</p>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<ul>
+<li><code>cargo install mdbook</code></li>
+<li>If you get an error about cannot find crti.o: <code>sudo apt install libc-dev</code></li>
+</ul>
+<h2 id="viewing-the-book"><a class="header" href="#viewing-the-book">Viewing the Book</a></h2>
 <ul>
 <li>View the book in github here:  <a href="https://joemooney.github.io/rust-notes/">https://joemooney.github.io/rust-notes/</a></li>
 <li>View the book locally: <a href="file:///home/jpm/rust/rust-notes/book/index.html">file:///home/jpm/rust/rust-notes/book/index.html</a></li>
@@ -151,23 +162,30 @@ Beyond mdbook there some bells and whistles such as a preprocessor that makes it
 </ul>
 <h2 id="goals"><a class="header" href="#goals">Goals</a></h2>
 <ul>
-<li>document lessons learned in Rust.</li>
-<li>create a simple wrapper crate for mdbook to create new books.</li>
+<li>document lessons learned in Rust from a beginner's perspective.</li>
+<li>create a template and supporting scripts for writing similarly layed out books on any subject.</li>
 </ul>
-<h2 id="build"><a class="header" href="#build">Build</a></h2>
+<h2 id="build-the-book"><a class="header" href="#build-the-book">Build the Book</a></h2>
 <ul>
 <li>Build/View the book locally: <code>mdbook build --open</code></li>
 <li>Rebuild/View loop: <code>mdbook watch --open</code></li>
-<li>Publish: ./publish.sh:  this shell script will generate and will publish changes to the book to github.</li>
+<li>Edit pages and you should see the updates on page refresh.</li>
+<li>Publish to github: ./publish.sh:  this shell script will generate and will publish changes to the book to github.</li>
 </ul>
 <h2 id="installbootstrap"><a class="header" href="#installbootstrap">Install/Bootstrap</a></h2>
 <ul>
-<li>GitHub source code for book: <a href="https://github.com/joemooney/rust-notes/">https://github.com/joemooney/rust-notes/</a></li>
+<li>Clone the GitHub repo for the book: <a href="https://github.com/joemooney/rust-notes/">https://github.com/joemooney/rust-notes/</a></li>
 </ul>
 <p>Once opened, the book contains the instructions for
 creating a new book, and editing, publishing etc.</p>
-<h2 id="interactive-code-examples"><a class="header" href="#interactive-code-examples">Interactive Code Examples</a></h2>
-<p>Here is an example of embedding code into the book which the reader can then edit and run the code:</p>
+<h3 id="mdbook-plus"><a class="header" href="#mdbook-plus">mdbook-plus</a></h3>
+<p>This is a mdbook preprocessor that I wrote. I use it for colored text and my quiz feature since I could not find an easier way to do these things.
+If you get a WARN <code>2021-12-04 14:45:30 [WARN] (mdbook::preprocess::cmd): The command wasn't found, is the &quot;plus&quot; preprocessor installed?</code> when you run <code>mdbook build --open</code> it means you have not installed my mdbook helper mdbook-plus
+To install clone the repo and then <code>cargo build</code> and <code>cargo install --path .</code></p>
+<h2 id="interactive-code-example-feature"><a class="header" href="#interactive-code-example-feature">Interactive Code Example Feature</a></h2>
+<p>If you are viewing this book, then make sure this feature is working so that you can use the interactive editor to run Rust code while reading the book.</p>
+<p>Here is an example of embedding a question and answer code block into the book which the reader can edit and run using <em>rust playground</em>:
+If you see a '?Q' and '?A' then you have not installed <em>mdbook-plus</em> (see above)</p>
 <details><summary>Q: 
 What will happen when you run this code? {click on the arrow to reveal the answer}
 ```rust,editable
@@ -180,7 +198,7 @@ It panics, because you cannot unwrap a None.
 It is best not to unwrap unless you know there is no possibility of failure.
 </details>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p><sub><span style='color:gray'><em>Last Updated: 2021-08-29 19:39:46</em></span></sub></p>
+<p><sub><span style='color:gray'><em>Last Updated: 2021-12-04 15:14:37</em></span></sub></p>
 <p>This book contains notes from learning Rust and
 notes on how this book was put together.</p>
 <h2 id="generally-useful-tools"><a class="header" href="#generally-useful-tools">Generally useful tools:</a></h2>
@@ -411,7 +429,7 @@ assert!(config.get::&lt;u32&gt;().is_none());
 </code></pre></pre>
 <p>Here we have types e.g. <strong>Port</strong> instead of having a port being a member of some struct we can have an AnyMap and have Port as one of the keys.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="notify"><a class="header" href="#notify">notify</a></h1>
-<h2 id="a-hrefhttpsstackoverflowcomquestions55440289how-do-i-recursively-watch-file-changes-in-rusthow-do-i-recursively-watch-file-changes-in-rusta"><a class="header" href="#a-hrefhttpsstackoverflowcomquestions55440289how-do-i-recursively-watch-file-changes-in-rusthow-do-i-recursively-watch-file-changes-in-rusta"><a href="https://stackoverflow.com/questions/55440289/how-do-i-recursively-watch-file-changes-in-rust">How do I recursively watch file changes in Rust?</a></a></h2>
+<h2 id="how-do-i-recursively-watch-file-changes-in-rust"><a class="header" href="#how-do-i-recursively-watch-file-changes-in-rust"><a href="https://stackoverflow.com/questions/55440289/how-do-i-recursively-watch-file-changes-in-rust">How do I recursively watch file changes in Rust?</a></a></h2>
 <p>This example watches a directory for changes and upon a change an event is received</p>
 <pre><pre class="playground"><code class="language-rust">
 use notify::{Watcher, RecursiveMode, watcher};
@@ -498,9 +516,9 @@ fn main() {
     }
 }
 </code></pre></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka"><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookrust-cookbooka"><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rust-cookbook"><a class="header" href="#rust-cookbook"><a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a></a></h1>
 <p>The code is all taken from the <a href="https://rust-lang-nursery.github.io/rust-cookbook/">Rust Cookbook</a>, the links are back to the Rust Cookbook. The snippets here are just a condensed version without explanation. Read the Rust Cookbook to understand.</p>
-<h2 id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa"><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmsrandomnesshtmlgenerate-random-numbersrandom-numbersa"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers">Random Numbers</a></a></h2>
+<h2 id="random-numbers"><a class="header" href="#random-numbers"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html#generate-random-numbers">Random Numbers</a></a></h2>
 <pre><pre class="playground"><code class="language-rust editable">extern crate rand;
 
 use rand::Rng;
@@ -519,7 +537,7 @@ fn main() {
     println!(&quot;Float: {}&quot;, rng.gen_range(0.0, 10.0));
 }
 </code></pre></pre>
-<h2 id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmssortinghtmlsortinga"><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookalgorithmssortinghtmlsortinga"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/sorting.html">Sorting</a></a></h2>
+<h2 id="sorting"><a class="header" href="#sorting"><a href="https://rust-lang-nursery.github.io/rust-cookbook/algorithms/sorting.html">Sorting</a></a></h2>
 <pre><pre class="playground"><code class="language-rust editable">fn main() {
     let mut vec = vec![1, 5, 10, 2, 15];
 
@@ -574,7 +592,7 @@ fn main() {
 
 }
 </code></pre></pre>
-<h2 id="a-hrefhttpsrust-lang-nurserygithubiorust-cookbookcliargumentshtmlcommand-line-argument-parsinga"><a class="header" href="#a-hrefhttpsrust-lang-nurserygithubiorust-cookbookcliargumentshtmlcommand-line-argument-parsinga"><a href="https://rust-lang-nursery.github.io/rust-cookbook/cli/arguments.html">Command Line Argument Parsing</a></a></h2>
+<h2 id="command-line-argument-parsing"><a class="header" href="#command-line-argument-parsing"><a href="https://rust-lang-nursery.github.io/rust-cookbook/cli/arguments.html">Command Line Argument Parsing</a></a></h2>
 <pre><pre class="playground"><code class="language-rust editable">use clap::{Arg, App};
 
 fn main() {
@@ -609,7 +627,7 @@ fn main() {
     }
 }
 </code></pre></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="a-hrefhttprosettacodeorgrosetta-codea"><a class="header" href="#a-hrefhttprosettacodeorgrosetta-codea"><a href="http://rosettacode.org">Rosetta Code</a></a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rosetta-code"><a class="header" href="#rosetta-code"><a href="http://rosettacode.org">Rosetta Code</a></a></h1>
 <p><a href="http://rosettacode.org">Rosetta Code</a> is a list of problems/solutions
 written is basically every programming language under the
 sun.</p>
@@ -619,7 +637,7 @@ sun.</p>
 <li><a href="samples/./samples/rosetta/15_puzzle_game.html">15 Puzzle Game</a></li>
 <li><a href="samples/./samples/rosetta/15_puzzle_solver.html">15 puzzle solver</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="a-hrefhttprosettacodeorgwiki100_doorsrust100-doorsa"><a class="header" href="#a-hrefhttprosettacodeorgwiki100_doorsrust100-doorsa"><a href="http://rosettacode.org/wiki/100_doors#Rust">100 Doors</a></a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="100-doors"><a class="header" href="#100-doors"><a href="http://rosettacode.org/wiki/100_doors#Rust">100 Doors</a></a></h1>
 <p>This my first foray into writing a simple algorithm in Rust.</p>
 <h2 id="lessons-learned"><a class="header" href="#lessons-learned">Lessons Learned</a></h2>
 <ol>
@@ -1440,6 +1458,9 @@ was supplied and if it had None you would need to check for it.</p>
 public static int Foo() =&gt; 10;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h1>
+<ul>
+<li>avoid using unwrap() or expect() since they panic. Use only when a panic is unavoidable.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h1>
 <p><code>rustup update</code> to update your version of Rust.
 <code>cargo check</code> to see if your crates are up-to-date.</p>
@@ -1460,12 +1481,17 @@ public static int Foo() =&gt; 10;
 </code></pre>
 <h3 id=""><a class="header" href="#"></a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="glossary"><a class="header" href="#glossary">Glossary</a></h1>
-<h3 id="a-hrefhttpsdocrust-langorgnomiconindexhtmlrustonomicoma"><a class="header" href="#a-hrefhttpsdocrust-langorgnomiconindexhtmlrustonomicoma"><a href="https://doc.rust-lang.org/nomicon/index.html">Rustonomicom</a></a></h3>
+<h3 id="rustonomicom"><a class="header" href="#rustonomicom"><a href="https://doc.rust-lang.org/nomicon/index.html">Rustonomicom</a></a></h3>
 <p>A book about writing unsafe code and the inner guts of Rust. |</p>
 <h3 id="block"><a class="header" href="#block">block</a></h3>
 <p>A block is a set of statements enclosed in braces {...}.
 A block is an <em>expression</em>.
 Before the statements where may be <em>inner attributes</em>.</p>
+<h3 id="bound"><a class="header" href="#bound">bound</a></h3>
+<p>When type is <code>bounded by</code> a capability it must provide that capability if required by any code that has access to variable of that type. </p>
+<h3 id="bound-t-static"><a class="header" href="#bound-t-static">bound <code>T: 'static</code></a></h3>
+<p>Note: <code>T: 'static</code> includes owned types.
+A variable with this capability <em>could</em> be accessible for the lifetime of the program <strong>if that part of the code requires it to be so</strong>. That part of the code may not require it to be accessible for the lifetime of the program and if it owns the variable then it may drop it and the variable would obviously not have had a lifetime for the full duration of the program. </p>
 <h3 id="attributes"><a class="header" href="#attributes">attributes</a></h3>
 <pre><code>- Built-in attributes
 - Macro attributes
@@ -1702,36 +1728,47 @@ https://stevedonovan.github.io/rustifications/</li>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
             </nav>
 
         </div>
 
+
+
+
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
+
         <script src="ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="editor.js" type="text/javascript" charset="utf-8"></script>
         <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
         <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
         <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+
         <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+
         <script type="text/javascript">
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
+
     </body>
 </html>

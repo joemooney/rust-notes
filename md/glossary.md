@@ -9,6 +9,13 @@ A block is a set of statements enclosed in braces {...}.
 A block is an *expression*.
 Before the statements where may be *inner attributes*.
 
+### bound
+When type is `bounded by` a capability it must provide that capability if required by any code that has access to variable of that type. 
+
+### bound `T: 'static`
+Note: `T: 'static` includes owned types.
+A variable with this capability _could_ be accessible for the lifetime of the program **if that part of the code requires it to be so**. That part of the code may not require it to be accessible for the lifetime of the program and if it owns the variable then it may drop it and the variable would obviously not have had a lifetime for the full duration of the program. 
+
 ### attributes
     - Built-in attributes
     - Macro attributes
