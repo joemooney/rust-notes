@@ -1,25 +1,29 @@
 # Trait Objects
 
 Why use trait objects? It depends is one answer. Trait objects result in smaller, slower binaries.
+But they do allow you have collections of objects that implement the same trait but are of different types.
 
 ```rust
 // https://stevedonovan.github.io/rustifications/2018/09/08/common-rust-traits.html
 
 use std::string::ToString;
 
-// monomorphic - generic
+// Note the signatures are different but the implementations are the same
+
+// Using an Object Reference (not Trait Object), monomorphic - generic function
 fn to_string1<T: ToString> (item: &T) -> String {
     item.to_string()
 }
-// polymorphic - dynamic dispatch
+// Using a Trait Object, polymorphic - dynamic dispatch
 fn to_string2(item: &dyn ToString) -> String {
     item.to_string()
 }
 
-println!("{}", to_string1(&42));
-println!("{}", to_string2(&42));
-println!("{}", to_string1(&"hello"));
-println!("{}", to_string2(&"hello"));
+// From the calling side there is no difference, but the code generated is different
+println!("{}", to_string1(&42));  // uses a one version of function to_string1 expanded for &u32
+println!("{}", to_string1(&"hello"));  // uses a different version of function to_string1 expanded for &str
+println!("{}", to_string2(&42));  // uses the only version of function to_string2 passing as a trait object &u32
+println!("{}", to_string2(&"hello"));  // uses the only version of function to_string2 passing as a trait object &str
 
 ```
 
@@ -87,7 +91,7 @@ fn do_stuff(objects: Vec<Box<dyn Shape>>) {
 
 ```
 
-Here we see a Vec of a Trait type which can contain different types of concrete objects which can be differentiated 
+Here we see a Vec of a Trait type which can contain different types of concrete objects which can be differentiated.
 
 
 If you want to pass a variable to a function which may be of different types at run time, then you can use a trait object.

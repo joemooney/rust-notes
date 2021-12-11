@@ -1,4 +1,4 @@
-# Language Limitations
+# Comparisons with Other Language
 
 ## Optional with default Parameters
 

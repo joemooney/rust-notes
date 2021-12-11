@@ -28,5 +28,7 @@ editable = true
 # Instead of mdbook-foo executable, run this command
 # command = "python3 /path/to/foo.py"
 # Only run the `foo` preprocessor for the HTML and EPUB renderer
+
+# Run the mdbook-plus preprocessor
 [preprocessor.plus]
 renderer = ["html", "epub"]

@@ -24,12 +24,22 @@ In addition to `mdbook` there some add-ons to mdbook stored in this repo. There 
 - document lessons learned in Rust from a beginner's perspective.
 - create a template and supporting scripts for writing similarly layed out books on any subject.
 
-## Build the Book
+## Layout of Book repo
+- The md directory contains the book
+- A README.md at the root level which is synced with a copy in the md folder
+- md/SUMMARY.md all pages must be recorded in this file - this is table of contents in the left bar
+- src/*.rs is where all the example rust code is stored, the md files have references via `{{#include ../src/misc/anchors.rs:anchor1}}` for example.
 
-- Build/View the book locally: ```mdbook build --open```
-- Rebuild/View loop: ```mdbook watch --open```
-- Edit pages and you should see the updates on page refresh. (README.md is an exception)
-- Publish to github: ./publish.sh:  this shell script will generate and will publish changes to the book to github.
+## Authoring the Book
+
+- Build/View loop: ```mdbook watch --open```
+    - Opens the local book in a browser
+    - Then you edit pages in md subdirectory
+    - This will trigger a rebuild upon any change of the book
+    - See the updates on browser with web page refresh.
+- Just Build/View the book locally: ```mdbook build --open```
+- *Note*: README.md in the root directory of the repo is a copy of md/README.md and you should edit the version in the md directory. `publish.sh` will copy the newer of either of these to the other, but the watch will not trigger a rebuild unless you edit the md directory version.
+- Publish to github: `./publish.sh` shell script will generate and will publish changes to the book to github.
 
 ## Dependencies
 ### mdbook-plus
@@ -50,6 +60,7 @@ Any time you change contents in the md directory then the ```mdbook watch --open
 
 ### Publishing
 To publish your changes to github run the `publish.sh` script. Use the `-f` force option if it reports there are no changes but you really know that there are and want to publish anyhow. Publishing will require access to github. It is best to install the *gh* command line tool from github `https://github.com/cli/cli` and then `gh auth login` and create a SSH login for your account.
+Once published then other people will be able to see your book in <your_name>.github.io/<your_repo> in a few minutes. 
 
 ### Checking your Installation
 ## Interactive Code Example Feature

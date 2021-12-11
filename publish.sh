@@ -22,16 +22,8 @@ src=md
 ####################################################################
 # Functions
 ####################################################################
-#           s,{/small},</sub>,g; s,{small},<sub>,g;
-#           s,{question},<details><summary>Q: ,g; s,{/question},</details>,g; s,{small},<sub>,g;
-#           s,{answer},</summary>,g; s,{/question},</details>,g; s,{small},<sub>,g;
-#           s,{red},<span='color:red'>,g; s,{/red},</span>,g;
-#           s,{blue},<span='color:blue'>,g; s,{/blue},</span>,g;
-#           s,{green},<span='color:green'>,g; s,{/green},</span>,g;
-#           s,{yellow},<span='color:yellow'>,g; s,{/yellow},</span>,g;
-#           s,{gray},<span='color:gray'>,g; s,{/gray},</span>,g;
-#           s,{code},<code>,g; s,{/code},</code>,g;
 postprocess() { 
+    # update last edit date
     for i in book/*.html
     do
         perl -p -i -e "
