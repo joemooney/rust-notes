@@ -1,5 +1,7 @@
 #!/bin/bash
 ####################################################################
+# Build, commit and push changes to github
+####################################################################
 
 ####################################################################
 # Options
@@ -42,11 +44,19 @@ repo_url() {
     git config --get remote.origin.url | sed 's,:,/,;s,git@,https://,;s/.git$//'
 }
 
-publish() { 
+# If repo has an mdbook
+build_book() {
+    [ ! -e book.toml ] && return 0
     mdbook build                                          && \
     postprocess                                           && \
-    rsync -avx --delete --info=progress2 ./book/ ./docs/  &&\
-    [ $opt_noexec -eq 0 ]                                 &&\
+    rsync -avx --delete --info=progress2 ./book/ ./docs/  && \
+    [ $opt_noexec -eq 0 ]                                 && \
+    return 0
+    exit 0
+}
+
+publish() { 
+    build_book                                            && \
     changed                                               && \
     git status  | grep -v 'docs/'                         && \
     echo 'git commit -am'                                 && \
