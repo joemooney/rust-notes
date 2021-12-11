@@ -9,6 +9,8 @@ Here we take a look at the markdown you write looks like before and after going 
 Note that the custom markers are replaced with html which the mdbook markdown to html leaves as is. 
 Also note you can use '[#open_bracket\]' instead of brackets etc. from being processed as markdown for the special cases - though you probably will never need to worry about that.
 
+The preprocessing happens as part of `mdbook build`.
+`publish.sh` will run this and publish the generated book to github.
 
 ### Before Preprocessor (markdown who you write):
 ```

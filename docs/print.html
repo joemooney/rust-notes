@@ -220,7 +220,7 @@ It panics, because you cannot unwrap a None.
 It is best not to unwrap unless you know there is no possibility of failure.
 </details>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p><sub><span style='color:gray'><em>Last Updated: 2021-12-11 12:12:06</em></span></sub></p>
+<p><sub><span style='color:gray'><em>Last Updated: 2021-12-11 12:39:31</em></span></sub></p>
 <p>This book contains notes from learning Rust and
 notes on how this book was put together.</p>
 <h2 id="generally-useful-tools"><a class="header" href="#generally-useful-tools">Generally useful tools:</a></h2>
@@ -328,6 +328,8 @@ On its own it takes as stdin markdown text with some additional special markers 
 <p>Here we take a look at the markdown you write looks like before and after going through the preprocessor - the markdown output by the preprocessor is fed into by mdbook to generate the final html for the book (in the <code>book</code> subdirectory) and see how it is rendered.
 Note that the custom markers are replaced with html which the mdbook markdown to html leaves as is. 
 Also note you can use '[#open_bracket]' instead of brackets etc. from being processed as markdown for the special cases - though you probably will never need to worry about that.</p>
+<p>The preprocessing happens as part of <code>mdbook build</code>.
+<code>publish.sh</code> will run this and publish the generated book to github.</p>
 <h3 id="before-preprocessor-markdown-who-you-write"><a class="header" href="#before-preprocessor-markdown-who-you-write">Before Preprocessor (markdown who you write):</a></h3>
 <pre><code>- text color {red}red font{/red} {blue}blue{/blue} {green}green{/green} {yellow}yellow{/yellow} {gray}gray{/gray}&lt;br&gt;
 - subscripted text {small}subscript font{/small}
