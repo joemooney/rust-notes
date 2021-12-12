@@ -1,7 +1,19 @@
 # Trait Objects
 
-Why use trait objects? It depends is one answer. Trait objects result in smaller, slower binaries.
-But they do allow you have collections of objects that implement the same trait but are of different types.
+See Also: [Traits](./traits.md)
+
+A function that has an argument of `&dyn T` is a trait object.
+Only [object-safe traits](./traits.md) are candidates - this eliminates Traits that have any functions with generic arguments or return types.
+
+## Why use trait objects? 
+- Trait objects allow you have collections of objects that implement the same trait but are of different types.
+- Smaller binaries (polymorphic dynamic dispatch functions instead of monomorphic static dispatch generic functions)
+- Apparently, the additional runtime overhead is small.
+- Increasing your use of Traits is good practice.
+
+## Why not use trait objects? 
+- Trait objects result in slower binaries.
+- Compiler cannot perform inlining optimizations, so if your function is small and frequently called this may not be preferable.
 
 ```rust
 // https://stevedonovan.github.io/rustifications/2018/09/08/common-rust-traits.html
@@ -119,4 +131,8 @@ fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
 }
 ```
 
+## Excercise
+
+Write a function taking a Trait Object for Trait Foo.
+Foo trait has a function foo with just `&self` as argument with no return - it would simply print "I am a Cat" where Cat is a struct that implements the Trait or "I am a Dog" for a Dog.
 
