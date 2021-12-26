@@ -181,13 +181,15 @@ impl System for MySystem {
 </details>
 <details><summary>Q:  How to read a line from stdin?
 </summary>A: 
-<pre><pre class="playground"><code class="language-rust editable">// editable?
+<pre><pre class="playground"><code class="language-rust editable">// this does not work in playground since the stdin fails
 use std::io;
 use std::io::Write;
-let mut s = String::new();
-print!(&quot;Please enter something: &quot;);
-io::stdin().read_line(&amp;mut s).expect(&quot;Failed to read line from stdin&quot;);
-println!(&quot;You entered: {}&quot;, s);
+fn main() {
+    let mut s = String::new();
+    print!(&quot;Please enter something: &quot;);
+    io::stdin().read_line(&amp;mut s).expect(&quot;Failed to read line from stdin&quot;);
+    println!(&quot;\nYou entered: &lt;&lt;{}&gt;&gt;&quot;, s);
+}
 </code></pre></pre>
 </details>
 _________________________________________________________

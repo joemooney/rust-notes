@@ -220,7 +220,7 @@ It panics, because you cannot unwrap a None.
 It is best not to unwrap unless you know there is no possibility of failure.
 </details>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p><sub><span style='color:gray'><em>Last Updated: 2021-12-12 11:28:57</em></span></sub></p>
+<p><sub><span style='color:gray'><em>Last Updated: 2021-12-26 12:18:08</em></span></sub></p>
 <p>This book contains notes from learning Rust and
 notes on how this book was put together.</p>
 <h2 id="generally-useful-tools"><a class="header" href="#generally-useful-tools">Generally useful tools:</a></h2>
@@ -282,7 +282,21 @@ notes on how this book was put together.</p>
 <li>Ctrl + Click will open the editor for a page link</li>
 </ul>
 </li>
+<li>If you edit any file under the <code>md</code> folder you should see the book regenerated in the terminal where the <code>watch.sh</code> is running.
+<ul>
+<li>The message <code>The mdbook-plus preprocessor not running ...</code> can be ignored.</li>
 </ul>
+</li>
+</ul>
+<p><object data="mdbook-plantuml-img/da8e5b7d0b16807be040183de4deeaef07157017.svg" type="image/svg+xml" >mdbook-plantuml-img/da8e5b7d0b16807be040183de4deeaef07157017.svg</object></p>
+<p><object data="mdbook-plantuml-img/ee6f582f07d6a197e3e892b430b9e33c6bd5b332.svg" type="image/svg+xml" >mdbook-plantuml-img/ee6f582f07d6a197e3e892b430b9e33c6bd5b332.svg</object></p>
+<h2 id="supporting-diagrams"><a class="header" href="#supporting-diagrams">Supporting Diagrams</a></h2>
+<p><a href="https://plantuml.com/">Plantuml</a> is used to generate supporting diagrams.
+Using <a href="https://crates.io/crates/mdbook-plantuml">mdbook-plantuml</a> postprocessor we can use markdown to represent the diagrams and a corresponding image file will be generated upon book generation.</p>
+<p><object data="mdbook-plantuml-img/4ea434013d02a291a36350844a16c88ea653a815.svg" type="image/svg+xml" >mdbook-plantuml-img/4ea434013d02a291a36350844a16c88ea653a815.svg</object></p>
+<h2 id="book-layout"><a class="header" href="#book-layout">Book Layout</a></h2>
+<p><object data="mdbook-plantuml-img/b00d83cb86f1ad0139b6c3c450be61407638741e.svg" type="image/svg+xml" >mdbook-plantuml-img/b00d83cb86f1ad0139b6c3c450be61407638741e.svg</object></p>
+<p><object data="mdbook-plantuml-img/7e85c6a26c72b7c6ff081e7e7511e3b32f47785a.svg" type="image/svg+xml" >mdbook-plantuml-img/7e85c6a26c72b7c6ff081e7e7511e3b32f47785a.svg</object></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-book"><a class="header" href="#create-a-book">Create a Book</a></h1>
 <p>Create a markdown book with mdbook crate.
 This is the crate used to create the official 
@@ -1776,13 +1790,15 @@ impl System for MySystem {
 </details>
 <details><summary>Q:  How to read a line from stdin?
 </summary>A: 
-<pre><pre class="playground"><code class="language-rust editable">// editable?
+<pre><pre class="playground"><code class="language-rust editable">// this does not work in playground since the stdin fails
 use std::io;
 use std::io::Write;
-let mut s = String::new();
-print!(&quot;Please enter something: &quot;);
-io::stdin().read_line(&amp;mut s).expect(&quot;Failed to read line from stdin&quot;);
-println!(&quot;You entered: {}&quot;, s);
+fn main() {
+    let mut s = String::new();
+    print!(&quot;Please enter something: &quot;);
+    io::stdin().read_line(&amp;mut s).expect(&quot;Failed to read line from stdin&quot;);
+    println!(&quot;\nYou entered: &lt;&lt;{}&gt;&gt;&quot;, s);
+}
 </code></pre></pre>
 </details>
 _________________________________________________________

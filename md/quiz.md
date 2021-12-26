@@ -45,13 +45,15 @@ This is the anchor3.
 ?A
 
 ```rust,editable
-// editable?
+// this does not work in playground since the stdin fails
 use std::io;
 use std::io::Write;
-let mut s = String::new();
-print!("Please enter something: ");
-io::stdin().read_line(&mut s).expect("Failed to read line from stdin");
-println!("You entered: {}", s);
+fn main() {
+    let mut s = String::new();
+    print!("Please enter something: ");
+    io::stdin().read_line(&mut s).expect("Failed to read line from stdin");
+    println!("\nYou entered: <<{}>>", s);
+}
 ```
 
 ?E

@@ -8,3 +8,4 @@ Cargo.lock
 #Added by cargo
 
 /target
+md/mdbook-plantuml-img/**
