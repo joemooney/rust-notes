@@ -6,35 +6,38 @@ Functions must return a known size of memory.
 Functions must return a concrete type - unlike other languages.
 Traits are not concrete - their size is unknown.
 You cannot return Traits.
-Place Traits in a Box.
+You can place Traits in a Box.
 A Box is a reference to heap memory.
-Rust prefers code to be explicit if memory is heap or stack.
-dyn indicates that memory is in the heap.
+In Rust the code is explicit if memory is heap or stack.
+`dyn` indicates that memory is in the heap.
 */
 
-struct Foo {
-    f: Box<dyn Fn(u32) -> bool>,
+struct MyObjWithFuncPointer {
+    func: Box<dyn Fn(u32) -> bool>,
 }
 
-impl fmt::Display for Foo {
+impl fmt::Display for MyObjWithFuncPointer {
     // This trait requires `fmt` with this exact signature.
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         // Write strictly the first element into the supplied output
         // stream: `f`. Returns `fmt::Result` which indicates whether the
         // operation succeeded or failed. Note that `write!` uses syntax which
         // is very similar to `println!`.
-        write!(f, "foo.f(2) = {}", (self.f)(2))
+        write!(f, "foo.f(2) = {}", (self.func)(2))
     }
 }
 
 // type FnType = dyn Fn(u32) -> bool;
 
-impl Foo {
-    fn new1<F>(f: F) -> Self
+impl MyObjWithFuncPointer {
+    fn new<F>(func: F) -> Self
     where
         F: Fn(u32) -> bool + 'static,
     {
-        Self { f: Box::new(f) }
+        Self { func: Box::new(func) }
+    }
+    fn check(&self, val: u32) -> bool {
+        (self.func)(val)
     }
     /*
        You cannot do this because FnType is unsized since it is
@@ -57,13 +60,14 @@ impl Foo {
     // }
 }
 
-fn condition(num: u32) -> bool {
+fn is_odd(num: u32) -> bool {
     num % 2 == 1
 }
 
-pub fn demo_function_pointer() {
-    let foo = Foo::new1(|x| x * 2 == 4);
-    println!("foo:{}", foo);
-    let foo = Foo::new1(|x| x * 2 == 5);
-    println!("foo:{}", foo);
+fn main() {
+    let is_even = |x: u32| x % 2 == 0;
+    let odder = MyObjWithFuncPointer::new(is_odd);
+    println!("{} {} is odd", 2, odder.check(2));
+    println!("{} {} is odd", 3, odder.check(3));
+    println!("{} {} is even", 2, is_even(2));
 }
