@@ -14,11 +14,11 @@ opt_noexec=0   # -n, --no-exec
 ####################################################################
 url=$(git config --get remote.origin.url | sed 's,git@github.com:,,;s,/,.github.io/,;s,^,https://,;s,.git$,/,')
 
-# Local directory containing markdown for book - must match src in book.toml
-src=md
+# Local directory containing markdown for book - must match src in book.toml which is typically md
+md=md
 
-# Note: .gitignore should have an entry for $src/README.md
-[ $(grep "$src/README.md" .gitignore 2>/dev/null | wc -l) -ne 1 ] && echo "$src/README.md" >> .gitignore
+# Note: .gitignore should have an entry for $md/README.md
+[ $(grep "$md/README.md" .gitignore 2>/dev/null | wc -l) -ne 1 ] && echo "$md/README.md" >> .gitignore
 
 
 ####################################################################
@@ -61,10 +61,10 @@ build_book() {
 # [optional] If repo has an mdbook
 update_book_readme() {
     # Update README.md in book if necessary
-    # cmp -s README.md $src/README.md || cp README.md $src/README.md
+    # cmp -s README.md $md/README.md || cp README.md $md/README.md
     [ ! -e book.toml ] && return 0
-    [[ README.md -nt $src/README.md ]] && cp -vp README.md $src/README.md
-    [[ $src/README.md -nt README.md ]] && cp -vp $src/README.md README.md
+    [[ README.md -nt $md/README.md ]] && cp -vp README.md $md/README.md
+    [[ $md/README.md -nt README.md ]] && cp -vp $md/README.md README.md
 }
 
 publish() { 
