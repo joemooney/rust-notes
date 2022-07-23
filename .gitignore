@@ -2,6 +2,7 @@
 .rgignore
 book
 md/README.md
+plantuml*.jar*
 
 Cargo.lock
 
