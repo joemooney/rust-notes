@@ -11,6 +11,10 @@ See `setup.sh` where I have cobbled some of the installation commands together i
 `sudo apt install default-jre`
 `sudo apt install graphviz`
 
+## NPM Modules (optional)
+
+`npm i -g live-server`
+
 ## Install mdbook
 
 `cargo install mdbook`
