@@ -1,5 +1,9 @@
 # Cargo
 
+Cargo is the Rust build and pacakage management system.
+A package is called a `Crate` (like an npm module or .net nuget).
+
+
 - To create a new project crate:
   -  ```cargo new mycrate```
   -  ```cd mycrate```

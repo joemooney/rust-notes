@@ -19,6 +19,7 @@ md=md
 
 # Note: .gitignore should have an entry for $md/README.md
 [ $(grep "$md/README.md" .gitignore 2>/dev/null | wc -l) -ne 1 ] && echo "$md/README.md" >> .gitignore
+[ $(grep "$md/INSTALL.md" .gitignore 2>/dev/null | wc -l) -ne 1 ] && echo "$md/INSTALL.md" >> .gitignore
 
 
 ####################################################################
@@ -65,6 +66,15 @@ update_book_readme() {
     [ ! -e book.toml ] && return 0
     [[ README.md -nt $md/README.md ]] && cp -vp README.md $md/README.md
     [[ $md/README.md -nt README.md ]] && cp -vp $md/README.md README.md
+}
+
+# [optional] If repo has an mdbook
+update_book_install() {
+    # Update INSTALL.md in book if necessary
+    # cmp -s INSTALL.md $md/INSTALL.md || cp INSTALL.md $md/INSTALL.md
+    [ ! -e book.toml ] && return 0
+    [[ INSTALL.md -nt $md/INSTALL.md ]] && cp -vp INSTALL.md $md/INSTALL.md
+    [[ $md/INSTALL.md -nt INSTALL.md ]] && cp -vp $md/INSTALL.md INSTALL.md
 }
 
 publish() { 
@@ -115,6 +125,7 @@ eval set -- "$PARAMS"
 git status -s | grep -v ' docs/' | grep -v " md/" | sed 's/^/[git]/'
 
 update_book_readme
+update_book_install
 
 git_check_untracked
 git_no_updates && echo "[publish] No changes to publish" && exit 1

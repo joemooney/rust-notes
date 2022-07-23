@@ -1,10 +1,13 @@
 # Miscellaneous
 
+## Random useful information
+
 ```rustup update``` to update your version of Rust.
 ```cargo check``` to see if your crates are up-to-date.
 
 ### Read a line of input
-```
+
+```rust
   use std::io;
   let mut ans = String::new();
   print!("Enter answer: ");
@@ -16,7 +19,7 @@
 
 *Haskell Curry* was an American mathematician and logician. 
 
-### Handling error cases with a ```match``` expression
+### Default an error case with a ```match``` expression
 
 ```
 let ans: u32 = match ans.trim().parse() { 

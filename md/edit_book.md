@@ -7,7 +7,6 @@
 - If you edit any file under the `md` folder you should see the book regenerated in the terminal where the `watch.sh` is running.
   - The message `The mdbook-plus preprocessor not running ...` can be ignored.
 
-
 <table>
 <tr><th>Markdown</th></tr>
 <tr><td>
@@ -89,6 +88,7 @@ Thread1 <->o Thread2: <->o
 ```
 
 ## Supporting Diagrams
+
 [Plantuml](https://plantuml.com/) is used to generate supporting diagrams.
 Using [mdbook-plantuml](https://crates.io/crates/mdbook-plantuml) postprocessor we can use markdown to represent the diagrams and a corresponding image file will be generated upon book generation.
 
@@ -105,6 +105,7 @@ title Directory Layout
 ```
 
 ## Book Layout
+
 ```plantuml
 @startwbs
 * Rust Notes
@@ -113,6 +114,7 @@ title Directory Layout
 *** [[../language_features/traits.html Traits]]
 @endwbs
 ```
+
 ```plantuml
 @startsalt
 {

@@ -1,6 +1,7 @@
 # Rust Notes Summary
 
 - [Readme](./README.md)
+- [Install](./INSTALL.md)
 - [Introduction](./intro.md)
 - [Editing the Book](./edit_book.md)
   - [Creating a Book](./create_book.md)

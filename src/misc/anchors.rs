@@ -16,3 +16,9 @@ impl System for MySystem {
 ////////// ANCHOR_END: anchor2
 
 /* ANCHOR_END: anchor3 */
+
+// ANCHOR: anchor4
+// this is text
+// take from a anchor.rs
+// between block marked // ANCHOR: anchor4 until // ANCHOR_END: anchor4
+// ANCHOR_END: anchor4
