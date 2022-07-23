@@ -5,7 +5,7 @@
 - [Introduction](./intro.md)
 - [Editing the Book](./edit_book.md)
   - [Creating a Book](./create_book.md)
-  - [mdbook preprocessor](./mdbook/preprocessor.md)
+  - [mdbook preprocessing](./mdbook-plus/preprocessor.md)
 - [Cargo](./cargo.md)
 - [Crates](./crates/crates.md)
   - [Executable Crates](./crates/executable-crates/executable-crates.md)
